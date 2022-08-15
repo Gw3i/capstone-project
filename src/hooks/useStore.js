@@ -1,15 +1,22 @@
+import {nanoid} from 'nanoid';
 import create from 'zustand';
 
 const useStore = create(set => ({
-	counter: 0,
-	setCounter(counter) {
-		set({counter});
+	videoLink: [],
+	setVideoLink: link => {
+		set(state => {
+			return {
+				videoLink: [...state.videoLink, {link, id: nanoid()}],
+			};
+		});
 	},
-	decrementCounter(step = 1) {
-		set(({counter}) => ({counter: counter - step}));
-	},
-	incrementCounter(step = 1) {
-		set(({counter}) => ({counter: counter + step}));
+	videoTitle: [],
+	setVideoTitle: title => {
+		set(state => {
+			return {
+				videoLink: [...state.videoTitle, {title, id: nanoid()}],
+			};
+		});
 	},
 }));
 
