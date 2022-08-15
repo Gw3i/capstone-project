@@ -1,12 +1,11 @@
-import { nanoid } from 'nanoid';
 import create from 'zustand';
 
 const useStore = create(set => ({
-	video: [],
-	setVideo: (link, title) => {
+	videos: [],
+	setVideo: video => {
 		set(state => {
 			return {
-				video: [...state.video, { link, title, id: nanoid() }],
+				videos: [...state.videos, video],
 			};
 		});
 	},
