@@ -28,8 +28,8 @@ export default function VideoForm() {
 						{...register('YouTubeLink', {
 							required: 'This field is required',
 							minLength: {
-								value: 15,
-								message: 'Min. length is 15 symbols',
+								value: 20,
+								message: 'Min. length is 20 symbols',
 								pattern: /^(https:\/\/www.youtube.com\/embed)[^\s$.#]*$/gi,
 							},
 						})}
