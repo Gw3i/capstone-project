@@ -1,6 +1,6 @@
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 import Head from 'next/head';
-import {useState} from 'react';
+import { useState } from 'react';
 
 import Button from '../components/Button';
 import Layout from '../components/Layout';
@@ -9,7 +9,7 @@ import useStore from '../hooks/useStore';
 
 export default function HomePage() {
 	// Data
-	const {data, loading, error} = useFetch('/api/hello');
+	const { data, loading, error } = useFetch('/api/hello');
 
 	// Local state
 	const [id, setId] = useState(null);
