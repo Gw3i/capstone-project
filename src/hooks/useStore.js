@@ -2,10 +2,10 @@ import create from 'zustand';
 
 const useStore = create(set => ({
 	videos: [],
-	setVideos: video => {
+	setVideos: videoModel => {
 		set(state => {
 			return {
-				video: [...state.video, { video }],
+				videos: [...state.videos, { videoModel }],
 			};
 		});
 	},

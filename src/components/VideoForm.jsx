@@ -1,7 +1,8 @@
+import { ErrorMessage } from '@hookform/error-message';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-// import { useStore } from 'zustand';
+
+import useStore from '../hooks/useStore';
 
 import StyledForm from './StyledForm';
 import StyledInput from './StyledInput';
@@ -9,24 +10,24 @@ import StyledInputWarning from './StyledInputWarning';
 import StyledLable from './StyledLabel';
 
 export default function VideoForm() {
-	// const setVideo = useStore(state => state.setVideo);
-	const [videos, setVideos] = useState('');
+	const setVideos = useStore(state => state.setVideos);
+	const videos = useStore(state => state.videos);
+
+	console.log(videos);
 	const {
 		register,
 		handleSubmit,
 		resetField,
 		formState: { errors },
-	} = useForm();
-
-	console.log(videos);
+	} = useForm({ criteriaMode: 'all' });
 
 	const onSubmit = data => {
-		let video = {
+		let videoModel = {
 			id: nanoid(),
 			link: data.YouTubeLink,
 			title: data.videoTitle,
 		};
-		setVideos(video);
+		setVideos(videoModel);
 		resetField('YouTubeLink');
 		resetField('videoTitle');
 	};
@@ -38,9 +39,10 @@ export default function VideoForm() {
 					YouTube link
 					<StyledInput
 						{...register('YouTubeLink', {
-							required: { value: true },
+							required: 'This is field required',
 							pattern: {
-								value: /^(https:\/\/www.youtube.com\/)[^\s$.#]*$/gi,
+								value: /^(https:\/\/www.)?(youtube.com\/)[\w\d]{5,}[^\s$#]*$/gi,
+								message: 'This is not the right YouTube url',
 							},
 						})}
 						placeholder="https://www.youtube.com/..."
@@ -48,36 +50,52 @@ export default function VideoForm() {
 						type="text"
 						id="link"
 					/>
-					{errors.YouTubeLink && errors.YouTubeLink.type === 'required' && (
-						<StyledInputWarning>This is required</StyledInputWarning>
-					)}
-					{errors.YouTubeLink && errors.YouTubeLink.type === 'pattern' && (
-						<StyledInputWarning>This is not the right link</StyledInputWarning>
-					)}
+					<ErrorMessage
+						errors={errors}
+						name="YouTubeLink"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type}>{message}</StyledInputWarning>
+							))
+						}
+					/>
 				</StyledLable>
 				<StyledLable htmlFor="title">
 					Video title
 					<StyledInput
 						{...register('videoTitle', {
-							required: { value: true },
-							minLength: { value: 15 },
+							required: 'This is field required',
+							minLength: { value: 10, message: 'The min. length is 10 characters' },
 						})}
 						placeholder="How to cook spaghetti..."
 						name="videoTitle"
 						type="text"
 						id="title"
 					/>
-					{errors.videoTitle && errors.videoTitle.type === 'required' && (
-						<StyledInputWarning>This is required</StyledInputWarning>
-					)}
-					{errors.videoTitle && errors.videoTitle.type === 'minLength' && (
-						<StyledInputWarning>
-							The title should have at least 15 characters
-						</StyledInputWarning>
-					)}
+					<ErrorMessage
+						errors={errors}
+						name="videoTitle"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type}>{message}</StyledInputWarning>
+							))
+						}
+					/>
 				</StyledLable>
 				<button>Submit</button>
 			</StyledForm>
+			<ul>
+				{videos?.map(video => {
+					return (
+						<>
+							<li key={video.videoModel.link}>{video.videoModel.link}</li>
+							<li key={video.videoModel.title}>{video.videoModel.title}</li>
+						</>
+					);
+				})}
+			</ul>
 		</>
 	);
 }
