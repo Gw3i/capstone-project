@@ -13,7 +13,6 @@ export default function VideoForm() {
 	const setVideos = useStore(state => state.setVideos);
 	const videos = useStore(state => state.videos);
 
-	console.log(videos);
 	const {
 		register,
 		handleSubmit,
