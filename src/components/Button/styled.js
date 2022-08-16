@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import {pxToRem} from '../../utils/unit';
+import { pxToRem } from '../../utils/unit';
 
 const StyledButton = styled.button`
 	padding: 0.5em 1em;
