@@ -3,42 +3,22 @@
  */
 
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 
 import VideoForm from './VideoForm';
 
 describe('VideoForm', () => {
-	const onSubmit = jest.fn();
+	it('should show error message when input empty', async () => {
+		render(<VideoForm errorMessage="This field is required" />);
 
-	beforeEach(() => {
-		onSubmit.mockClear();
-		render(<VideoForm onSubmit={onSubmit} />);
-	});
+		const errorMessage = screen.queryByText(/This field is required/i);
+		expect(errorMessage).not.toBeInTheDocument();
 
-	it('onSubmit is called when input fields pass validation', async () => {
-		const YouTubeLink = screen.getByRole('textbox', {
-			name: /youtube link/i,
-		});
-		user.type(YouTubeLink, 'https://www.youtube.com/embed/WOkeB4ZTjFM');
+		const button = screen.getByRole('button', { name: /submit/i });
+		await userEvent.click(button);
 
-		await waitFor(() => {
-			expect(onSubmit).toHaveBeenCalledWith({
-				YouTubeLink: 'https://www.youtube.com/embed/WOkeB4ZTjFM',
-			});
-		});
-
-		expect(onSubmit).toHaveBeenCalledTimes(1);
-
-		user.click(screen.getByRole('button', { name: /Submit/i }));
-	});
-
-	it('has 2 required input fields', async () => {
-		await user.click(
-			screen.getByRole('button', {
-				name: /submit/i,
-			})
-		);
-		expect(screen.getByText('This is field required')).toBeInTheDocument();
+		const errorMessageAfterClick = screen.getByText(/his field is required/i);
+		expect(errorMessageAfterClick).toBeInTheDocument();
 	});
 });
