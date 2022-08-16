@@ -1,6 +1,6 @@
 import Button from './';
 
-function Template({children, ...args}) {
+function Template({ children, ...args }) {
 	return <Button {...args}>{children}</Button>;
 }
 

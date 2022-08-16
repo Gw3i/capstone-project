@@ -1,73 +1,31 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import { userEvent } from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
+import user from '@testing-library/user-event';
 
-import StyledInput from './StyledInput';
-import StyledLable from './StyledLabel';
 import VideoForm from './VideoForm';
 
 describe('VideoForm', () => {
-	it('should render two input fields and a sumbit button', () => {
-		const labelText = 'labelText';
-		const buttonText = 'submit';
-		const placeholder = 'placeholder text';
-		render(
-			<>
-				<StyledLable>
-					{labelText}
-					<StyledInput placeholder={placeholder} />
-				</StyledLable>
-				<StyledLable>
-					{labelText}
-					<StyledInput placeholder={placeholder} />
-				</StyledLable>
-				<button>{buttonText}</button>
-			</>
-		);
+	const onSubmit = jest.fn();
 
-		const labelTextForInput = screen.getAllByText(labelText);
-		expect(labelTextForInput).toBeInTheDocument();
-
-		const placeholderText = screen.getAllByText(placeholder);
-		expect(placeholderText).toBeInTheDocument();
-
-		const submitButtonText = screen.getByText(buttonText);
-		expect(submitButtonText).toBeInTheDocument();
+	beforeEach(() => {
+		onSubmit.mockClear();
+		render(<VideoForm onSubmit={onSubmit} />);
 	});
 
-	it('should pass validation', async () => {
-		const handleSubmit = jest.fn();
-		const YoutubeLink = screen.getByRole('textbox', {
+	it('onSubmit is called when input fields pass validation', async () => {
+		const YouTubeLink = screen.getByRole('textbox', {
 			name: /youtube link/i,
 		});
-		userEvent.type(YoutubeLink, 'https://youtube.com/embed/mBLVfrv__wU?feature=share');
-		const videoTitle = screen.getByRole('textbox', {
-			name: /video title/i,
+		user.type(YouTubeLink, 'https://www.youtube.com/embed/WOkeB4ZTjFM');
+
+		user.click(screen.getByRole('button', { name: /Submit/i }));
+
+		await waitFor(() => {
+			expect(onSubmit).toHaveBeenCalledTimes(1);
 		});
-		userEvent.type(videoTitle, 'How to cook spaghetti');
 
-		await userEvent.click(
-			screen.getByRole('button', {
-				name: /submit/i,
-			})
-		);
-		expect(handleSubmit).toBeCalledTimes(1);
-
-		render(<VideoForm onSubmit={handleSubmit} />);
+		expect(onSubmit).toHaveBeenCalledWith({
+			YouTubeLink: 'https://www.youtube.com/embed/WOkeB4ZTjFM',
+		});
 	});
-
-	// it('show error message when input field is empty', () => {
-	// 	const YoutubeLink = screen.getByRole('textbox', {
-	// 		name: /youtube link/i,
-	// 	});
-	// 	const videoTitle = screen.getByRole('textbox', {
-	// 		name: /video title/i,
-	// 	});
-
-	// 	userEvent.click(
-	// 		screen.getByRole('button', {
-	// 			name: /submit/i,
-	// 		})
-	// 	);
-	// });
 });
