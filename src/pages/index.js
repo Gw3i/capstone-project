@@ -1,7 +1,5 @@
+import VideoForm from '../components/VideoForm/VideoForm';
+
 export default function HomePage() {
-	return (
-		<>
-			<h1>Home</h1>
-		</>
-	);
+	return <VideoForm />;
 }
