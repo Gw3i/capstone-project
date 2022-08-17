@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
 
+import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
 import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
@@ -86,7 +87,7 @@ export default function VideoForm() {
 						}
 					/>
 				</StyledLable>
-				<button>Submit</button>
+				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 			<ul>
 				{videos?.map(video => {
