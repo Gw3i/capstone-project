@@ -37,7 +37,7 @@ export default function VideoForm() {
 					YouTube link
 					<StyledInput
 						{...register('YouTubeLink', {
-							required: 'This is field required',
+							required: 'This field is required',
 							pattern: {
 								value: /^(https:\/\/www.)?(youtube.com\/)(embed)?[\w\d]{5,}[^\s$#]*$/gi,
 								message: 'This is not the right YouTube url',
@@ -54,7 +54,9 @@ export default function VideoForm() {
 						render={({ messages }) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type}>{message}</StyledInputWarning>
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
 							))
 						}
 					/>
@@ -63,7 +65,7 @@ export default function VideoForm() {
 					Video title
 					<StyledInput
 						{...register('videoTitle', {
-							required: 'This is field required',
+							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
 						})}
 						placeholder="How to cook spaghetti..."
@@ -77,7 +79,9 @@ export default function VideoForm() {
 						render={({ messages }) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type}>{message}</StyledInputWarning>
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
 							))
 						}
 					/>
