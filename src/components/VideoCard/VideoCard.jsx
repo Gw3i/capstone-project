@@ -1,8 +1,7 @@
-import useStore from '../hooks/useStore';
-
-import StyledVideoContainer from './StyledVideoContainer';
-import StyledVideoFrame from './StyledVideoFrame';
-import StyledVideoTitle from './StyledVideoTitle';
+import useStore from '../../hooks/useStore';
+import StyledVideoContainer from '../StyledVideoContainer';
+import StyledVideoFrame from '../StyledVideoFrame';
+import StyledVideoTitle from '../StyledVideoTitle';
 
 export default function VideoCard() {
 	const videos = useStore(state => state.videos);
@@ -23,6 +22,7 @@ export default function VideoCard() {
 							key={videoID}
 							width="180"
 							height="315"
+							aria-label="YouTube video"
 							src={`https://www.youtube.com/embed/${videoID}`}
 							title="YouTube video player"
 							frameBorder="0"
