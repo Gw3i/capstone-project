@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -20,16 +19,16 @@ export default function VideoForm() {
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	const onSubmit = data => {
-		let videoModel = {
-			id: nanoid(),
-			link: data.YouTubeLink,
-			title: data.videoTitle,
-		};
-		setVideos(videoModel);
+	function onSubmit(data) {
+		// let videoModel = {
+		// 	id: nanoid(),
+		// 	link: data.YouTubeLink,
+		// 	title: data.videoTitle,
+		// };
+		setVideos(data);
 		resetField('YouTubeLink');
 		resetField('videoTitle');
-	};
+	}
 
 	return (
 		<>
@@ -40,7 +39,7 @@ export default function VideoForm() {
 						{...register('YouTubeLink', {
 							required: 'This is field required',
 							pattern: {
-								value: /^(https:\/\/www.)?(youtube.com\/)[\w\d]{5,}[^\s$#]*$/gi,
+								value: /^(https:\/\/www.)?(youtube.com\/)(embed)?[\w\d]{5,}[^\s$#]*$/gi,
 								message: 'This is not the right YouTube url',
 							},
 						})}
@@ -89,8 +88,8 @@ export default function VideoForm() {
 				{videos?.map(video => {
 					return (
 						<>
-							<li key={video.videoModel.link}>{video.videoModel.link}</li>
-							<li key={video.videoModel.title}>{video.videoModel.title}</li>
+							<li key={video.id}>{video.YouTubeLink}</li>
+							<li key={video.id}>{video.videoTitle}</li>
 						</>
 					);
 				})}
