@@ -14,14 +14,13 @@ export default function VideoForm() {
 	const {
 		register,
 		handleSubmit,
-		resetField,
+		reset,
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
 	function onSubmit(data) {
 		setVideos(data);
-		resetField('YouTubeLink');
-		resetField('videoTitle');
+		reset();
 	}
 
 	return (
