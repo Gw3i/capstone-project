@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import useStore from '../../hooks/useStore';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
-import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLable from '../StyledLabel';
 
@@ -30,7 +29,7 @@ export default function VideoForm() {
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLable htmlFor="link">
 					YouTube link
-					<StyledInput
+					<input
 						{...register('YouTubeLink', {
 							required: 'This field is required',
 							pattern: {
@@ -58,7 +57,7 @@ export default function VideoForm() {
 				</StyledLable>
 				<StyledLable htmlFor="title">
 					Video title
-					<StyledInput
+					<input
 						{...register('videoTitle', {
 							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
