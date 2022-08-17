@@ -1,5 +1,9 @@
 import useStore from '../hooks/useStore';
 
+import StyledVideoContainer from './StyledVideoContainer';
+import StyledVideoFrame from './StyledVideoFrame';
+import StyledVideoTitle from './StyledVideoTitle';
+
 export default function VideoCard() {
 	const videos = useStore(state => state.videos);
 
@@ -9,22 +13,25 @@ export default function VideoCard() {
 	}
 
 	return (
-		<ul>
+		<>
 			{videos.map(video => {
 				const videoID = getYouTubeId(video.YouTubeLink);
 				return (
-					<iFrame
-						key={videoID}
-						width="180"
-						height="315"
-						src={`https://www.youtube.com/embed/${videoID}`}
-						title="YouTube video player"
-						frameBorder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-						allowFullScreen
-					></iFrame>
+					<StyledVideoContainer key={video.id}>
+						<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
+						<StyledVideoFrame
+							key={videoID}
+							width="180"
+							height="315"
+							src={`https://www.youtube.com/embed/${videoID}`}
+							title="YouTube video player"
+							frameBorder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowFullScreen
+						></StyledVideoFrame>
+					</StyledVideoContainer>
 				);
 			})}
-		</ul>
+		</>
 	);
 }
