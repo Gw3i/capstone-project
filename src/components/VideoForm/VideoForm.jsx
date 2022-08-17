@@ -1,13 +1,12 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
 
-import useStore from '../hooks/useStore';
-
-import StyledButton from './StyledButton';
-import StyledForm from './StyledForm';
-import StyledInput from './StyledInput';
-import StyledInputWarning from './StyledInputWarning';
-import StyledLable from './StyledLabel';
+import useStore from '../../hooks/useStore';
+import StyledButton from '../StyledButton';
+import StyledForm from '../StyledForm';
+import StyledInput from '../StyledInput';
+import StyledInputWarning from '../StyledInputWarning';
+import StyledLable from '../StyledLabel';
 
 export default function VideoForm() {
 	const setVideos = useStore(state => state.setVideos);
@@ -21,11 +20,6 @@ export default function VideoForm() {
 	} = useForm({ criteriaMode: 'all' });
 
 	function onSubmit(data) {
-		// let videoModel = {
-		// 	id: nanoid(),
-		// 	link: data.YouTubeLink,
-		// 	title: data.videoTitle,
-		// };
 		setVideos(data);
 		resetField('YouTubeLink');
 		resetField('videoTitle');
