@@ -5,7 +5,7 @@ import useStore from '../../hooks/useStore';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
 import StyledInputWarning from '../StyledInputWarning';
-import StyledLable from '../StyledLabel';
+import StyledLabel from '../StyledLabel';
 
 export default function VideoForm() {
 	const setVideos = useStore(state => state.setVideos);
@@ -27,7 +27,7 @@ export default function VideoForm() {
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
-				<StyledLable htmlFor="link">
+				<StyledLabel htmlFor="link">
 					YouTube link
 					<input
 						{...register('YouTubeLink', {
@@ -54,8 +54,8 @@ export default function VideoForm() {
 							))
 						}
 					/>
-				</StyledLable>
-				<StyledLable htmlFor="title">
+				</StyledLabel>
+				<StyledLabel htmlFor="title">
 					Video title
 					<input
 						{...register('videoTitle', {
@@ -79,7 +79,7 @@ export default function VideoForm() {
 							))
 						}
 					/>
-				</StyledLable>
+				</StyledLabel>
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 			<ul>
