@@ -1,4 +1,5 @@
 import useStore from '../../hooks/useStore';
+import Icon from '../Icon';
 import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
@@ -15,6 +16,7 @@ export default function VideoCard() {
 		const videoID = getYouTubeId(video.YouTubeLink);
 		return (
 			<StyledVideoContainer key={video.id} data-testid="videoContainer">
+				<Icon variant="delete" color="white" />
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 				<StyledVideoFrame
 					width="180"
