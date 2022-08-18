@@ -7,6 +7,7 @@ const StyledNav = styled.nav`
 	justify-content: space-around;
 	width: 100vw;
 	border-top: 2px solid black;
+	background-color: white;
 `;
 
 export default StyledNav;

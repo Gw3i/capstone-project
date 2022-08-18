@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	body {
 		margin: 0;
-		padding: 20px;
+		padding: 0;
 		font-size: 1rem;
 	}
 `;
