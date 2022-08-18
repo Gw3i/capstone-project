@@ -4,6 +4,7 @@ const StyledMain = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-bottom: 45px;
 	padding: 20px;
 `;
 

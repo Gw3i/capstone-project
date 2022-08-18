@@ -12,14 +12,17 @@ export default function Nav() {
 		<StyledNav>
 			<Link href="/">
 				<StyledNavLink>
-					<Icon variant={router.pathname === '/' ? 'homeFilled' : 'home'} />
+					<Icon size="24" variant={router.pathname === '/' ? 'homeFilled' : 'home'} />
 					Home
 				</StyledNavLink>
 			</Link>
 
 			<Link href="/create">
 				<StyledNavLink>
-					<Icon variant={router.pathname === '/create' ? 'createFilled' : 'create'} />
+					<Icon
+						size="24"
+						variant={router.pathname === '/create' ? 'createFilled' : 'create'}
+					/>
 					Home
 				</StyledNavLink>
 			</Link>
