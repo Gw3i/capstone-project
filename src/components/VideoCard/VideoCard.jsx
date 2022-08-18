@@ -16,7 +16,7 @@ export default function VideoCard() {
 			{videos.map(video => {
 				const videoID = getYouTubeId(video.YouTubeLink);
 				return (
-					<StyledVideoContainer key={video.id}>
+					<StyledVideoContainer key={video.id} data-testid="videoContainer">
 						<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 						<StyledVideoFrame
 							width="180"
