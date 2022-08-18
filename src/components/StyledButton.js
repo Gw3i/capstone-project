@@ -5,7 +5,7 @@ const StyledButton = styled.button`
 	padding: 5px 15px;
 	cursor: pointer;
 	${({ variant }) =>
-		variant === 'delete' &&
+		variant === 'deleteIcon' &&
 		css`
 			position: absolute;
 			top: 40px;
@@ -14,6 +14,13 @@ const StyledButton = styled.button`
 			height: 48px;
 			background-color: transparent;
 			border: none;
+		`}
+	${({ variant }) =>
+		variant === 'delete' &&
+		css`
+			background-color: lightsalmon;
+			border: 2px solid salmon;
+			border-radius: 2px;
 		`}
 `;
 
