@@ -19,10 +19,9 @@ export default function VideoCard() {
 					<StyledVideoContainer key={video.id}>
 						<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 						<StyledVideoFrame
-							key={videoID}
 							width="180"
 							height="315"
-							aria-label="YouTube video"
+							aria-label={video.videoTitle}
 							src={`https://www.youtube.com/embed/${videoID}`}
 							title="YouTube video player"
 							frameBorder="0"
