@@ -29,7 +29,7 @@ export default function VideoCard() {
 				<StyledButton variant="delete" onClick={handleDelete}>
 					<Icon variant="delete" color="white" />
 				</StyledButton>
-				{isShown ? <DeleteModal onDelete={handleDelete} /> : ''}
+				{isShown ? <DeleteModal onDelete={handleDelete} videoId={video.id} /> : ''}
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 				<StyledVideoFrame
 					width="180"
