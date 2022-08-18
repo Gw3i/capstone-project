@@ -19,9 +19,8 @@ export default function VideoCard() {
 				<StyledVideoFrame
 					width="180"
 					height="315"
-					aria-label={video.videoTitle}
 					src={`https://www.youtube.com/embed/${videoID}`}
-					title="YouTube video player"
+					title={video.videoTitle}
 					frameBorder="0"
 					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowFullScreen
