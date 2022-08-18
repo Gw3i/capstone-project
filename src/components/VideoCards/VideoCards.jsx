@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 
 import useStore from '../../hooks/useStore';
 import DeleteModal from '../DeleteModal';
@@ -9,11 +9,11 @@ import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
 
 export default function VideoCard() {
-	// const [isShown, setIsShown] = useState(false);
+	const [isShown, setIsShown] = useState(false);
 
-	// function handleDelete() {
-	// 	setIsShown(!isShown);
-	// }
+	function handleDelete() {
+		setIsShown(!isShown);
+	}
 
 	const videos = useStore(state => state.videos);
 
@@ -26,10 +26,10 @@ export default function VideoCard() {
 		const videoID = getYouTubeId(video.YouTubeLink);
 		return (
 			<StyledVideoContainer key={video.id} data-testid="videoContainer">
-				<StyledButton variant="delete">
+				<StyledButton variant="delete" onClick={handleDelete}>
 					<Icon variant="delete" color="white" />
 				</StyledButton>
-				<DeleteModal />
+				{isShown ? <DeleteModal onDelete={handleDelete} /> : ''}
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 				<StyledVideoFrame
 					width="180"
