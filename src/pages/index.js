@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import StyledMain from '../components/StyledMain';
-import VideoCard from '../components/VideoCard/VideoCard';
+import VideoCards from '../components/VideoCards/VideoCards';
 
 export default function HomePage() {
 	return (
@@ -10,7 +10,7 @@ export default function HomePage() {
 			<Link href="/create">
 				<a>to create page</a>
 			</Link>
-			<VideoCard />
+			<VideoCards />
 		</StyledMain>
 	);
 }
