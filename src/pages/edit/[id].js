@@ -1,8 +1,11 @@
-import { useRouter } from 'next/router';
+import EditForm from '../../components/EditFrom/EditForm';
+import Layout from '../../components/Layout';
 
 export default function Edit() {
-	const router = useRouter();
-	const { id } = router.query;
-
-	return <h1>Edit video title {id}</h1>;
+	return (
+		<Layout>
+			<h1>Edit the video title</h1>
+			<EditForm />
+		</Layout>
+	);
 }
