@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState } from 'react';
 
 import useStore from '../../hooks/useStore';
@@ -30,6 +31,13 @@ export default function VideoCard() {
 					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
 				</StyledButton>
 				{isShown ? <DeleteModal onDelete={handleDelete} videoId={video.id} /> : ''}
+				<Link href="/edit">
+					<a>
+						<StyledButton type="button" variant="editIcon">
+							<Icon variant={isShown ? 'editFilled' : 'edit'} color="white" />
+						</StyledButton>
+					</a>
+				</Link>
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 				<StyledVideoFrame
 					width="180"

@@ -16,6 +16,17 @@ const StyledButton = styled.button`
 			border: none;
 		`}
 	${({ variant }) =>
+		variant === 'editIcon' &&
+		css`
+			position: absolute;
+			top: 90px;
+			right: 30px;
+			width: 48px;
+			height: 48px;
+			background-color: transparent;
+			border: none;
+		`}
+${({ variant }) =>
 		variant === 'delete' &&
 		css`
 			background-color: lightsalmon;
