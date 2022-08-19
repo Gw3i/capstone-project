@@ -27,7 +27,7 @@ export default function VideoCard() {
 		return (
 			<StyledVideoContainer key={video.id} data-testid="videoContainer">
 				<StyledButton variant="deleteIcon" onClick={handleDelete}>
-					<Icon variant="delete" color="white" />
+					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
 				</StyledButton>
 				{isShown ? <DeleteModal onDelete={handleDelete} videoId={video.id} /> : ''}
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
