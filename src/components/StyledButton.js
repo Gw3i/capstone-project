@@ -8,7 +8,7 @@ const StyledButton = styled.button`
 		variant === 'deleteIcon' &&
 		css`
 			position: absolute;
-			top: 40px;
+			top: 60px;
 			right: 30px;
 			width: 48px;
 			height: 48px;
@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 		variant === 'editIcon' &&
 		css`
 			position: absolute;
-			top: 90px;
+			top: 110px;
 			right: 30px;
 			width: 48px;
 			height: 48px;
