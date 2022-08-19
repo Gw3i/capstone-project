@@ -10,24 +10,58 @@ import StyledLabel from '../StyledLabel';
 
 export default function EditForm() {
 	const router = useRouter();
-	const setVideos = useStore(state => state.setVideos);
+	const videos = useStore(state => state.videos);
+	const ref = router.query;
 
+	const videoQueryId = videos.filter(video => {
+		return ref.id === video.id;
+	});
+
+	const onSubmit = data => {
+		toBeEditedVideo.videoTitle = data.videoTitle;
+		toBeEditedVideo.YouTubeLink = data.YouTubeLink;
+		router.push('/');
+	};
+
+	const toBeEditedVideo = videoQueryId[0];
 	const {
 		register,
 		handleSubmit,
-		reset,
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
-
-	function onSubmit(data) {
-		setVideos(data);
-		reset();
-		router.push('/');
-	}
 
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
+				<StyledLabel htmlFor="link">
+					YouTube link
+					<input
+						{...register('YouTubeLink', {
+							required: 'This field is required',
+							pattern: {
+								value: /^(https:\/\/www.)?(youtube.com\/)(embed)?[\w\d]{5,}[^\s$#]*$/gi,
+								message: 'This is not the right YouTube url',
+							},
+						})}
+						placeholder="https://www.youtube.com/..."
+						name="YouTubeLink"
+						type="text"
+						id="link"
+						defaultValue={toBeEditedVideo?.YouTubeLink}
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="YouTubeLink"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
+							))
+						}
+					/>
+				</StyledLabel>
 				<StyledLabel htmlFor="title">
 					Video title
 					<input
@@ -39,6 +73,7 @@ export default function EditForm() {
 						name="videoTitle"
 						type="text"
 						id="title"
+						defaultValue={toBeEditedVideo?.videoTitle}
 					/>
 					<ErrorMessage
 						errors={errors}
