@@ -12,7 +12,7 @@ import StyledVideoTitle from '../StyledVideoTitle';
 export default function VideoCard() {
 	const [isShown, setIsShown] = useState(false);
 
-	function handleDelete() {
+	function handleVisibility() {
 		setIsShown(!isShown);
 	}
 
@@ -27,10 +27,10 @@ export default function VideoCard() {
 		const videoID = getYouTubeId(video.YouTubeLink);
 		return (
 			<StyledVideoContainer key={video.id} data-testid="videoContainer">
-				<StyledButton type="button" variant="deleteIcon" onClick={handleDelete}>
+				<StyledButton type="button" variant="deleteIcon" onClick={handleVisibility}>
 					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
 				</StyledButton>
-				{isShown ? <DeleteModal onDelete={handleDelete} videoId={video.id} /> : ''}
+				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={video.id} /> : ''}
 				<Link href={`/edit/${video.id}`}>
 					<a>
 						<StyledButton type="button" variant="editIcon">
@@ -38,6 +38,7 @@ export default function VideoCard() {
 						</StyledButton>
 					</a>
 				</Link>
+
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 				<StyledVideoFrame
 					width="180"
