@@ -15,5 +15,12 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	deleteVideo: _id => {
+		set(state => {
+			return {
+				videos: state.videos.filter(video => video.id !== _id),
+			};
+		});
+	},
 }));
 export default useStore;
