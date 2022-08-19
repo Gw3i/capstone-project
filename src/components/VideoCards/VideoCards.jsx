@@ -26,7 +26,7 @@ export default function VideoCard() {
 		const videoID = getYouTubeId(video.YouTubeLink);
 		return (
 			<StyledVideoContainer key={video.id} data-testid="videoContainer">
-				<StyledButton variant="deleteIcon" onClick={handleDelete}>
+				<StyledButton type="button" variant="deleteIcon" onClick={handleDelete}>
 					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
 				</StyledButton>
 				{isShown ? <DeleteModal onDelete={handleDelete} videoId={video.id} /> : ''}

@@ -11,8 +11,11 @@ export default function DeleteModal({ onDelete, videoId }) {
 	return (
 		<StyledSection>
 			<h2>Are you sure you want to delete this video?</h2>
-			<StyledButton onClick={onDelete}>Cancel</StyledButton>
+			<StyledButton type="button" onClick={onDelete}>
+				Cancel
+			</StyledButton>
 			<StyledButton
+				type="button"
 				variant="delete"
 				onClick={() => {
 					deleteVideo(videoId);
