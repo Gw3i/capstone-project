@@ -16,7 +16,7 @@ export default function Nav() {
 					<Link href="/">
 						<StyledNavLink>
 							<Icon
-								size="32"
+								size="32px"
 								variant={router.pathname === '/' ? 'homeFilled' : 'home'}
 							/>
 							Home
@@ -27,7 +27,7 @@ export default function Nav() {
 					<Link href="/create">
 						<StyledNavLink>
 							<Icon
-								size="32"
+								size="32px"
 								variant={router.pathname === '/create' ? 'createFilled' : 'create'}
 							/>
 							Create
