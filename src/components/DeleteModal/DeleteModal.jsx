@@ -1,7 +1,6 @@
-import useStore from '../hooks/useStore';
-
-import StyledButton from './StyledButton';
-import StyledSection from './StyledSection';
+import useStore from '../../hooks/useStore';
+import StyledButton from '../StyledButton';
+import StyledSection from '../StyledSection';
 
 export default function DeleteModal({ onDelete, videoId }) {
 	const deleteVideo = useStore(state => state.deleteVideo);

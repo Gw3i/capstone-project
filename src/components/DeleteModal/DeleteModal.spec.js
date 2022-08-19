@@ -6,8 +6,9 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import StyledButton from '../StyledButton';
+
 import DeleteModal from './DeleteModal';
-import StyledButton from './StyledButton';
 
 describe('DeleteModal', () => {
 	it('should render the delete button', () => {

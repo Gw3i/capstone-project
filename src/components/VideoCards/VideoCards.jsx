@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import useStore from '../../hooks/useStore';
-import DeleteModal from '../DeleteModal';
+import DeleteModal from '../DeleteModal/DeleteModal';
 import Icon from '../Icon';
 import StyledButton from '../StyledButton';
 import StyledVideoContainer from '../StyledVideoContainer';
