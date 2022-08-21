@@ -18,11 +18,9 @@ export default function VideoCard() {
 	}
 
 	const setIsBookmarked = useStore(state => state.setIsBookmarked);
-	const [isBookmarkFilled, setIsBookmarkFilled] = useState(false);
 
 	function handleBookmark(id) {
 		setIsBookmarked(id);
-		setIsBookmarkFilled(!isBookmarkFilled);
 	}
 
 	const videos = useStore(state => state.videos);
@@ -54,7 +52,7 @@ export default function VideoCard() {
 						onClick={() => handleBookmark(video.id)}
 					>
 						<Icon
-							variant={isBookmarkFilled ? 'bookmarkFilled' : 'bookmark'}
+							variant={video.isBookmarked ? 'bookmarkFilled' : 'bookmark'}
 							color="white"
 						/>
 					</StyledButton>
