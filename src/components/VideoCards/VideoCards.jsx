@@ -5,6 +5,7 @@ import useStore from '../../hooks/useStore';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import Icon from '../Icon';
 import StyledButton from '../StyledButton';
+import StyledVideoButtonContainer from '../StyledVideoButtonContainer';
 import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
@@ -27,18 +28,22 @@ export default function VideoCard() {
 		const videoID = getYouTubeId(video.YouTubeLink);
 		return (
 			<StyledVideoContainer key={video.id} data-testid="videoContainer">
-				<StyledButton type="button" variant="deleteIcon" onClick={handleVisibility}>
-					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
-				</StyledButton>
-				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={video.id} /> : ''}
-				<Link href={`/edit/${video.id}`}>
-					<a>
-						<StyledButton type="button" variant="editIcon">
-							<Icon variant={isShown ? 'editFilled' : 'edit'} color="white" />
-						</StyledButton>
-					</a>
-				</Link>
-
+				<StyledVideoButtonContainer>
+					<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
+						<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
+					</StyledButton>
+					{isShown ? <DeleteModal onCancel={handleVisibility} videoId={video.id} /> : ''}
+					<Link href={`/edit/${video.id}`}>
+						<a>
+							<StyledButton type="button" variant="videoIcons">
+								<Icon variant="edit" color="white" />
+							</StyledButton>
+						</a>
+					</Link>
+					<StyledButton type="button" variant="videoIcons">
+						<Icon variant="bookmark" color="white" />
+					</StyledButton>
+				</StyledVideoButtonContainer>
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
 				<StyledVideoFrame
 					width="180"
