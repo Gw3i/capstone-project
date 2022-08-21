@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message';
-// import { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -16,7 +15,7 @@ export default function VideoForm() {
 	// useEffect(() => {
 	// 	const fadeMessage = setTimeout(() => {
 	// 		setShowText(false);
-	// 	}, 3000);
+	// 	}, 1000);
 	// 	return () => {
 	// 		clearTimeout(fadeMessage);
 	// 	};
@@ -35,6 +34,12 @@ export default function VideoForm() {
 		setVideos(data);
 		reset();
 		setShowText(true);
+		const fadeMessage = setTimeout(() => {
+			setShowText(false);
+		}, 3000);
+		return () => {
+			clearTimeout(fadeMessage);
+		};
 	}
 
 	return (
