@@ -10,7 +10,7 @@ export default function Bookmarks() {
 			<h1>Bookmarks</h1>
 			{videos
 				.filter(video => {
-					return video.isBookmarked === true;
+					return video.isBookmarked;
 				})
 				.map(video => {
 					return <VideoCards key={video.id} />;
