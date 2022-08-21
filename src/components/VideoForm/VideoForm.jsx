@@ -12,15 +12,6 @@ import StyledSumbitText from '../StyledSubmitText';
 export default function VideoForm() {
 	const [showText, setShowText] = useState(false);
 
-	// useEffect(() => {
-	// 	const fadeMessage = setTimeout(() => {
-	// 		setShowText(false);
-	// 	}, 1000);
-	// 	return () => {
-	// 		clearTimeout(fadeMessage);
-	// 	};
-	// }, []);
-
 	const setVideos = useStore(state => state.setVideos);
 
 	const {
