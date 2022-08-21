@@ -1,4 +1,6 @@
 import { ErrorMessage } from '@hookform/error-message';
+// import { useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
@@ -6,10 +8,21 @@ import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
+import StyledSumbitText from '../StyledSubmitText';
 
 export default function VideoForm() {
+	const [showText, setShowText] = useState(false);
+
+	// useEffect(() => {
+	// 	const fadeMessage = setTimeout(() => {
+	// 		setShowText(false);
+	// 	}, 3000);
+	// 	return () => {
+	// 		clearTimeout(fadeMessage);
+	// 	};
+	// }, []);
+
 	const setVideos = useStore(state => state.setVideos);
-	const videos = useStore(state => state.videos);
 
 	const {
 		register,
@@ -21,6 +34,7 @@ export default function VideoForm() {
 	function onSubmit(data) {
 		setVideos(data);
 		reset();
+		setShowText(true);
 	}
 
 	return (
@@ -81,16 +95,7 @@ export default function VideoForm() {
 				</StyledLabel>
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
-			<ul>
-				{videos?.map(video => {
-					return (
-						<>
-							<li key={video.id}>{video.YouTubeLink}</li>
-							<li key={video.id}>{video.videoTitle}</li>
-						</>
-					);
-				})}
-			</ul>
+			{showText ? <StyledSumbitText>Great! Your video was added</StyledSumbitText> : ''}
 		</>
 	);
 }
