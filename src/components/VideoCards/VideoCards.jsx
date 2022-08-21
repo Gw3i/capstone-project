@@ -18,7 +18,12 @@ export default function VideoCard() {
 	}
 
 	const setIsBookmarked = useStore(state => state.setIsBookmarked);
-	// const [isBookmarkFilled, setIsBookmarkFilled] = useState(false);
+	const [isBookmarkFilled, setIsBookmarkFilled] = useState(false);
+
+	function handleBookmark(id) {
+		setIsBookmarked(id);
+		setIsBookmarkFilled(!isBookmarkFilled);
+	}
 
 	const videos = useStore(state => state.videos);
 
@@ -28,7 +33,6 @@ export default function VideoCard() {
 	}
 
 	return videos.map(video => {
-		console.log(video.isBookmarked);
 		const videoID = getYouTubeId(video.YouTubeLink);
 		return (
 			<StyledVideoContainer key={video.id} data-testid="videoContainer">
@@ -47,9 +51,12 @@ export default function VideoCard() {
 					<StyledButton
 						type="button"
 						variant="videoIcons"
-						onClick={() => setIsBookmarked(video.id)}
+						onClick={() => handleBookmark(video.id)}
 					>
-						<Icon variant="bookmark" color="white" />
+						<Icon
+							variant={isBookmarkFilled ? 'bookmarkFilled' : 'bookmark'}
+							color="white"
+						/>
 					</StyledButton>
 				</StyledVideoButtonContainer>
 				<StyledVideoTitle>{video.videoTitle}</StyledVideoTitle>
