@@ -13,7 +13,15 @@ export default function Bookmarks() {
 					return video.isBookmarked;
 				})
 				.map(video => {
-					return <VideoCards key={video.id} />;
+					return (
+						<VideoCards
+							key={video.id}
+							YouTubeLink={video.YouTubeLink}
+							videoTitle={video.videoTitle}
+							videoId={video.id}
+							bookmark={video.isBookmarked}
+						/>
+					);
 				})}
 		</Layout>
 	);

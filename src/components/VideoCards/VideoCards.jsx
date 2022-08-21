@@ -29,6 +29,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark }
 	}
 
 	const videoID = getYouTubeId(YouTubeLink);
+
 	return (
 		<StyledVideoContainer key={videoId} data-testid="videoContainer">
 			<StyledVideoButtonContainer>
