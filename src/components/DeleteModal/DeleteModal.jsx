@@ -1,12 +1,12 @@
 import useStore from '../../hooks/useStore';
 import StyledButton from '../StyledButton';
-import StyledSection from '../StyledSection';
+import StyledModalSection from '../StyledModalSection';
 
 export default function DeleteModal({ onCancel, videoId }) {
 	const deleteVideo = useStore(state => state.deleteVideo);
 
 	return (
-		<StyledSection>
+		<StyledModalSection>
 			<h2>Are you sure you want to delete this video?</h2>
 			<StyledButton type="button" onClick={onCancel}>
 				Cancel
@@ -20,6 +20,6 @@ export default function DeleteModal({ onCancel, videoId }) {
 			>
 				Delete
 			</StyledButton>
-		</StyledSection>
+		</StyledModalSection>
 	);
 }
