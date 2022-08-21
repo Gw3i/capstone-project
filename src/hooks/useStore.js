@@ -42,5 +42,14 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	setIsBookmarked: id => {
+		set(state => {
+			return {
+				videos: state.videos.map(video =>
+					video.id === id ? { ...video, isBookmarked: !video.isBookmarked } : video
+				),
+			};
+		});
+	},
 }));
 export default useStore;
