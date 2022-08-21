@@ -5,7 +5,7 @@ const StyledList = styled.ul`
 	position: fixed;
 	z-index: 50;
 	bottom: 0;
-	justify-content: space-around;
+	justify-content: space-evenly;
 	width: 100vw;
 	margin: 0;
 	padding: 5px 0;
