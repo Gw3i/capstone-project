@@ -88,7 +88,7 @@ export default function EditForm() {
 						}
 					/>
 				</StyledLabel>
-				<StyledButton>Cancel</StyledButton>
+				<StyledButton onClick={() => router.push('/')}>Cancel</StyledButton>
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 		</>
