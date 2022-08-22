@@ -6,7 +6,7 @@ const useStore = create(set => ({
 		{
 			YouTubeLink: 'https://www.youtube.com/embed/WOkeB4ZTjFM',
 			videoTitle: 'Rick an Morty on Tour',
-			category: 'science',
+			category: 'sciences',
 			id: nanoid(),
 			isBookmarked: false,
 		},
