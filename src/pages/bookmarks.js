@@ -20,6 +20,7 @@ export default function Bookmarks() {
 							videoTitle={video.videoTitle}
 							videoId={video.id}
 							bookmark={video.isBookmarked}
+							category={video.category}
 						/>
 					);
 				})}
