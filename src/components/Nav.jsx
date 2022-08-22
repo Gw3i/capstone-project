@@ -34,6 +34,19 @@ export default function Nav() {
 						</StyledNavLink>
 					</Link>
 				</StyledListItem>
+				<StyledListItem role="listitem">
+					<Link href="/bookmarks">
+						<StyledNavLink>
+							<Icon
+								size="32px"
+								variant={
+									router.pathname === '/bookmarks' ? 'bookmarkFilled' : 'bookmark'
+								}
+							/>
+							Bookmarks
+						</StyledNavLink>
+					</Link>
+				</StyledListItem>
 			</StyledList>
 		</nav>
 	);

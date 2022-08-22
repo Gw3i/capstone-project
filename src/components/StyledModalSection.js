@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const StyledSection = styled.section`
+const StyledModalSection = styled.section`
 	position: absolute;
-	top: 90px;
-	right: 20px;
+	top: 50px;
+	right: 0;
 	width: 300px;
 	height: 200px;
 	padding: 10px;
@@ -11,4 +11,4 @@ const StyledSection = styled.section`
 	background-color: white;
 `;
 
-export default StyledSection;
+export default StyledModalSection;

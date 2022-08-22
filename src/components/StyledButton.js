@@ -5,28 +5,15 @@ const StyledButton = styled.button`
 	padding: 5px 15px;
 	cursor: pointer;
 	${({ variant }) =>
-		variant === 'deleteIcon' &&
+		variant === 'videoIcons' &&
 		css`
-			position: absolute;
-			top: 60px;
-			right: 30px;
-			width: 48px;
-			height: 48px;
 			background-color: transparent;
 			border: none;
+			display: flex;
+			padding: 0;
+			margin: 0;
 		`}
 	${({ variant }) =>
-		variant === 'editIcon' &&
-		css`
-			position: absolute;
-			top: 110px;
-			right: 30px;
-			width: 48px;
-			height: 48px;
-			background-color: transparent;
-			border: none;
-		`}
-${({ variant }) =>
 		variant === 'delete' &&
 		css`
 			background-color: lightsalmon;
