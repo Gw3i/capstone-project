@@ -51,5 +51,18 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	categories: [
+		{ category: 'cooking' },
+		{ category: 'geography' },
+		{ category: 'math' },
+		{ category: 'science' },
+		{ category: 'programming' },
+		{ category: 'finances' },
+		{ category: 'art' },
+		{ category: 'english' },
+		{ category: 'daylie hacks' },
+		{ category: 'biology' },
+		{ category: 'chemistry' },
+	],
 }));
 export default useStore;
