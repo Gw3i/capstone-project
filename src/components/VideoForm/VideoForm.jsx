@@ -92,7 +92,10 @@ export default function VideoForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
 
-				<select name="categories" id="categories">
+				<select
+					{...register('category', { required: 'This filed is required' })}
+					id="categories"
+				>
 					<option value="">-- Choose a category --</option>
 					{categories.map(category => (
 						<option key={category.id} value={category.name}>
@@ -100,7 +103,18 @@ export default function VideoForm() {
 						</option>
 					))}
 				</select>
-
+				<ErrorMessage
+					errors={errors}
+					name="category"
+					render={({ messages }) =>
+						messages &&
+						Object.entries(messages).map(([type, message]) => (
+							<StyledInputWarning key={type} role="alert">
+								{message}
+							</StyledInputWarning>
+						))
+					}
+				/>
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 			{showText ? <StyledSumbitText>Great! Your video was added</StyledSumbitText> : ''}
