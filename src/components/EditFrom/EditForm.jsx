@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
 import StyledButton from '../StyledButton';
+import StyledContainer from '../StyledContainer';
 import StyledForm from '../StyledForm';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
@@ -88,8 +89,10 @@ export default function EditForm() {
 						}
 					/>
 				</StyledLabel>
-				<StyledButton onClick={() => router.push('/')}>Cancel</StyledButton>
-				<StyledButton>Submit</StyledButton>
+				<StyledContainer>
+					<StyledButton onClick={() => router.push('/')}>Cancel</StyledButton>
+					<StyledButton>Submit</StyledButton>
+				</StyledContainer>
 			</StyledForm>
 		</>
 	);
