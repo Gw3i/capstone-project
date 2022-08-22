@@ -88,6 +88,7 @@ export default function EditForm() {
 						}
 					/>
 				</StyledLabel>
+				<StyledButton>Cancel</StyledButton>
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 		</>
