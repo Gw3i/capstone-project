@@ -14,6 +14,8 @@ export default function EditForm() {
 	const videos = useStore(state => state.videos);
 	const ref = router.query;
 
+	const categories = useStore(state => state.categories);
+
 	const videoQueryId = videos.filter(video => {
 		return ref.id === video.id;
 	});
@@ -21,6 +23,7 @@ export default function EditForm() {
 	const onSubmit = data => {
 		toBeEditedVideo.videoTitle = data.videoTitle;
 		toBeEditedVideo.YouTubeLink = data.YouTubeLink;
+		toBeEditedVideo.category = data.category;
 		router.push('/');
 	};
 
@@ -89,6 +92,31 @@ export default function EditForm() {
 						}
 					/>
 				</StyledLabel>
+				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
+				<select
+					{...register('category', { required: 'This filed is required' })}
+					id="categories"
+				>
+					<option value="">{toBeEditedVideo?.category}</option>
+					{categories.map(category => (
+						<option key={category.id} value={category.name}>
+							{category.name}
+						</option>
+					))}
+				</select>
+				<ErrorMessage
+					errors={errors}
+					name="category"
+					render={({ messages }) =>
+						messages &&
+						Object.entries(messages).map(([type, message]) => (
+							<StyledInputWarning key={type} role="alert">
+								{message}
+							</StyledInputWarning>
+						))
+					}
+				/>
+
 				<StyledContainer>
 					<StyledButton type="button" onClick={() => router.back()}>
 						Cancel
