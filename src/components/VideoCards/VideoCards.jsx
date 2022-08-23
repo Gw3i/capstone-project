@@ -36,43 +36,43 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 
 	return (
 		<StyledVideoContainer key={videoId} data-testid="videoContainer">
-			<StyledVideoButtonContainer>
-				{router.pathname === '/explore' ? (
-					''
-				) : (
-					<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
-						<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
-					</StyledButton>
-				)}
-				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={videoId} /> : ''}
-				{router.pathname === '/explore' ? (
-					''
-				) : (
-					<Link href={`/edit/${videoId}`}>
-						<StyledLink>
-							<Icon variant="edit" color="white" />
-						</StyledLink>
-					</Link>
-				)}
-				{router.pathname === '/explore' ? (
-					''
-				) : (
-					<StyledButton
-						type="button"
-						variant="videoIcons"
-						onClick={() => handleBookmark(videoId)}
-					>
-						<Icon variant={bookmark ? 'bookmarkFilled' : 'bookmark'} color="white" />
-					</StyledButton>
-				)}
-			</StyledVideoButtonContainer>
-			<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
 			{router.pathname === '/explore' ? (
 				''
 			) : (
-				<StyledCategoryTag>{category}</StyledCategoryTag>
-			)}
+				<>
+					<StyledVideoButtonContainer>
+						<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
+							<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
+						</StyledButton>
 
+						{isShown ? (
+							<DeleteModal onCancel={handleVisibility} videoId={videoId} />
+						) : (
+							''
+						)}
+
+						<Link href={`/edit/${videoId}`}>
+							<StyledLink>
+								<Icon variant="edit" color="white" />
+							</StyledLink>
+						</Link>
+
+						<StyledButton
+							type="button"
+							variant="videoIcons"
+							onClick={() => handleBookmark(videoId)}
+						>
+							<Icon
+								variant={bookmark ? 'bookmarkFilled' : 'bookmark'}
+								color="white"
+							/>
+						</StyledButton>
+					</StyledVideoButtonContainer>
+
+					<StyledCategoryTag>{category}</StyledCategoryTag>
+				</>
+			)}
+			<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
 			<StyledVideoFrame
 				size={size}
 				width="180"

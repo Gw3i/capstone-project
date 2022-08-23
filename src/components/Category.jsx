@@ -11,11 +11,17 @@ export default function Category() {
 	return categories.map(category => {
 		return (
 			<>
+				{/* {videos.filter(video => {
+					return video.category === category.name ? (
+						<StyledHeadline key={category.id}>{category.name}</StyledHeadline>
+					) : (
+						''
+					);
+				})} */}
 				<StyledHeadline key={category.id}>{category.name}</StyledHeadline>
 				<StyledContainer variant="scroll">
 					{videos
 						.filter(video => {
-							console.log(video.category === category.name);
 							return video.category === category.name;
 						})
 						.map(video => {
