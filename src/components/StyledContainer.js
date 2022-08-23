@@ -11,10 +11,12 @@ const StyledContainer = styled.div`
 			border: 2px solid red;
 			gap: 10px;
 			> * {
-				min-width: 200px;
+				min-width: 250px;
 				height: 400px;
 				overflow: hidden;
 				background-color: lightgray;
+				border: 1px solid grey;
+				border-radius: 20px;
 			}
 		`}
 `;
