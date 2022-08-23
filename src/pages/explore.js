@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import StyledHeadline from '../components/StyledHeadline';
 import useStore from '../hooks/useStore';
 
 export default function Explore() {
@@ -8,7 +9,7 @@ export default function Explore() {
 		<Layout>
 			<h1>Explore</h1>
 			{categories.map(category => {
-				return <h2 key={category.id}>{category.name}</h2>;
+				return <StyledHeadline key={category.id}>{category.name}</StyledHeadline>;
 			})}
 		</Layout>
 	);
