@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import useStore from '../../hooks/useStore';
@@ -6,12 +7,14 @@ import DeleteModal from '../DeleteModal/DeleteModal';
 import Icon from '../Icon';
 import StyledButton from '../StyledButton';
 import StyledCategoryTag from '../StyledCategoryTag';
+import StyledLink from '../StyledLink';
 import StyledVideoButtonContainer from '../StyledVideoButtonContainer';
 import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
 
 export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category }) {
+	const router = useRouter();
 	const [isShown, setIsShown] = useState(false);
 
 	function handleVisibility() {
@@ -34,16 +37,18 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 	return (
 		<StyledVideoContainer key={videoId} data-testid="videoContainer">
 			<StyledVideoButtonContainer>
-				<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
-					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
-				</StyledButton>
+				{router.pathname === '/explore' ? (
+					''
+				) : (
+					<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
+						<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
+					</StyledButton>
+				)}
 				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={videoId} /> : ''}
 				<Link href={`/edit/${videoId}`}>
-					<a>
-						<StyledButton type="button" variant="videoIcons">
-							<Icon variant="edit" color="white" />
-						</StyledButton>
-					</a>
+					<StyledLink>
+						<Icon variant="edit" color="white" />
+					</StyledLink>
 				</Link>
 				<StyledButton
 					type="button"

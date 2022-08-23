@@ -21,7 +21,6 @@ export default function Category() {
 						.map(video => {
 							return (
 								<VideoCard
-									style={{ width: '150px', height: '150px' }}
 									key={video.id}
 									YouTubeLink={video.YouTubeLink}
 									videoTitle={video.videoTitle}
