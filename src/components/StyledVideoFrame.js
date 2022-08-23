@@ -6,7 +6,7 @@ const StyledVideoFrame = styled.iframe`
 	${({ size }) =>
 		size === 'explore' &&
 		css`
-			width: 300px;
+			width: 250px;
 			height: 400px;
 		`}
 
