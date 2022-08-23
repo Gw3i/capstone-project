@@ -35,6 +35,7 @@ export default function Category() {
 										bookmark={video.isBookmarked}
 										category={video.category}
 										size={'explore'}
+										position={'explore'}
 									/>
 								</>
 							);

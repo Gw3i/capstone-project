@@ -13,7 +13,15 @@ import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
 
-export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category, size }) {
+export default function VideoCard({
+	YouTubeLink,
+	videoTitle,
+	videoId,
+	bookmark,
+	category,
+	size,
+	position,
+}) {
 	const router = useRouter();
 	const [isShown, setIsShown] = useState(false);
 
@@ -72,7 +80,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 					<StyledCategoryTag>{category}</StyledCategoryTag>
 				</>
 			)}
-			<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
+			<StyledVideoTitle position={position}>{videoTitle}</StyledVideoTitle>
 			<StyledVideoFrame
 				size={size}
 				width="180"
