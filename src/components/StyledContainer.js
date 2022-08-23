@@ -11,7 +11,7 @@ const StyledContainer = styled.div`
 			border: 2px solid red;
 			gap: 10px;
 			> * {
-				min-width: 250px;
+				min-width: 300px;
 				height: 400px;
 				overflow: hidden;
 				background-color: lightgray;
