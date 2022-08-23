@@ -13,7 +13,7 @@ import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
 
-export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category }) {
+export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category, size }) {
 	const router = useRouter();
 	const [isShown, setIsShown] = useState(false);
 
@@ -74,6 +74,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 			)}
 
 			<StyledVideoFrame
+				size={size}
 				width="180"
 				height="315"
 				src={`https://www.youtube.com/embed/${videoID}`}

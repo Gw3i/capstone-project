@@ -28,6 +28,7 @@ export default function Category() {
 										videoId={video.id}
 										bookmark={video.isBookmarked}
 										category={video.category}
+										size={'explore'}
 									/>
 								</>
 							);
