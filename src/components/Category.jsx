@@ -12,7 +12,7 @@ export default function Category() {
 		return (
 			<>
 				<StyledHeadline key={category.id}>{category.name}</StyledHeadline>
-				<StyledContainer variant="explore">
+				<StyledContainer variant="scroll">
 					{videos
 						.filter(video => {
 							console.log(video.category === category.name);
@@ -20,14 +20,16 @@ export default function Category() {
 						})
 						.map(video => {
 							return (
-								<VideoCard
-									key={video.id}
-									YouTubeLink={video.YouTubeLink}
-									videoTitle={video.videoTitle}
-									videoId={video.id}
-									bookmark={video.isBookmarked}
-									category={video.category}
-								/>
+								<>
+									<VideoCard
+										key={video.id}
+										YouTubeLink={video.YouTubeLink}
+										videoTitle={video.videoTitle}
+										videoId={video.id}
+										bookmark={video.isBookmarked}
+										category={video.category}
+									/>
+								</>
 							);
 						})}
 				</StyledContainer>

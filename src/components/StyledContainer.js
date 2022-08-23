@@ -3,16 +3,18 @@ import styled, { css } from 'styled-components';
 const StyledContainer = styled.div`
 	display: flex;
 	${({ variant }) =>
-		variant === 'explore' &&
+		variant === 'scroll' &&
 		css`
-			overflow-x: auto;
-			overflow-y: hidden;
 			max-width: 100vw;
-			height: 300px;
-			border: 4px solid red;
+			max-height: 500px;
+			overflow-x: auto;
+			border: 2px solid red;
+			gap: 10px;
 			> * {
-				width: 200px;
-				height: 300px;
+				min-width: 200px;
+				height: 400px;
+				overflow: hidden;
+				background-color: lightgray;
 			}
 		`}
 `;
