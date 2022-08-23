@@ -45,21 +45,34 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 					</StyledButton>
 				)}
 				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={videoId} /> : ''}
-				<Link href={`/edit/${videoId}`}>
-					<StyledLink>
-						<Icon variant="edit" color="white" />
-					</StyledLink>
-				</Link>
-				<StyledButton
-					type="button"
-					variant="videoIcons"
-					onClick={() => handleBookmark(videoId)}
-				>
-					<Icon variant={bookmark ? 'bookmarkFilled' : 'bookmark'} color="white" />
-				</StyledButton>
+				{router.pathname === '/explore' ? (
+					''
+				) : (
+					<Link href={`/edit/${videoId}`}>
+						<StyledLink>
+							<Icon variant="edit" color="white" />
+						</StyledLink>
+					</Link>
+				)}
+				{router.pathname === '/explore' ? (
+					''
+				) : (
+					<StyledButton
+						type="button"
+						variant="videoIcons"
+						onClick={() => handleBookmark(videoId)}
+					>
+						<Icon variant={bookmark ? 'bookmarkFilled' : 'bookmark'} color="white" />
+					</StyledButton>
+				)}
 			</StyledVideoButtonContainer>
 			<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
-			<StyledCategoryTag>{category}</StyledCategoryTag>
+			{router.pathname === '/explore' ? (
+				''
+			) : (
+				<StyledCategoryTag>{category}</StyledCategoryTag>
+			)}
+
 			<StyledVideoFrame
 				width="180"
 				height="315"
