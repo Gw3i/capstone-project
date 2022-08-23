@@ -42,6 +42,6 @@ describe('VideoForm', () => {
 		await user.click(button);
 
 		const errorMessagesAfterClick = await waitFor(() => screen.getAllByRole('alert'));
-		expect(errorMessagesAfterClick).toHaveLength(2);
+		expect(errorMessagesAfterClick).toHaveLength(3);
 	});
 });

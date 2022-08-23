@@ -5,12 +5,13 @@ import useStore from '../../hooks/useStore';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import Icon from '../Icon';
 import StyledButton from '../StyledButton';
+import StyledCategoryTag from '../StyledCategoryTag';
 import StyledVideoButtonContainer from '../StyledVideoButtonContainer';
 import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
 
-export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark }) {
+export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category }) {
 	const [isShown, setIsShown] = useState(false);
 
 	function handleVisibility() {
@@ -53,6 +54,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark }
 				</StyledButton>
 			</StyledVideoButtonContainer>
 			<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
+			<StyledCategoryTag>{category}</StyledCategoryTag>
 			<StyledVideoFrame
 				width="180"
 				height="315"

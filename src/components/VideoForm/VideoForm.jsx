@@ -13,6 +13,7 @@ export default function VideoForm() {
 	const [showText, setShowText] = useState(false);
 
 	const setVideos = useStore(state => state.setVideos);
+	const categories = useStore(state => state.categories);
 
 	const {
 		register,
@@ -89,6 +90,31 @@ export default function VideoForm() {
 						}
 					/>
 				</StyledLabel>
+				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
+
+				<select
+					{...register('category', { required: 'This filed is required' })}
+					id="categories"
+				>
+					<option value="">-- Choose a category --</option>
+					{categories.map(category => (
+						<option key={category.id} value={category.name}>
+							{category.name}
+						</option>
+					))}
+				</select>
+				<ErrorMessage
+					errors={errors}
+					name="category"
+					render={({ messages }) =>
+						messages &&
+						Object.entries(messages).map(([type, message]) => (
+							<StyledInputWarning key={type} role="alert">
+								{message}
+							</StyledInputWarning>
+						))
+					}
+				/>
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 			{showText ? <StyledSumbitText>Great! Your video was added</StyledSumbitText> : ''}
