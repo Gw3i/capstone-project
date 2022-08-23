@@ -9,8 +9,11 @@ const StyledVideoTitle = styled.h2`
 	${({ position }) =>
 		position === 'explore' &&
 		css`
-			bottom: 40px;
+			top: 300px;
+			bottom: 0;
 			left: 15px;
+			padding: 10px;
+			border-radius: 5px;
 		`}
 `;
 

@@ -8,7 +8,6 @@ const StyledContainer = styled.div`
 			max-width: 100vw;
 			max-height: 500px;
 			overflow-x: auto;
-			border: 2px solid red;
 			gap: 10px;
 			> * {
 				min-width: 250px;
