@@ -48,7 +48,9 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 				<StyledButton
 					type="button"
 					variant="videoIcons"
-					onClick={() => handleBookmark(videoId)}
+					onClick={() => {
+						handleBookmark(videoId);
+					}}
 				>
 					<Icon variant={bookmark ? 'bookmarkFilled' : 'bookmark'} color="white" />
 				</StyledButton>

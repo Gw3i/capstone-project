@@ -91,7 +91,6 @@ export default function VideoForm() {
 					/>
 				</StyledLabel>
 				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
-
 				<select
 					{...register('category', { required: 'This filed is required' })}
 					id="categories"
@@ -115,6 +114,7 @@ export default function VideoForm() {
 						))
 					}
 				/>
+
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 			{showText ? <StyledSumbitText>Great! Your video was added</StyledSumbitText> : ''}
