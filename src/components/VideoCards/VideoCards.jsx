@@ -13,15 +13,7 @@ import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
 import StyledVideoTitle from '../StyledVideoTitle';
 
-export default function VideoCard({
-	YouTubeLink,
-	videoTitle,
-	videoId,
-	bookmark,
-	category,
-	size,
-	position,
-}) {
+export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category }) {
 	const [isShown, setIsShown] = useState(false);
 
 	function handleVisibility() {
@@ -60,9 +52,8 @@ export default function VideoCard({
 				</StyledButton>
 			</StyledVideoButtonContainer>
 			<StyledCategoryTag>{category}</StyledCategoryTag>
-			<StyledVideoTitle position={position}>{videoTitle}</StyledVideoTitle>
+			<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
 			<StyledVideoFrame
-				size={size}
 				width="180"
 				height="315"
 				src={`https://www.youtube.com/embed/${videoID}`}
