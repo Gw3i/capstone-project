@@ -19,6 +19,17 @@ const StyledContainer = styled.div`
 				border-radius: 20px;
 			}
 		`}
+	${({ variant }) =>
+		variant === 'overlay' &&
+		css`
+			background-color: red;
+			z-index: 100;
+			position: relative;
+			max-width: 100vw;
+			max-height: 500px;
+			overflow-x: auto;
+			gap: 10px;
+		`}
 `;
 
 export default StyledContainer;
