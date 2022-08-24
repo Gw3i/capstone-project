@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import useStore from '../../hooks/useStore';
+import useYouTubeId from '../../hooks/useYouTubeId';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import Icon from '../Icon';
 import StyledButton from '../StyledButton';
@@ -22,7 +22,6 @@ export default function VideoCard({
 	size,
 	position,
 }) {
-	const router = useRouter();
 	const [isShown, setIsShown] = useState(false);
 
 	function handleVisibility() {
@@ -35,51 +34,32 @@ export default function VideoCard({
 		setIsBookmarked(id);
 	}
 
-	function getYouTubeId(url) {
-		url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/|\/shorts\/)/);
-		return url[2] !== undefined ? url[2].split(/[^0-9a-z_-]/i)[0] : url[0];
-	}
-
-	const videoID = getYouTubeId(YouTubeLink);
+	const videoID = useYouTubeId(YouTubeLink);
 
 	return (
 		<StyledVideoContainer key={videoId} data-testid="videoContainer">
-			{router.pathname === '/explore' ? (
-				''
-			) : (
-				<>
-					<StyledVideoButtonContainer>
-						<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
-							<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
-						</StyledButton>
+			<StyledVideoButtonContainer>
+				<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
+					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
+				</StyledButton>
 
-						{isShown ? (
-							<DeleteModal onCancel={handleVisibility} videoId={videoId} />
-						) : (
-							''
-						)}
+				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={videoId} /> : ''}
 
-						<Link href={`/edit/${videoId}`}>
-							<StyledLink>
-								<Icon variant="edit" color="white" />
-							</StyledLink>
-						</Link>
+				<Link href={`/edit/${videoId}`}>
+					<StyledLink>
+						<Icon variant="edit" color="white" />
+					</StyledLink>
+				</Link>
 
-						<StyledButton
-							type="button"
-							variant="videoIcons"
-							onClick={() => handleBookmark(videoId)}
-						>
-							<Icon
-								variant={bookmark ? 'bookmarkFilled' : 'bookmark'}
-								color="white"
-							/>
-						</StyledButton>
-					</StyledVideoButtonContainer>
-
-					<StyledCategoryTag>{category}</StyledCategoryTag>
-				</>
-			)}
+				<StyledButton
+					type="button"
+					variant="videoIcons"
+					onClick={() => handleBookmark(videoId)}
+				>
+					<Icon variant={bookmark ? 'bookmarkFilled' : 'bookmark'} color="white" />
+				</StyledButton>
+			</StyledVideoButtonContainer>
+			<StyledCategoryTag>{category}</StyledCategoryTag>
 			<StyledVideoTitle position={position}>{videoTitle}</StyledVideoTitle>
 			<StyledVideoFrame
 				size={size}
