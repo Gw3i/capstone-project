@@ -29,7 +29,10 @@ export default function Nav() {
 							<Icon
 								size="32px"
 								variant={
-									router.pathname === '/explore' ? 'exploreFilled' : 'explore'
+									router.pathname === '/explore' ||
+									router.pathname === '/explore/'
+										? 'exploreFilled'
+										: 'explore'
 								}
 							/>
 							Explore
