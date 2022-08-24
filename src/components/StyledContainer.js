@@ -20,15 +20,13 @@ const StyledContainer = styled.div`
 			}
 		`}
 	${({ variant }) =>
-		variant === 'overlay' &&
+		variant === 'exploreImg' &&
 		css`
-			background-color: red;
-			z-index: 100;
 			position: relative;
-			max-width: 100vw;
-			max-height: 500px;
-			overflow-x: auto;
-			gap: 10px;
+			display: block;
+			width: 200px;
+			height: 200px;
+			overflow: hidden;
 		`}
 `;
 

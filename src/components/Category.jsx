@@ -1,8 +1,8 @@
 import StyledHeadline from '../components/StyledHeadline';
-import VideoCard from '../components/VideoCards/VideoCards';
 import useStore from '../hooks/useStore';
 
 import StyledContainer from './StyledContainer';
+import VideoThumbnail from './VideoThumbnail';
 
 export default function Category() {
 	const videos = useStore(state => state.videos);
@@ -25,13 +25,10 @@ export default function Category() {
 						.map(video => {
 							return (
 								<>
-									<VideoCard
+									<VideoThumbnail
 										key={video.id}
 										YouTubeLink={video.YouTubeLink}
 										videoTitle={video.videoTitle}
-										videoId={video.id}
-										bookmark={video.isBookmarked}
-										category={video.category}
 									/>
 								</>
 							);
