@@ -30,6 +30,7 @@ export default function Category() {
 											key={video.id}
 											YouTubeLink={video.YouTubeLink}
 											videoTitle={video.videoTitle}
+											category={video.category}
 										/>
 									</>
 								);

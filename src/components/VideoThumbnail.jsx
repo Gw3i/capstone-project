@@ -6,12 +6,12 @@ import useYouTubeId from '../hooks/useYouTubeId';
 import StyledContainer from './StyledContainer';
 import StyledVideoTitle from './StyledVideoTitle';
 
-export default function VideoThumbnail({ YouTubeLink, videoTitle }) {
+export default function VideoThumbnail({ YouTubeLink, videoTitle, category }) {
 	const videoID = useYouTubeId(YouTubeLink);
 	console.log(videoID);
 	return (
 		<StyledContainer variant="exploreImg">
-			<Link href="/">
+			<Link href={`/explore/${category}`}>
 				<a>
 					<StyledVideoTitle position="explore">{videoTitle}</StyledVideoTitle>
 					<Image
