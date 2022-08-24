@@ -5,7 +5,6 @@ import useStore from '../hooks/useStore';
 import StyledContainer from './StyledContainer';
 
 export default function Category() {
-	// const categories = useStore(state => state.categories);
 	const videos = useStore(state => state.videos);
 
 	const allCategories = videos.map(video => {
