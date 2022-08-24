@@ -3,6 +3,14 @@ import styled, { css } from 'styled-components';
 const StyledContainer = styled.div`
 	display: flex;
 	${({ variant }) =>
+		variant === 'exploreWrapper' &&
+		css`
+			position: relative;
+			display: block;
+			margin-bottom: 30px;
+			text-align: left;
+		`}
+	${({ variant }) =>
 		variant === 'scroll' &&
 		css`
 			position: relative;

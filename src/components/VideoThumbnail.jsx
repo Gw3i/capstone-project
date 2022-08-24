@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import useYouTubeId from '../hooks/useYouTubeId';
 
@@ -9,13 +10,17 @@ export default function VideoThumbnail({ YouTubeLink, videoTitle }) {
 	console.log(videoID);
 	return (
 		<StyledContainer variant="exploreImg">
-			<Image
-				src={`https://i3.ytimg.com/vi/${videoID}/maxresdefault.jpg`}
-				alt={videoTitle}
-				layout="responsive"
-				width={500}
-				height={400}
-			/>
+			<Link href="/">
+				<a>
+					<Image
+						src={`https://i3.ytimg.com/vi/${videoID}/maxresdefault.jpg`}
+						alt={videoTitle}
+						layout="responsive"
+						width={500}
+						height={400}
+					/>
+				</a>
+			</Link>
 		</StyledContainer>
 	);
 }

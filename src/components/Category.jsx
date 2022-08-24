@@ -16,23 +16,25 @@ export default function Category() {
 	return uniqueCategories.map(category => {
 		return (
 			<>
-				<StyledHeadline key={category}>{category}</StyledHeadline>
-				<StyledContainer variant="scroll">
-					{videos
-						.filter(video => {
-							return video.category === category;
-						})
-						.map(video => {
-							return (
-								<>
-									<VideoThumbnail
-										key={video.id}
-										YouTubeLink={video.YouTubeLink}
-										videoTitle={video.videoTitle}
-									/>
-								</>
-							);
-						})}
+				<StyledContainer variant="exploreWrapper">
+					<StyledHeadline key={category}>{category}</StyledHeadline>
+					<StyledContainer variant="scroll">
+						{videos
+							.filter(video => {
+								return video.category === category;
+							})
+							.map(video => {
+								return (
+									<>
+										<VideoThumbnail
+											key={video.id}
+											YouTubeLink={video.YouTubeLink}
+											videoTitle={video.videoTitle}
+										/>
+									</>
+								);
+							})}
+					</StyledContainer>
 				</StyledContainer>
 			</>
 		);
