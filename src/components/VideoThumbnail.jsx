@@ -4,6 +4,7 @@ import Link from 'next/link';
 import useYouTubeId from '../hooks/useYouTubeId';
 
 import StyledContainer from './StyledContainer';
+import StyledVideoTitle from './StyledVideoTitle';
 
 export default function VideoThumbnail({ YouTubeLink, videoTitle }) {
 	const videoID = useYouTubeId(YouTubeLink);
@@ -12,6 +13,7 @@ export default function VideoThumbnail({ YouTubeLink, videoTitle }) {
 		<StyledContainer variant="exploreImg">
 			<Link href="/">
 				<a>
+					<StyledVideoTitle position="explore">{videoTitle}</StyledVideoTitle>
 					<Image
 						src={`https://i3.ytimg.com/vi/${videoID}/maxresdefault.jpg`}
 						alt={videoTitle}
