@@ -7,8 +7,10 @@ import useStore from '../../hooks/useStore';
 export default function ExploreCategory() {
 	const router = useRouter();
 	const ref = router.query;
-
 	const videos = useStore(state => state.videos);
+
+	console.log(videos);
+
 	return (
 		<Layout>
 			<h1>{ref.id}</h1>

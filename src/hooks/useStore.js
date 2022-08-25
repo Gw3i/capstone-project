@@ -9,6 +9,7 @@ const useStore = create(set => ({
 			category: 'Science',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 		{
 			YouTubeLink: 'https://www.youtube.com/shorts/Wlj3S21cxRA',
@@ -16,6 +17,7 @@ const useStore = create(set => ({
 			category: 'Science',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 		{
 			YouTubeLink: 'https://www.youtube.com/watch?v=M2PYkZ2Y_Ls',
@@ -23,6 +25,7 @@ const useStore = create(set => ({
 			category: 'Biology',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 		{
 			YouTubeLink: 'https://www.youtube.com/watch?v=VcVsV9Yn4P4',
@@ -30,6 +33,7 @@ const useStore = create(set => ({
 			category: 'Biology',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 	],
 	setVideos: data => {
@@ -51,6 +55,15 @@ const useStore = create(set => ({
 			return {
 				videos: state.videos.map(video =>
 					video.id === id ? { ...video, isBookmarked: !video.isBookmarked } : video
+				),
+			};
+		});
+	},
+	setTimeStamp: id => {
+		set(state => {
+			return {
+				videos: state.videos.map(video =>
+					video.id === id ? { ...video, timeStamp: new Date() } : video
 				),
 			};
 		});
