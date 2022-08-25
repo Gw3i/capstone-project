@@ -97,7 +97,7 @@ export default function EditForm() {
 					{...register('category', { required: 'This filed is required' })}
 					id="categories"
 				>
-					<option value="">{toBeEditedVideo?.category}</option>
+					<option value={toBeEditedVideo?.category}>{toBeEditedVideo?.category}</option>
 					{categories.map(category => (
 						<option key={category.id} value={category.name}>
 							{category.name}
