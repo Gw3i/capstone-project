@@ -38,7 +38,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={videoId} /> : ''}
 
 				<Link href={`/edit/${videoId}`}>
-					<StyledLink>
+					<StyledLink aria-label="edit">
 						<Icon variant="edit" color="white" />
 					</StyledLink>
 				</Link>
