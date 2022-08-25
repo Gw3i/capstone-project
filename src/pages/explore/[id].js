@@ -9,27 +9,29 @@ export default function ExploreCategory() {
 	const ref = router.query;
 	const videos = useStore(state => state.videos);
 
-	console.log(videos);
+	const filteredVideosByCategory = videos.filter(video => {
+		return video.category === ref.id;
+	});
+
+	const sortedCategoryVideos = filteredVideosByCategory.sort(
+		(a, b) => Number(b.timeStamp) - Number(a.timeStamp)
+	);
 
 	return (
 		<Layout>
 			<h1>{ref.id}</h1>
-			{videos
-				.filter(video => {
-					return video.category === ref.id;
-				})
-				.map(video => {
-					return (
-						<VideoCard
-							key={video.id}
-							YouTubeLink={video.YouTubeLink}
-							videoTitle={video.videoTitle}
-							videoId={video.id}
-							bookmark={video.isBookmarked}
-							category={video.category}
-						/>
-					);
-				})}
+			{sortedCategoryVideos.map(video => {
+				return (
+					<VideoCard
+						key={video.id}
+						YouTubeLink={video.YouTubeLink}
+						videoTitle={video.videoTitle}
+						videoId={video.id}
+						bookmark={video.isBookmarked}
+						category={video.category}
+					/>
+				);
+			})}
 		</Layout>
 	);
 }
