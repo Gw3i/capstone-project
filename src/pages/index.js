@@ -12,7 +12,6 @@ export default function HomePage() {
 	useEffect(() => {
 		setTimeout(() => {
 			setConfirmationMessage(null);
-			console.log('2345');
 		}, 5000);
 	}, [setConfirmationMessage]);
 
