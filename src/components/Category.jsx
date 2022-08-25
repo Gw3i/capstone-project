@@ -11,34 +11,30 @@ export default function Category() {
 		return video.category;
 	});
 
-	let uniqueCategories = [...new Set(allCategories)];
+	const uniqueCategories = [...new Set(allCategories)];
 
 	return uniqueCategories.map(category => {
 		return (
-			<>
-				<StyledContainer variant="exploreWrapper">
-					<StyledHeadline key={category}>{category}</StyledHeadline>
-					<StyledContainer variant="scroll">
-						{videos
-							.filter(video => {
-								return video.category === category;
-							})
-							.map(video => {
-								return (
-									<>
-										<VideoThumbnail
-											key={video.id}
-											YouTubeLink={video.YouTubeLink}
-											videoTitle={video.videoTitle}
-											category={video.category}
-											id={video.id}
-										/>
-									</>
-								);
-							})}
-					</StyledContainer>
+			<StyledContainer key={category.id} variant="exploreWrapper">
+				<StyledHeadline key={category}>{category}</StyledHeadline>
+				<StyledContainer variant="scroll">
+					{videos
+						.filter(video => {
+							return video.category === category;
+						})
+						.map(video => {
+							return (
+								<VideoThumbnail
+									key={video.id}
+									YouTubeLink={video.YouTubeLink}
+									videoTitle={video.videoTitle}
+									category={video.category}
+									id={video.id}
+								/>
+							);
+						})}
 				</StyledContainer>
-			</>
+			</StyledContainer>
 		);
 	});
 }
