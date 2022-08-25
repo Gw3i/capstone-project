@@ -6,30 +6,34 @@ const useStore = create(set => ({
 		{
 			YouTubeLink: 'https://www.youtube.com/embed/WOkeB4ZTjFM',
 			videoTitle: 'Rick an Morty on Tour',
-			category: 'science',
+			category: 'Science',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 		{
 			YouTubeLink: 'https://www.youtube.com/shorts/Wlj3S21cxRA',
 			videoTitle: 'Was wird das James Webb als nächstes finden?',
-			category: 'science',
+			category: 'Science',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 		{
 			YouTubeLink: 'https://www.youtube.com/watch?v=M2PYkZ2Y_Ls',
 			videoTitle: 'Die Entstehung des Menschen',
-			category: 'biology',
+			category: 'Biology',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 		{
 			YouTubeLink: 'https://www.youtube.com/watch?v=VcVsV9Yn4P4',
 			videoTitle: 'Was is Geoengineering?',
-			category: 'biology',
+			category: 'Biology',
 			id: nanoid(),
 			isBookmarked: false,
+			timeStamp: '',
 		},
 	],
 	setVideos: data => {
@@ -55,18 +59,27 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	setTimeStamp: id => {
+		set(state => {
+			return {
+				videos: state.videos.map(video =>
+					video.id === id ? { ...video, timeStamp: new Date() } : video
+				),
+			};
+		});
+	},
 	categories: [
-		{ id: nanoid(), name: 'cooking' },
-		{ id: nanoid(), name: 'geography' },
-		{ id: nanoid(), name: 'math' },
-		{ id: nanoid(), name: 'science' },
-		{ id: nanoid(), name: 'programming' },
-		{ id: nanoid(), name: 'finances' },
-		{ id: nanoid(), name: 'art' },
-		{ id: nanoid(), name: 'english' },
-		{ id: nanoid(), name: 'daylie hacks' },
-		{ id: nanoid(), name: 'biology' },
-		{ id: nanoid(), name: 'chemistry' },
+		{ id: nanoid(), name: 'Cooking' },
+		{ id: nanoid(), name: 'Geography' },
+		{ id: nanoid(), name: 'Math' },
+		{ id: nanoid(), name: 'Science' },
+		{ id: nanoid(), name: 'Programming' },
+		{ id: nanoid(), name: 'Finances' },
+		{ id: nanoid(), name: 'Art' },
+		{ id: nanoid(), name: 'English' },
+		{ id: nanoid(), name: 'Daylie hacks' },
+		{ id: nanoid(), name: 'Biology' },
+		{ id: nanoid(), name: 'Chemistry' },
 	],
 }));
 export default useStore;
