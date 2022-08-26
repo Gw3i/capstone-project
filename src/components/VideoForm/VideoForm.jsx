@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
+import SearchForm from '../SearchForm';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
 import StyledInputWarning from '../StyledInputWarning';
@@ -119,33 +120,7 @@ export default function VideoForm() {
 			</StyledForm>
 			{showText ? <StyledSumbitText>Great! Your video was added</StyledSumbitText> : ''}
 			<h2>OR</h2>
-			<StyledForm onSubmit={handleSubmit()}>
-				<StyledLabel htmlFor="videoPlaylist">
-					Search for a YouTube channels playlist
-					<input
-						{...register('playlistSearch', {
-							required: 'This field is required',
-						})}
-						placeholder="channel name..."
-						name="playlistSearch"
-						type="text"
-						id="videoPlaylist"
-					/>
-					<ErrorMessage
-						errors={errors}
-						name="playlistSearch"
-						render={({ messages }) =>
-							messages &&
-							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type} role="alert">
-									{message}
-								</StyledInputWarning>
-							))
-						}
-					/>
-				</StyledLabel>
-				<StyledButton>Search</StyledButton>
-			</StyledForm>
+			<SearchForm />
 		</>
 	);
 }
