@@ -118,6 +118,34 @@ export default function VideoForm() {
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
 			{showText ? <StyledSumbitText>Great! Your video was added</StyledSumbitText> : ''}
+			<h2>OR</h2>
+			<StyledForm onSubmit={handleSubmit()}>
+				<StyledLabel htmlFor="videoPlaylist">
+					Search for a YouTube channels playlist
+					<input
+						{...register('playlistSearch', {
+							required: 'This field is required',
+						})}
+						placeholder="channel name..."
+						name="playlistSearch"
+						type="text"
+						id="videoPlaylist"
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="playlistSearch"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
+							))
+						}
+					/>
+				</StyledLabel>
+				<StyledButton>Search</StyledButton>
+			</StyledForm>
 		</>
 	);
 }
