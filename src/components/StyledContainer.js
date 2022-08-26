@@ -36,6 +36,11 @@ const StyledContainer = styled.div`
 			height: 200px;
 			overflow: hidden;
 		`}
+		${({ variant }) =>
+		variant === 'channelCard' &&
+		css`
+			border: 2px solid black;
+		`}
 `;
 
 export default StyledContainer;

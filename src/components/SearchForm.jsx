@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import useFetch from '../hooks/useFetch';
 
+import ChannelCard from './ChannelCard';
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
@@ -17,22 +18,34 @@ export default function SearchForm() {
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	const [channelName, setChannelName] = useState('');
+	const [channelNames, setChannelNames] = useState('');
 
 	function onSearch(data) {
-		setChannelName(data);
+		setChannelNames(data);
 		reset();
 	}
 
-	const channelNameURL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${channelName.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+	const channePlaylistURL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${channelNames.playlistSearch}&type=playlist&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
-	const { data } = useFetch(channelNameURL);
+	const { data } = useFetch(channePlaylistURL);
 
-	const channelIDs = data?.items?.map(item => {
-		return item.id.channelId;
+	const channelItems = data?.items?.map(item => {
+		return item.snippet;
+	});
+	const channelId = channelItems?.map(item => {
+		return item.channelId;
+	});
+	const channelName = channelItems?.map(item => {
+		return item.channelTitle;
+	});
+	const playlistThumbnails = channelItems?.map(item => {
+		return item.thumbnails.high.url;
 	});
 
-	console.log(channelIDs);
+	console.log(playlistThumbnails[0]);
+	console.log(channelName[0]);
+	console.log(channelId[0]);
+
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit(onSearch)}>
@@ -62,6 +75,7 @@ export default function SearchForm() {
 				</StyledLabel>
 				<StyledButton>Search</StyledButton>
 			</StyledForm>
+			<ChannelCard />
 		</>
 	);
 }
