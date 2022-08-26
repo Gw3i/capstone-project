@@ -1,5 +1,8 @@
 import { ErrorMessage } from '@hookform/error-message';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+
+import useFetch from '../hooks/useFetch';
 
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
@@ -14,9 +17,18 @@ export default function SearchForm() {
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	function onSearch() {
+	const [channelName, setChannelName] = useState('');
+
+	function onSearch(data) {
+		setChannelName(data);
 		reset();
 	}
+
+	const channelNameURL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${channelName.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+
+	const { data, loading, error } = useFetch(channelNameURL);
+
+	console.log('data:', data, 'loading:', loading, 'error:', error);
 
 	return (
 		<StyledForm onSubmit={handleSubmit(onSearch)}>
