@@ -24,39 +24,44 @@ export default function SearchForm() {
 		reset();
 	}
 
-	const channelNameURL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${channelName.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+	const channelNameURL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${channelName.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
-	const { data, loading, error } = useFetch(channelNameURL);
+	const { data } = useFetch(channelNameURL);
 
-	console.log('data:', data, 'loading:', loading, 'error:', error);
+	const channelIDs = data?.items?.map(item => {
+		return item.id.channelId;
+	});
 
+	console.log(channelIDs);
 	return (
-		<StyledForm onSubmit={handleSubmit(onSearch)}>
-			<StyledLabel htmlFor="videoPlaylist">
-				Search for a YouTube channels playlist
-				<input
-					{...register('playlistSearch', {
-						required: 'This field is required',
-					})}
-					placeholder="channel name..."
-					name="playlistSearch"
-					type="text"
-					id="videoPlaylist"
-				/>
-				<ErrorMessage
-					errors={errors}
-					name="playlistSearch"
-					render={({ messages }) =>
-						messages &&
-						Object.entries(messages).map(([type, message]) => (
-							<StyledInputWarning key={type} role="alert">
-								{message}
-							</StyledInputWarning>
-						))
-					}
-				/>
-			</StyledLabel>
-			<StyledButton>Search</StyledButton>
-		</StyledForm>
+		<>
+			<StyledForm onSubmit={handleSubmit(onSearch)}>
+				<StyledLabel htmlFor="videoPlaylist">
+					Search for a YouTube channels playlist
+					<input
+						{...register('playlistSearch', {
+							required: 'This field is required',
+						})}
+						placeholder="channel name..."
+						name="playlistSearch"
+						type="text"
+						id="videoPlaylist"
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="playlistSearch"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
+							))
+						}
+					/>
+				</StyledLabel>
+				<StyledButton>Search</StyledButton>
+			</StyledForm>
+		</>
 	);
 }
