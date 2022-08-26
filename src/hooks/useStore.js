@@ -81,5 +81,13 @@ const useStore = create(set => ({
 		{ id: nanoid(), name: 'Biology' },
 		{ id: nanoid(), name: 'Chemistry' },
 	],
+	confirmationMessage: null,
+	setConfirmationMessage: message => {
+		set(state => {
+			return {
+				confirmationMessage: (state.confirmationMessage = message),
+			};
+		});
+	},
 }));
 export default useStore;

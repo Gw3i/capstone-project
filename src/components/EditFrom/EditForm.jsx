@@ -14,6 +14,7 @@ export default function EditForm() {
 	const videos = useStore(state => state.videos);
 	const ref = router.query;
 
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	const categories = useStore(state => state.categories);
 
 	const videoQueryId = videos.filter(video => {
@@ -24,6 +25,7 @@ export default function EditForm() {
 		toBeEditedVideo.videoTitle = data.videoTitle;
 		toBeEditedVideo.YouTubeLink = data.YouTubeLink;
 		toBeEditedVideo.category = data.category;
+		setConfirmationMessage('Great! The video was edited!');
 		router.push('/');
 	};
 
@@ -97,7 +99,7 @@ export default function EditForm() {
 					{...register('category', { required: 'This filed is required' })}
 					id="categories"
 				>
-					<option value="">{toBeEditedVideo?.category}</option>
+					<option value={toBeEditedVideo?.category}>{toBeEditedVideo?.category}</option>
 					{categories.map(category => (
 						<option key={category.id} value={category.name}>
 							{category.name}
