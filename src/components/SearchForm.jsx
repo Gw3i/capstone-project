@@ -18,34 +18,31 @@ export default function SearchForm() {
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	const [channelNames, setChannelNames] = useState('');
+	const [channelNames, setChannelNames] = useState(null);
 
 	function onSearch(data) {
 		setChannelNames(data);
 		reset();
 	}
 
-	const channePlaylistURL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${channelNames.playlistSearch}&type=playlist&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+	const channePlaylistURL = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${channelNames?.playlistSearch}&type=playlist&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
-	const { data } = useFetch(channePlaylistURL);
+	const { data, error } = useFetch(channePlaylistURL);
 
 	const channelItems = data?.items?.map(item => {
 		return item.snippet;
 	});
-	const channelId = channelItems?.map(item => {
-		return item.channelId;
-	});
+	// const channelId = channelItems?.map(item => {
+	// 	return item?.channelId;
+	// });
 	const channelName = channelItems?.map(item => {
-		return item.channelTitle;
+		return item?.channelTitle;
 	});
 	const playlistThumbnails = channelItems?.map(item => {
-		return item.thumbnails.high.url;
+		return item?.thumbnails?.high?.url;
 	});
 
-	console.log(playlistThumbnails[0]);
-	console.log(channelName[0]);
-	console.log(channelId[0]);
-
+	console.log(error);
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit(onSearch)}>
@@ -75,7 +72,7 @@ export default function SearchForm() {
 				</StyledLabel>
 				<StyledButton>Search</StyledButton>
 			</StyledForm>
-			<ChannelCard />
+			<ChannelCard thumbnail={playlistThumbnails} channelName={channelName} />
 		</>
 	);
 }

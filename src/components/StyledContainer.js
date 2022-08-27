@@ -39,7 +39,17 @@ const StyledContainer = styled.div`
 		${({ variant }) =>
 		variant === 'channelCard' &&
 		css`
+			margin-top: 20px;
 			border: 2px solid black;
+			border-radius: 5px;
+			min-width: 300px;
+			padding: 10px;
+			gap: 20px;
+		`}
+		${({ variant }) =>
+		variant === 'channelCardText' &&
+		css`
+			flex-direction: column;
 		`}
 `;
 
