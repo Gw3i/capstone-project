@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import StyledContainer from './StyledContainer';
 
-export default function ChannelCard({ channelName }) {
+export default function PlaylistCard({ channelName }) {
 	return (
 		<StyledContainer variant="channelCard">
 			<Image

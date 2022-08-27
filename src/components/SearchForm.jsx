@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import useFetch from '../hooks/useFetch';
 
-import ChannelCard from './ChannelCard';
+import PlaylistCard from './PlaylistCard';
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
@@ -72,7 +72,7 @@ export default function SearchForm() {
 				</StyledLabel>
 				<StyledButton>Search</StyledButton>
 			</StyledForm>
-			<ChannelCard thumbnail={playlistThumbnails} channelName={channelName} />
+			<PlaylistCard thumbnail={playlistThumbnails} channelName={channelName} />
 		</>
 	);
 }
