@@ -30,8 +30,6 @@ export default function ChannelsCard({ channelItems }) {
 	const playlistItems = dataChannelIds?.items;
 	const playlistVideos = dataPlaylistVideos?.items;
 
-	console.log(playlistId);
-
 	return (
 		<>
 			{loadingChannelIds && <p>Loading...</p>}
@@ -83,7 +81,7 @@ export default function ChannelsCard({ channelItems }) {
 											</button>
 											{loadingPlaylistVideos && <p>Loading...</p>}
 											{errorPlaylistVideos && (
-												<p>{errorPlaylistVideos.message}</p>
+												<p>{errorPlaylistVideos?.message}</p>
 											)}
 											{dataPlaylistVideos &&
 												playlistVideos

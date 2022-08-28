@@ -8,6 +8,11 @@ const StyledContainer = styled.div`
 			flex-direction: column;
 		`}
 	${({ variant }) =>
+		variant === 'hidden' &&
+		css`
+			display: none;
+		`}
+	${({ variant }) =>
 		variant === 'exploreWrapper' &&
 		css`
 			position: relative;
