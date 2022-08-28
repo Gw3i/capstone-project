@@ -3,6 +3,11 @@ import styled, { css } from 'styled-components';
 const StyledContainer = styled.div`
 	display: flex;
 	${({ variant }) =>
+		variant === 'column' &&
+		css`
+			flex-direction: column;
+		`}
+	${({ variant }) =>
 		variant === 'exploreWrapper' &&
 		css`
 			position: relative;
@@ -39,6 +44,7 @@ const StyledContainer = styled.div`
 		${({ variant }) =>
 		variant === 'channelCard' &&
 		css`
+			flex-direction: column;
 			margin-top: 20px;
 			border: 2px solid black;
 			border-radius: 5px;

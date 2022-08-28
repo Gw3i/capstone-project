@@ -43,7 +43,7 @@ export default function ChannelsCard({ channelItems }) {
 										Choose this channel
 									</button>
 								</StyledContainer>
-								<StyledContainer variant="channelCardText">
+								<StyledContainer variant="column">
 									{playlistItems
 										?.filter(playlistItem => {
 											return playlistItem.snippet.channelId === channelId;
