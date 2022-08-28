@@ -7,7 +7,7 @@ import StyledContainer from './StyledContainer';
 
 export default function ChannelsCard({ channelItems }) {
 	const setChannelId = useStore(state => state.setChannelId);
-	// const setPlaylistId = useStore(state => state.setPlaylistId);
+	const setPlaylistId = useStore(state => state.setPlaylistId);
 	const channelId = useStore(state => state.channelId);
 
 	const fetchedPlaylists = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${channelId}&maxResults=25&key=${process.env.NEXT_PUBLIC_API_KEY}`;
@@ -62,6 +62,13 @@ export default function ChannelsCard({ channelItems }) {
 														height={40}
 													/>
 													<p>{playlistItem.snippet.title}</p>
+													<button
+														onClick={() => {
+															setPlaylistId(playlistItem.id);
+														}}
+													>
+														Choose this channel
+													</button>
 												</>
 											);
 										})}
