@@ -25,13 +25,11 @@ export default function SearchForm() {
 		reset();
 	}
 
-	const fetchedChannels = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${channelNames?.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+	const fetchedChannels = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${channelNames?.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
-	const { data } = useFetch();
+	const { data } = useFetch(fetchedChannels);
 
 	const channelItems = data?.items?.map(item => item.snippet);
-
-	console.log(fetchedChannels);
 
 	return (
 		<>
