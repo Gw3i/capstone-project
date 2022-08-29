@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useState } from 'react';
 
 import useFetch from '../hooks/useFetch';
 import useStore from '../hooks/useStore';
@@ -11,7 +10,8 @@ export default function ChannelsCard({ channelItems }) {
 	const setPlaylistId = useStore(state => state.setPlaylistId);
 	const channelId = useStore(state => state.channelId);
 	const playlistId = useStore(state => state.playlistId);
-	const [currentItem, setCurrentItem] = useState({ id: '' });
+	const setCurrentItem = useStore(state => state.setCurrentItem);
+	const currentItem = useStore(state => state.currentItem);
 
 	const fetchedPlaylists = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${channelId}&maxResults=25&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
@@ -38,7 +38,7 @@ export default function ChannelsCard({ channelItems }) {
 		<>
 			{loadingChannelIds && <p>Loading...</p>}
 			{errorChannelIds && <p>{errorChannelIds.message}</p>}
-			{currentItem.id === ''
+			{currentItem === ''
 				? channelItems?.map(item => {
 						return (
 							<StyledContainer key={item.channelId} variant="channelCard">
@@ -126,7 +126,7 @@ export default function ChannelsCard({ channelItems }) {
 				  })
 				: channelItems
 						?.filter(item => {
-							return currentItem === item.channelId;
+							return currentItem.id === item.channelId;
 						})
 						.map(item => {
 							return (

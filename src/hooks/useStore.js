@@ -105,5 +105,13 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	currentItem: '',
+	setCurrentItem: id => {
+		set(() => {
+			return {
+				currentItem: { id: id },
+			};
+		});
+	},
 }));
 export default useStore;
