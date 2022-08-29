@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useFetch from '../hooks/useFetch';
+import useStore from '../hooks/useStore';
 
 import ChannelsCard from './ChannelsCard';
 import StyledButton from './StyledButton';
@@ -11,6 +12,9 @@ import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 
 export default function SearchForm() {
+	const setCurrentItem = useStore(state => state.setCurrentItem);
+	const setPlaylistId = useStore(state => state.setPlaylistId);
+
 	const {
 		register,
 		handleSubmit,
@@ -22,6 +26,8 @@ export default function SearchForm() {
 
 	function onSearch(data) {
 		setChannelNames(data);
+		setCurrentItem('');
+		setPlaylistId('');
 		reset();
 	}
 

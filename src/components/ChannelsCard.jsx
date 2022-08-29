@@ -33,12 +33,13 @@ export default function ChannelsCard({ channelItems }) {
 	const playlistVideos = dataPlaylistVideos?.items;
 
 	console.log(currentItem);
+	console.log(playlistId);
 
 	return (
 		<>
 			{loadingChannelIds && <p>Loading...</p>}
 			{errorChannelIds && <p>{errorChannelIds.message}</p>}
-			{currentItem === ''
+			{currentItem.id === ''
 				? channelItems?.map(item => {
 						return (
 							<StyledContainer key={item.channelId} variant="channelCard">
