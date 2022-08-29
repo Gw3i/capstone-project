@@ -2,7 +2,6 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import useFetch from '../hooks/useFetch';
 import useStore from '../hooks/useStore';
 
 import ChannelPlaylist from './ChannelPlaylist';
@@ -22,20 +21,22 @@ export default function SearchForm() {
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	const [channelNames, setChannelNames] = useState(null);
+	const [fetchedChannels, setFetchedChannels] = useState([]);
 
-	function onSearch(data) {
-		setChannelNames(data);
+	async function onSearch(data) {
+		const fetchedChannels = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${data.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+
+		const result = await fetch(fetchedChannels);
+		const channelData = await result.json();
+		console.log(channelData);
+		setFetchedChannels(channelData);
 		setCurrentItem('');
 		setPlaylistId('');
 		reset();
 	}
 
-	const fetchedChannels = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${channelNames?.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
-
-	const { data } = useFetch(fetchedChannels);
-
-	const channelItems = data?.items?.map(item => item.snippet);
+	const channelItems = fetchedChannels?.items?.map(item => item.snippet);
+	console.log(channelItems);
 
 	return (
 		<>

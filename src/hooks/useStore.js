@@ -89,6 +89,16 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	fetchedData: { data: [] },
+	fetchSomething: async url => {
+		try {
+			const response = await fetch(url);
+			const data = await response.json();
+			set({ fetchedData: data });
+		} catch (error) {
+			console.error(`Upps das war ein Fehler: ${error}`);
+		}
+	},
 	channelId: null,
 	setChannelId: id => {
 		set(state => {
