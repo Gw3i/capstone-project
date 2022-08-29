@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import useFetch from '../hooks/useFetch';
 import useStore from '../hooks/useStore';
 
-import ChannelsCard from './ChannelsCard';
+import ChannelPlaylist from './ChannelPlaylist';
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
@@ -66,7 +66,7 @@ export default function SearchForm() {
 				</StyledLabel>
 				<StyledButton>Search</StyledButton>
 			</StyledForm>
-			<ChannelsCard channelItems={channelItems} />
+			<ChannelPlaylist channelItems={channelItems} />
 		</>
 	);
 }
