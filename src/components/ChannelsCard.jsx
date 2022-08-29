@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useState } from 'react';
 
 import useFetch from '../hooks/useFetch';
 import useStore from '../hooks/useStore';
@@ -10,6 +11,7 @@ export default function ChannelsCard({ channelItems }) {
 	const setPlaylistId = useStore(state => state.setPlaylistId);
 	const channelId = useStore(state => state.channelId);
 	const playlistId = useStore(state => state.playlistId);
+	const [currentItem, setCurrentItem] = useState({ id: '' });
 
 	const fetchedPlaylists = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${channelId}&maxResults=25&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
@@ -30,86 +32,191 @@ export default function ChannelsCard({ channelItems }) {
 	const playlistItems = dataChannelIds?.items;
 	const playlistVideos = dataPlaylistVideos?.items;
 
+	console.log(currentItem);
+
 	return (
 		<>
 			{loadingChannelIds && <p>Loading...</p>}
 			{errorChannelIds && <p>{errorChannelIds.message}</p>}
-			{channelItems?.map(item => {
-				return (
-					<StyledContainer key={item.channelId} variant="channelCard">
-						<Image
-							src={item.thumbnails.high.url}
-							alt={item.channelTitle}
-							layout="fixed"
-							width={70}
-							height={70}
-						/>
-						<StyledContainer variant="channelCardText">
-							<h2>{item.channelTitle}</h2>
-							<h3>{item.descrition}</h3>
-							<button
-								onClick={() => {
-									setChannelId(item.channelId);
-								}}
-							>
-								Choose this channel
-							</button>
-						</StyledContainer>
-						<StyledContainer variant="column">
-							{playlistItems
-								?.filter(playlistItem => {
-									return playlistItem.snippet.channelId === channelId;
-								})
-								.map(playlistItem => {
-									return (
-										<>
-											<Image
-												src={playlistItem.snippet.thumbnails.standard.url}
-												alt={item.channelTitle}
-												layout="fixed"
-												width={40}
-												height={40}
-											/>
-											<p>{playlistItem.snippet.title}</p>
-											<button
-												onClick={() => {
-													console.log(playlistItem.id);
-													setPlaylistId(playlistItem.id);
-												}}
-											>
-												Choose a playlist
-											</button>
-											{loadingPlaylistVideos && <p>Loading...</p>}
-											{errorPlaylistVideos && (
-												<p>{errorPlaylistVideos?.message}</p>
-											)}
-											{dataPlaylistVideos &&
-												playlistVideos
-													.filter(() => {
-														return playlistId === playlistItem.id;
-													})
-													.map(playlistVideo => {
-														return (
-															<ul
-																key={
-																	playlistVideo.snippet.resourceId
-																		.videoId
-																}
-															>
-																<li>
-																	{playlistVideo.snippet.title}
-																</li>
-																<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
-															</ul>
-														);
-													})}
-										</>
-									);
-								})}
-						</StyledContainer>
-					</StyledContainer>
-				);
-			})}
+			{currentItem.id === ''
+				? channelItems?.map(item => {
+						return (
+							<StyledContainer key={item.channelId} variant="channelCard">
+								<Image
+									src={item.thumbnails.high.url}
+									alt={item.channelTitle}
+									layout="fixed"
+									width={70}
+									height={70}
+								/>
+								<StyledContainer variant="channelCardText">
+									<h2>{item.channelTitle}</h2>
+									<h3>{item.descrition}</h3>
+									<button
+										onClick={() => {
+											setChannelId(item.channelId);
+											setCurrentItem(item.channelId);
+										}}
+									>
+										Choose this channel
+									</button>
+								</StyledContainer>
+								<StyledContainer variant="column">
+									{playlistItems
+										?.filter(playlistItem => {
+											return playlistItem.snippet.channelId === channelId;
+										})
+										.map(playlistItem => {
+											return (
+												<>
+													<Image
+														src={
+															playlistItem.snippet.thumbnails.standard
+																.url
+														}
+														alt={item.channelTitle}
+														layout="fixed"
+														width={40}
+														height={40}
+													/>
+													<p>{playlistItem.snippet.title}</p>
+													<button
+														onClick={() => {
+															console.log(playlistItem.id);
+															setPlaylistId(playlistItem.id);
+														}}
+													>
+														Choose a playlist
+													</button>
+													{loadingPlaylistVideos && <p>Loading...</p>}
+													{errorPlaylistVideos && (
+														<p>{errorPlaylistVideos?.message}</p>
+													)}
+													{dataPlaylistVideos &&
+														playlistVideos
+															.filter(() => {
+																return (
+																	playlistId === playlistItem.id
+																);
+															})
+															.map(playlistVideo => {
+																return (
+																	<ul
+																		key={
+																			playlistVideo.snippet
+																				.resourceId.videoId
+																		}
+																	>
+																		<li>
+																			{
+																				playlistVideo
+																					.snippet.title
+																			}
+																		</li>
+																		<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
+																	</ul>
+																);
+															})}
+												</>
+											);
+										})}
+								</StyledContainer>
+							</StyledContainer>
+						);
+				  })
+				: channelItems
+						?.filter(item => {
+							return currentItem === item.channelId;
+						})
+						.map(item => {
+							return (
+								<StyledContainer key={item.channelId} variant="channelCard">
+									<Image
+										src={item.thumbnails.high.url}
+										alt={item.channelTitle}
+										layout="fixed"
+										width={70}
+										height={70}
+									/>
+									<StyledContainer variant="channelCardText">
+										<h2>{item.channelTitle}</h2>
+										<h3>{item.descrition}</h3>
+										<button
+											onClick={() => {
+												setChannelId(item.channelId);
+												setCurrentItem(item.channelId);
+											}}
+										>
+											Choose this channel
+										</button>
+									</StyledContainer>
+									<StyledContainer variant="column">
+										{playlistItems
+											?.filter(playlistItem => {
+												return playlistItem.snippet.channelId === channelId;
+											})
+											.map(playlistItem => {
+												return (
+													<>
+														<Image
+															src={
+																playlistItem.snippet.thumbnails
+																	.standard.url
+															}
+															alt={item.channelTitle}
+															layout="fixed"
+															width={40}
+															height={40}
+														/>
+														<p>{playlistItem.snippet.title}</p>
+														<button
+															onClick={() => {
+																console.log(playlistItem.id);
+																setPlaylistId(playlistItem.id);
+															}}
+														>
+															Choose a playlist
+														</button>
+														{loadingPlaylistVideos && <p>Loading...</p>}
+														{errorPlaylistVideos && (
+															<p>{errorPlaylistVideos?.message}</p>
+														)}
+														{dataPlaylistVideos &&
+															playlistVideos
+																.filter(() => {
+																	return (
+																		playlistId ===
+																		playlistItem.id
+																	);
+																})
+																.map(playlistVideo => {
+																	return (
+																		<ul
+																			key={
+																				playlistVideo
+																					.snippet
+																					.resourceId
+																					.videoId
+																			}
+																		>
+																			<li>
+																				{
+																					playlistVideo
+																						.snippet
+																						.title
+																				}
+																			</li>
+																			<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
+																		</ul>
+																	);
+																})}
+													</>
+												);
+											})}
+									</StyledContainer>
+								</StyledContainer>
+							);
+						})}
 		</>
 	);
 }
