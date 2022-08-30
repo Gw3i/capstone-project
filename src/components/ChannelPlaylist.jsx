@@ -1,32 +1,42 @@
-import useFetch from '../hooks/useFetch';
+import { useState } from 'react';
+
 import useStore from '../hooks/useStore';
 
 import ChannelCard from './ChannelCard';
 
 export default function ChannelPlaylist({ channelItems }) {
-	//const channelId = useStore(state => state.channelId);
-	//const playlistId = useStore(state => state.playlistId);
+	const channelId = useStore(state => state.channelId);
+	const playlistId = useStore(state => state.playlistId);
 	const currentItem = useStore(state => state.currentItem);
 
-	//const fetchedPlaylists = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${channelId}&maxResults=25&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+	const [fetchedPlaylistsData, setFetchedPlaylistsData] = useState([]);
 
-	//const fetchedPlaylistVideos = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+	async function handlePlaylistSearch() {
+		const fetchedPlaylists = `https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${channelId}&maxResults=25&key=${process.env.NEXT_PUBLIC_API_KEY}`;
 
-	const { loading: loadingChannelIds, data: dataChannelIds, error: errorChannelIds } = useFetch();
+		const result = await fetch(fetchedPlaylists);
+		const playlistData = await result.json();
+		setFetchedPlaylistsData(playlistData);
+	}
 
-	const {
-		loading: loadingPlaylistVideos,
-		data: dataPlaylistVideos,
-		error: errorPlaylistVideos,
-	} = useFetch();
+	const playlistItems = fetchedPlaylistsData?.items;
 
-	const playlistItems = dataChannelIds?.items;
-	const playlistVideos = dataPlaylistVideos?.items;
+	const [playlistVideos, setPlaylistVideos] = useState([]);
+
+	async function handleVideoSearch() {
+		const fetchedPlaylistVideoURLs = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&key=${process.env.NEXT_PUBLIC_API_KEY}`;
+
+		const result = await fetch(fetchedPlaylistVideoURLs);
+		const playlistVideoData = await result.json();
+		setPlaylistVideos(playlistVideoData);
+	}
+
+	const playlistVideoItems = playlistVideos?.items;
+
+	console.log(playlistVideos);
 
 	return (
 		<>
-			{loadingChannelIds && <p>Loading...</p>}
-			{errorChannelIds && <p>{errorChannelIds.message}</p>}
 			{currentItem.id === ''
 				? channelItems?.map(item => {
 						return (
@@ -34,10 +44,9 @@ export default function ChannelPlaylist({ channelItems }) {
 								key={item.channelId}
 								item={item}
 								playlistItems={playlistItems}
-								playlistVideos={playlistVideos}
-								loading={loadingPlaylistVideos}
-								data={dataPlaylistVideos}
-								error={errorPlaylistVideos}
+								playlistVideoItems={playlistVideoItems}
+								onPlaylistSearch={handlePlaylistSearch}
+								onPlaylistVideoSearch={handleVideoSearch}
 							/>
 						);
 				  })
@@ -51,10 +60,9 @@ export default function ChannelPlaylist({ channelItems }) {
 									key={item.channelId}
 									item={item}
 									playlistItems={playlistItems}
-									playlistVideos={playlistVideos}
-									loading={loadingPlaylistVideos}
-									data={dataPlaylistVideos}
-									error={errorPlaylistVideos}
+									playlistVideoItems={playlistVideoItems}
+									onPlaylistSearch={handlePlaylistSearch}
+									onPlaylistVideoSearch={handleVideoSearch}
 								/>
 							);
 						})}

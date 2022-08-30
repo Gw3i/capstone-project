@@ -89,16 +89,6 @@ const useStore = create(set => ({
 			};
 		});
 	},
-	fetchedData: { data: [] },
-	fetchSomething: async url => {
-		try {
-			const response = await fetch(url);
-			const data = await response.json();
-			set({ fetchedData: data });
-		} catch (error) {
-			console.error(`Upps das war ein Fehler: ${error}`);
-		}
-	},
 	channelId: null,
 	setChannelId: id => {
 		set(state => {
@@ -122,6 +112,28 @@ const useStore = create(set => ({
 				currentItem: { id: id },
 			};
 		});
+	},
+	channels: { results: [] },
+	channelPlaylists: { results: [] },
+	playlistVideos: { results: [] },
+	fetchChannelData: async variant => {
+		try {
+			if (variant === 'channels') {
+				const response = await fetch('https://swapi.dev/api/planets');
+				const data = await response.json();
+				set({ channels: data });
+			} else if (variant === 'channelPlaylists') {
+				const response = await fetch('https://swapi.dev/api/people');
+				const data = await response.json();
+				set({ channelPlaylists: data });
+			} else if (variant === 'playlistVideos') {
+				const response = await fetch('https://swapi.dev/api/people');
+				const data = await response.json();
+				set({ playlistVideos: data });
+			}
+		} catch (error) {
+			console.error(`Upps, there is a problem: ${error}`);
+		}
 	},
 }));
 export default useStore;

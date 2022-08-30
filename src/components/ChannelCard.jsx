@@ -4,7 +4,7 @@ import useStore from '../hooks/useStore';
 
 import StyledContainer from './StyledContainer';
 
-export default function ChannelCard({ item, playlistItems, playlistVideos, loading, data, error }) {
+export default function ChannelCard({ item, playlistVideoItems, onPlaylistVideoSearch }) {
 	const setChannelId = useStore(state => state.setChannelId);
 	const setCurrentItem = useStore(state => state.setCurrentItem);
 	const channelId = useStore(state => state.channelId);
@@ -25,6 +25,7 @@ export default function ChannelCard({ item, playlistItems, playlistVideos, loadi
 				<h3>{item.descrition}</h3>
 				<button
 					onClick={() => {
+						console.log(item.channelId);
 						setChannelId(item.channelId);
 						setCurrentItem(item.channelId);
 					}}
@@ -33,7 +34,7 @@ export default function ChannelCard({ item, playlistItems, playlistVideos, loadi
 				</button>
 			</StyledContainer>
 			<StyledContainer variant="column">
-				{playlistItems
+				{playlistVideoItems
 					?.filter(playlistItem => {
 						return playlistItem.snippet.channelId === channelId;
 					})
@@ -50,27 +51,25 @@ export default function ChannelCard({ item, playlistItems, playlistVideos, loadi
 								<p>{playlistItem.snippet.title}</p>
 								<button
 									onClick={() => {
-										console.log(playlistItem.id);
 										setPlaylistId(playlistItem.id);
+										onPlaylistVideoSearch();
 									}}
 								>
 									Choose a playlist
 								</button>
-								{loading && <p>Loading...</p>}
-								{error && <p>{error?.message}</p>}
-								{data &&
-									playlistVideos
-										.filter(() => {
-											return playlistId === playlistItem.id;
-										})
-										.map(playlistVideo => {
-											return (
-												<ul key={playlistVideo.snippet.resourceId.videoId}>
-													<li>{playlistVideo.snippet.title}</li>
-													<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
-												</ul>
-											);
-										})}
+
+								{playlistVideoItems
+									?.filter(() => {
+										return playlistId === playlistItem.id;
+									})
+									.map(playlistVideo => {
+										return (
+											<ul key={playlistVideo.snippet.resourceId.videoId}>
+												<li>{playlistVideo.snippet.title}</li>
+												<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
+											</ul>
+										);
+									})}
 							</>
 						);
 					})}
