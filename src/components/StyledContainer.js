@@ -3,6 +3,16 @@ import styled, { css } from 'styled-components';
 const StyledContainer = styled.div`
 	display: flex;
 	${({ variant }) =>
+		variant === 'column' &&
+		css`
+			flex-direction: column;
+		`}
+	${({ variant }) =>
+		variant === 'hidden' &&
+		css`
+			display: none;
+		`}
+	${({ variant }) =>
 		variant === 'exploreWrapper' &&
 		css`
 			position: relative;
@@ -35,6 +45,22 @@ const StyledContainer = styled.div`
 			width: 200px;
 			height: 200px;
 			overflow: hidden;
+		`}
+		${({ variant }) =>
+		variant === 'channelCard' &&
+		css`
+			flex-direction: column;
+			margin-top: 20px;
+			border: 2px solid black;
+			border-radius: 5px;
+			min-width: 300px;
+			padding: 10px;
+			gap: 20px;
+		`}
+		${({ variant }) =>
+		variant === 'channelCardText' &&
+		css`
+			flex-direction: column;
 		`}
 `;
 

@@ -89,5 +89,47 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	currentItem: '',
+	setCurrentItem: id => {
+		set({
+			currentItem: { id },
+		});
+	},
+	channelSearch: [],
+	setChannelSearch: data => {
+		set(() => {
+			return {
+				channelSearch: data,
+			};
+		});
+	},
+	channels: [],
+	channelPlaylists: [],
+	playlistVideos: [],
+	fetchChannelData: async ({ variant, searchQuery, id }) => {
+		try {
+			if (variant === 'channels') {
+				const response = await fetch(
+					`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${searchQuery}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`
+				);
+				const data = await response.json();
+				set({ channels: data.items });
+			} else if (variant === 'channelPlaylists') {
+				const response = await fetch(
+					`https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${id}&maxResults=25&key=${process.env.NEXT_PUBLIC_API_KEY}`
+				);
+				const data = await response.json();
+				set({ channelPlaylists: data.items });
+			} else if (variant === 'playlistVideos') {
+				const response = await fetch(
+					`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&key=${process.env.NEXT_PUBLIC_API_KEY}`
+				);
+				const data = await response.json();
+				set({ playlistVideos: data.items });
+			}
+		} catch (error) {
+			console.error(`Upps, there is a problem: ${error}`);
+		}
+	},
 }));
 export default useStore;

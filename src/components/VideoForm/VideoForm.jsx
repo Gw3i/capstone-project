@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
+import SearchForm from '../SearchForm.jsx';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
 import StyledInputWarning from '../StyledInputWarning';
@@ -117,7 +118,9 @@ export default function VideoForm() {
 
 				<StyledButton>Submit</StyledButton>
 			</StyledForm>
-			{showText ? <StyledSumbitText>Great! Your video was added</StyledSumbitText> : ''}
+			{showText && <StyledSumbitText>Great! Your video was added</StyledSumbitText>}
+			<h2>OR</h2>
+			<SearchForm />
 		</>
 	);
 }
