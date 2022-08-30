@@ -89,22 +89,6 @@ const useStore = create(set => ({
 			};
 		});
 	},
-	channelId: null,
-	setChannelId: id => {
-		set(state => {
-			return {
-				channelId: (state.channelId = id),
-			};
-		});
-	},
-	playlistId: null,
-	setPlaylistId: id => {
-		set(state => {
-			return {
-				playlistId: (state.playlistId = id),
-			};
-		});
-	},
 	currentItem: '',
 	setCurrentItem: id => {
 		set({

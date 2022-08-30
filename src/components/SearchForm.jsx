@@ -12,7 +12,6 @@ import StyledLabel from './StyledLabel';
 
 export default function SearchForm() {
 	const setCurrentItem = useStore(state => state.setCurrentItem);
-	const setPlaylistId = useStore(state => state.setPlaylistId);
 	const setChannelSearch = useStore(state => state.setChannelSearch);
 	const channelSearch = useStore(state => state.channelSearch);
 	const fetchChannelData = useStore(state => state.fetchChannelData);
@@ -27,7 +26,6 @@ export default function SearchForm() {
 	function onSearch(data) {
 		setChannelSearch(data);
 		setCurrentItem('');
-		setPlaylistId('');
 		reset();
 	}
 

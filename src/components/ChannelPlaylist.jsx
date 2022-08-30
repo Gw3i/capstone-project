@@ -11,15 +11,15 @@ export default function ChannelPlaylist() {
 	return (
 		<>
 			{currentItem.id === ''
-				? channelItems.map(item => {
-						return <ChannelCard key={item.channelId} item={item} />;
+				? channelItems.map(channelItem => {
+						return <ChannelCard key={channelItem.channelId} item={channelItem} />;
 				  })
 				: channelItems
-						.filter(item => {
-							return currentItem.id === item.channelId;
+						.filter(channelItem => {
+							return currentItem.id === channelItem.channelId;
 						})
-						.map(item => {
-							return <ChannelCard key={item.channelId} item={item} />;
+						.map(channelItem => {
+							return <ChannelCard key={channelItem.channelId} item={channelItem} />;
 						})}
 		</>
 	);
