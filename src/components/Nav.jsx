@@ -12,7 +12,7 @@ export default function Nav() {
 	return (
 		<nav>
 			<StyledList variant="nav">
-				<StyledListItem>
+				<StyledListItem variant="nav">
 					<Link href="/">
 						<StyledNavLink>
 							<Icon
@@ -23,7 +23,7 @@ export default function Nav() {
 						</StyledNavLink>
 					</Link>
 				</StyledListItem>
-				<StyledListItem>
+				<StyledListItem variant="nav">
 					<Link href="/explore">
 						<StyledNavLink>
 							<Icon
@@ -39,7 +39,7 @@ export default function Nav() {
 						</StyledNavLink>
 					</Link>
 				</StyledListItem>
-				<StyledListItem>
+				<StyledListItem variant="nav">
 					<Link href="/create">
 						<StyledNavLink>
 							<Icon
@@ -50,7 +50,7 @@ export default function Nav() {
 						</StyledNavLink>
 					</Link>
 				</StyledListItem>
-				<StyledListItem>
+				<StyledListItem variant="nav">
 					<Link href="/bookmarks">
 						<StyledNavLink>
 							<Icon

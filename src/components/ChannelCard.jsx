@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Fragment } from 'react';
 
 import useStore from '../hooks/useStore';
 
@@ -45,50 +44,54 @@ export default function ChannelCard({ channelItem }) {
 					})
 					.map(channelPlaylist => {
 						return (
-							<Fragment key={channelPlaylist.id}>
-								<Image
-									src={channelPlaylist.snippet.thumbnails.standard?.url}
-									alt={channelItem.channelTitle}
-									layout="fixed"
-									width={40}
-									height={40}
-								/>
-								<p>{channelPlaylist.snippet.title}</p>
-								<button
-									onClick={() => {
-										fetchChannelData({
-											variant: 'playlistVideos',
-											id: channelPlaylist.id,
-										});
-									}}
-								>
-									Choose a playlist
-								</button>
+							<StyledList variant="playlist" key={channelPlaylist.id}>
+								<StyledListItem>
+									<Image
+										src={channelPlaylist.snippet.thumbnails.standard?.url}
+										alt={channelItem.channelTitle}
+										layout="fixed"
+										width={40}
+										height={40}
+									/>
+									<p>{channelPlaylist.snippet.title}</p>
+									<button
+										onClick={() => {
+											fetchChannelData({
+												variant: 'playlistVideos',
+												id: channelPlaylist.id,
+											});
+										}}
+									>
+										Choose a playlist
+									</button>
 
-								{playlistVideos
-									.filter(playlistVideo => {
-										return (
-											playlistVideo.snippet.playlistId === channelPlaylist.id
-										);
-									})
-									.map(playlistVideo => {
-										return (
-											<StyledList
-												variant="playlist"
-												key={playlistVideo.snippet.resourceId.videoId}
-											>
-												<StyledListItem>
-													<PlaylistVideo
-														videoTitle={playlistVideo.snippet.title}
-														YouTubeLink={
-															playlistVideo.snippet.resourceId.videoId
-														}
-													/>
-												</StyledListItem>
-											</StyledList>
-										);
-									})}
-							</Fragment>
+									{playlistVideos
+										.filter(playlistVideo => {
+											return (
+												playlistVideo.snippet.playlistId ===
+												channelPlaylist.id
+											);
+										})
+										.map(playlistVideo => {
+											return (
+												<StyledList
+													variant="playlistVideo"
+													key={playlistVideo.snippet.resourceId.videoId}
+												>
+													<StyledListItem>
+														<PlaylistVideo
+															videoTitle={playlistVideo.snippet.title}
+															YouTubeLink={
+																playlistVideo.snippet.resourceId
+																	.videoId
+															}
+														/>
+													</StyledListItem>
+												</StyledList>
+											);
+										})}
+								</StyledListItem>
+							</StyledList>
 						);
 					})}
 			</StyledContainer>
