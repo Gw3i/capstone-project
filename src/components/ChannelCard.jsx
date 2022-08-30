@@ -5,6 +5,8 @@ import useStore from '../hooks/useStore';
 
 import PlaylistVideo from './PlaylistVideo';
 import StyledContainer from './StyledContainer';
+import StyledList from './StyledList';
+import StyledListItem from './StyledListItem';
 
 export default function ChannelCard({ channelItem }) {
 	const setCurrentItem = useStore(state => state.setCurrentItem);
@@ -71,16 +73,19 @@ export default function ChannelCard({ channelItem }) {
 									})
 									.map(playlistVideo => {
 										return (
-											<ul key={playlistVideo.snippet.resourceId.videoId}>
-												<li>
+											<StyledList
+												variant="playlist"
+												key={playlistVideo.snippet.resourceId.videoId}
+											>
+												<StyledListItem>
 													<PlaylistVideo
 														videoTitle={playlistVideo.snippet.title}
 														YouTubeLink={
 															playlistVideo.snippet.resourceId.videoId
 														}
 													/>
-												</li>
-											</ul>
+												</StyledListItem>
+											</StyledList>
 										);
 									})}
 							</Fragment>

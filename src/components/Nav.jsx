@@ -11,7 +11,7 @@ export default function Nav() {
 
 	return (
 		<nav>
-			<StyledList>
+			<StyledList variant="nav">
 				<StyledListItem>
 					<Link href="/">
 						<StyledNavLink>
