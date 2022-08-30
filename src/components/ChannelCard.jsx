@@ -5,28 +5,31 @@ import useStore from '../hooks/useStore';
 
 import StyledContainer from './StyledContainer';
 
-export default function ChannelCard({ item }) {
+export default function ChannelCard({ channelItem }) {
 	const setCurrentItem = useStore(state => state.setCurrentItem);
 	const fetchChannelData = useStore(state => state.fetchChannelData);
 	const channelPlaylists = useStore(state => state.channelPlaylists);
 	const playlistVideos = useStore(state => state.playlistVideos);
 
 	return (
-		<StyledContainer key={item.channelId} variant="channelCard">
+		<StyledContainer key={channelItem.channelId} variant="channelCard">
 			<Image
-				src={item.thumbnails.high.url}
-				alt={item.channelTitle}
+				src={channelItem.thumbnails?.high?.url}
+				alt={channelItem.channelTitle}
 				layout="fixed"
 				width={70}
 				height={70}
 			/>
 			<StyledContainer variant="channelCardText">
-				<h2>{item.channelTitle}</h2>
-				<h3>{item.descrition}</h3>
+				<h2>{channelItem.channelTitle}</h2>
+				<h3>{channelItem.descrition}</h3>
 				<button
 					onClick={() => {
-						setCurrentItem(item.channelId);
-						fetchChannelData({ variant: 'channelPlaylists', id: item.channelId });
+						setCurrentItem(channelItem.channelId);
+						fetchChannelData({
+							variant: 'channelPlaylists',
+							id: channelItem.channelId,
+						});
 					}}
 				>
 					Choose this channel
@@ -35,14 +38,14 @@ export default function ChannelCard({ item }) {
 			<StyledContainer variant="column">
 				{channelPlaylists
 					.filter(channelPlaylist => {
-						return channelPlaylist.snippet.channelId === item.channelId;
+						return channelPlaylist.snippet.channelId === channelItem.channelId;
 					})
 					.map(channelPlaylist => {
 						return (
 							<Fragment key={channelPlaylist.id}>
 								<Image
-									src={channelPlaylist.snippet.thumbnails.standard.url}
-									alt={item.channelTitle}
+									src={channelPlaylist.snippet.thumbnails.standard?.url}
+									alt={channelItem.channelTitle}
 									layout="fixed"
 									width={40}
 									height={40}

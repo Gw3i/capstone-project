@@ -6,20 +6,27 @@ export default function ChannelPlaylist() {
 	const currentItem = useStore(state => state.currentItem);
 	const channels = useStore(state => state.channels);
 
-	const channelItems = channels.map(channel => channel.snippet);
+	const channelItems = channels?.map(channel => channel.snippet);
 
 	return (
 		<>
 			{currentItem.id === ''
-				? channelItems.map(channelItem => {
-						return <ChannelCard key={channelItem.channelId} item={channelItem} />;
+				? channelItems?.map(channelItem => {
+						return (
+							<ChannelCard key={channelItem.channelId} channelItem={channelItem} />
+						);
 				  })
 				: channelItems
-						.filter(channelItem => {
+						?.filter(channelItem => {
 							return currentItem.id === channelItem.channelId;
 						})
 						.map(channelItem => {
-							return <ChannelCard key={channelItem.channelId} item={channelItem} />;
+							return (
+								<ChannelCard
+									key={channelItem.channelId}
+									channelItem={channelItem}
+								/>
+							);
 						})}
 		</>
 	);
