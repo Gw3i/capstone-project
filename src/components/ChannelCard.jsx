@@ -3,6 +3,7 @@ import { Fragment } from 'react';
 
 import useStore from '../hooks/useStore';
 
+import PlaylistVideo from './PlaylistVideo';
 import StyledContainer from './StyledContainer';
 
 export default function ChannelCard({ channelItem }) {
@@ -71,8 +72,14 @@ export default function ChannelCard({ channelItem }) {
 									.map(playlistVideo => {
 										return (
 											<ul key={playlistVideo.snippet.resourceId.videoId}>
-												<li>{playlistVideo.snippet.title}</li>
-												<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
+												<li>
+													<PlaylistVideo
+														videoTitle={playlistVideo.snippet.title}
+														YouTubeLink={
+															playlistVideo.snippet.resourceId.videoId
+														}
+													/>
+												</li>
 											</ul>
 										);
 									})}
