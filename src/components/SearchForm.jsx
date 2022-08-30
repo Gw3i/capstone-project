@@ -32,7 +32,7 @@ export default function SearchForm() {
 	}
 
 	useEffect(() => {
-		fetchChannelData('channels', channelSearch.playlistSearch);
+		fetchChannelData({ variant: 'channels', searchQuery: channelSearch.playlistSearch });
 	}, [fetchChannelData, channelSearch.playlistSearch]);
 
 	return (
