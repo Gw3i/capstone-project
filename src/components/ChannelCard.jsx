@@ -12,7 +12,7 @@ export default function ChannelCard({ channelItem }) {
 	const playlistVideos = useStore(state => state.playlistVideos);
 
 	return (
-		<StyledContainer key={channelItem.channelId} variant="channelCard">
+		<StyledContainer variant="channelCard">
 			<Image
 				src={channelItem.thumbnails?.high?.url}
 				alt={channelItem.channelTitle}
