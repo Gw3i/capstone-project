@@ -4,10 +4,14 @@ import useStore from '../hooks/useStore';
 
 import ChannelCard from './ChannelCard';
 
-export default function ChannelPlaylist({ channelItems }) {
+export default function ChannelPlaylist() {
 	const channelId = useStore(state => state.channelId);
 	const playlistId = useStore(state => state.playlistId);
 	const currentItem = useStore(state => state.currentItem);
+	const channels = useStore(state => state.channels);
+
+	// const channelItems = channelSearch?.playlistSearch?.map(item => item.snippet);
+	const channelItems = channels?.items?.map(item => item.snippet);
 
 	const [fetchedPlaylistsData, setFetchedPlaylistsData] = useState([]);
 
@@ -32,8 +36,6 @@ export default function ChannelPlaylist({ channelItems }) {
 	}
 
 	const playlistVideoItems = playlistVideos?.items;
-
-	console.log(playlistVideos);
 
 	return (
 		<>

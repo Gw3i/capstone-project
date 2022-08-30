@@ -1,5 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -13,6 +13,9 @@ import StyledLabel from './StyledLabel';
 export default function SearchForm() {
 	const setCurrentItem = useStore(state => state.setCurrentItem);
 	const setPlaylistId = useStore(state => state.setPlaylistId);
+	const setChannelSearch = useStore(state => state.setChannelSearch);
+	const channelSearch = useStore(state => state.channelSearch);
+	const fetchChannelData = useStore(state => state.fetchChannelData);
 
 	const {
 		register,
@@ -21,22 +24,16 @@ export default function SearchForm() {
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	const [fetchedChannels, setFetchedChannels] = useState([]);
-
-	async function onSearch(data) {
-		const fetchedChannels = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${data.playlistSearch}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`;
-
-		const result = await fetch(fetchedChannels);
-		const channelData = await result.json();
-		console.log(channelData);
-		setFetchedChannels(channelData);
+	function onSearch(data) {
+		setChannelSearch(data);
 		setCurrentItem('');
 		setPlaylistId('');
 		reset();
 	}
 
-	const channelItems = fetchedChannels?.items?.map(item => item.snippet);
-	console.log(channelItems);
+	useEffect(() => {
+		fetchChannelData('channels', channelSearch.playlistSearch);
+	}, [fetchChannelData, channelSearch.playlistSearch]);
 
 	return (
 		<>
@@ -67,7 +64,7 @@ export default function SearchForm() {
 				</StyledLabel>
 				<StyledButton>Search</StyledButton>
 			</StyledForm>
-			<ChannelPlaylist channelItems={channelItems} />
+			<ChannelPlaylist />
 		</>
 	);
 }

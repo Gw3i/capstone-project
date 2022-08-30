@@ -113,21 +113,35 @@ const useStore = create(set => ({
 			};
 		});
 	},
+	channelSearch: [],
+	setChannelSearch: data => {
+		set(() => {
+			return {
+				channelSearch: data,
+			};
+		});
+	},
 	channels: { results: [] },
 	channelPlaylists: { results: [] },
 	playlistVideos: { results: [] },
-	fetchChannelData: async variant => {
+	fetchChannelData: async (variant, searchQuery, id) => {
 		try {
 			if (variant === 'channels') {
-				const response = await fetch('https://swapi.dev/api/planets');
+				const response = await fetch(
+					`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${searchQuery}&type=channel&key=${process.env.NEXT_PUBLIC_API_KEY}`
+				);
 				const data = await response.json();
 				set({ channels: data });
 			} else if (variant === 'channelPlaylists') {
-				const response = await fetch('https://swapi.dev/api/people');
+				const response = await fetch(
+					`https://youtube.googleapis.com/youtube/v3/playlists?part=snippet&channelId=${id}&maxResults=25&key=${process.env.NEXT_PUBLIC_API_KEY}`
+				);
 				const data = await response.json();
 				set({ channelPlaylists: data });
 			} else if (variant === 'playlistVideos') {
-				const response = await fetch('https://swapi.dev/api/people');
+				const response = await fetch(
+					`https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${id}&key=${process.env.NEXT_PUBLIC_API_KEY}`
+				);
 				const data = await response.json();
 				set({ playlistVideos: data });
 			}
