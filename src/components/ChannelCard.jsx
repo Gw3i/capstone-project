@@ -33,43 +33,49 @@ export default function ChannelCard({ item }) {
 				</button>
 			</StyledContainer>
 			<StyledContainer variant="column">
-				{channelPlaylists.map(channelPlaylist => {
-					return (
-						<Fragment key={channelPlaylist.id}>
-							<Image
-								src={channelPlaylist.snippet.thumbnails.standard.url}
-								alt={item.channelTitle}
-								layout="fixed"
-								width={40}
-								height={40}
-							/>
-							<p>{channelPlaylist.snippet.title}</p>
-							<button
-								onClick={() => {
-									fetchChannelData({
-										variant: 'playlistVideos',
-										id: channelPlaylist.id,
-									});
-								}}
-							>
-								Choose a playlist
-							</button>
+				{channelPlaylists
+					.filter(channelPlaylist => {
+						return channelPlaylist.snippet.channelId === item.channelId;
+					})
+					.map(channelPlaylist => {
+						return (
+							<Fragment key={channelPlaylist.id}>
+								<Image
+									src={channelPlaylist.snippet.thumbnails.standard.url}
+									alt={item.channelTitle}
+									layout="fixed"
+									width={40}
+									height={40}
+								/>
+								<p>{channelPlaylist.snippet.title}</p>
+								<button
+									onClick={() => {
+										fetchChannelData({
+											variant: 'playlistVideos',
+											id: channelPlaylist.id,
+										});
+									}}
+								>
+									Choose a playlist
+								</button>
 
-							{playlistVideos
-								.filter(playlistVideo => {
-									return playlistVideo.snippet.playlistId === channelPlaylist.id;
-								})
-								.map(playlistVideo => {
-									return (
-										<ul key={playlistVideo.snippet.resourceId.videoId}>
-											<li>{playlistVideo.snippet.title}</li>
-											<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
-										</ul>
-									);
-								})}
-						</Fragment>
-					);
-				})}
+								{playlistVideos
+									.filter(playlistVideo => {
+										return (
+											playlistVideo.snippet.playlistId === channelPlaylist.id
+										);
+									})
+									.map(playlistVideo => {
+										return (
+											<ul key={playlistVideo.snippet.resourceId.videoId}>
+												<li>{playlistVideo.snippet.title}</li>
+												<li>{`https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`}</li>
+											</ul>
+										);
+									})}
+							</Fragment>
+						);
+					})}
 			</StyledContainer>
 		</StyledContainer>
 	);
