@@ -1,8 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledListItem = styled.li`
-	width: 80px;
 	list-style: none;
+	${({ variant }) =>
+		variant === 'nav' &&
+		css`
+			width: 80px;
+		`}
+	${({ variant }) =>
+		variant === 'playlist' &&
+		css`
+			background-color: aliceblue;
+		`}
 `;
 
 export default StyledListItem;
