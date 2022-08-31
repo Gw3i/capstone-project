@@ -6,7 +6,7 @@ import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 
-export default function LoginForm() {
+export default function CreateAccountForm() {
 	const {
 		register,
 		handleSubmit,
@@ -55,6 +55,11 @@ export default function LoginForm() {
 						{...register('password', {
 							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
+							pattern: {
+								value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/gi,
+								message:
+									'Your password should at least have one number, one letter and on special character',
+							},
 						})}
 						placeholder="*************"
 						name="password"
@@ -75,7 +80,7 @@ export default function LoginForm() {
 					/>
 				</StyledLabel>
 
-				<StyledButton>Login</StyledButton>
+				<StyledButton>Create new account</StyledButton>
 			</StyledForm>
 		</>
 	);
