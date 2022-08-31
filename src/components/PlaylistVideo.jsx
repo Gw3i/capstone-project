@@ -1,4 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -8,10 +9,23 @@ import StyledContainer from './StyledContainer';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
+import StyledSumbitText from './StyledSubmitText';
 
 export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 	const categories = useStore(state => state.categories);
 	const setVideos = useStore(state => state.setVideos);
+
+	const confirmationMessage = useStore(state => state.confirmationMessage);
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
+
+	useEffect(() => {
+		const confirmMessage = setTimeout(() => {
+			setConfirmationMessage(null);
+		}, 2000);
+		return () => {
+			clearTimeout(confirmMessage);
+		};
+	}, [setConfirmationMessage, confirmationMessage]);
 
 	const {
 		register,
@@ -23,9 +37,13 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 	function onSubmit(data) {
 		setVideos(data);
 		reset();
+		setConfirmationMessage('Great! The video was added!');
 	}
 	return (
 		<StyledContainer>
+			{confirmationMessage && (
+				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
+			)}
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="title">
 					{videoTitle}
