@@ -2,16 +2,16 @@ import styled, { css, keyframes } from 'styled-components';
 
 const move = keyframes`
 0% {
-    transform: translateY(170%);
+    transform: translateY(20vh);
 
   }
   60% {
-	transform: translateY(170%);
+	transform: translateY(20vh);
 	opacity: 100%;
 
   }
   100% {
-    transform: translateY(0%);
+    transform: translateY(1vh);
 	opacity: 0%;
   }
 `;
@@ -24,8 +24,9 @@ const StyledSumbitText = styled.p`
 	${({ variant }) =>
 		variant === 'editConfirm' &&
 		css`
+			position: fixed;
 			position: absolute;
-			top: -50px;
+			top: -10vh;
 			z-index: 50;
 			background-color: lightgreen;
 			color: white;
