@@ -19,12 +19,15 @@ export default function ChannelCard({ channelItem }) {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	useEffect(() => {
-		const confirmMessage = setTimeout(() => {
-			setConfirmationMessage(null);
-		}, 2000);
-		return () => {
-			clearTimeout(confirmMessage);
-		};
+		if (confirmationMessage) {
+			const confirmMessage = setTimeout(() => {
+				setConfirmationMessage(null);
+			}, 2000);
+
+			return () => {
+				clearTimeout(confirmMessage);
+			};
+		}
 	}, [setConfirmationMessage, confirmationMessage]);
 
 	return (
