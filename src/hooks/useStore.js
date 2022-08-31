@@ -131,5 +131,19 @@ const useStore = create(set => ({
 			console.error(`Upps, there is a problem: ${error}`);
 		}
 	},
+	user: [
+		{
+			id: nanoid(),
+			username: 'parent123',
+			passwort: 'usfib837bf#',
+		},
+	],
+	setUser: data => {
+		set(state => {
+			return {
+				user: [...state.user, { ...data, id: nanoid() }],
+			};
+		});
+	},
 }));
 export default useStore;

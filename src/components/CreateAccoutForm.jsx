@@ -1,12 +1,19 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
 
+import useStore from '../hooks/useStore';
+
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 
 export default function CreateAccountForm() {
+	const setUser = useStore(state => state.setUser);
+	const user = useStore(state => state.user);
+
+	console.log(user);
+
 	const {
 		register,
 		handleSubmit,
@@ -14,7 +21,8 @@ export default function CreateAccountForm() {
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	function onSubmit() {
+	function onSubmit(data) {
+		setUser(data);
 		reset();
 	}
 
