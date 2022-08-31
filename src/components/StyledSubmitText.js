@@ -25,7 +25,6 @@ const StyledSumbitText = styled.p`
 		variant === 'editConfirm' &&
 		css`
 			position: fixed;
-			position: absolute;
 			top: -10vh;
 			z-index: 50;
 			background-color: lightgreen;
