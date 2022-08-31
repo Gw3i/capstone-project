@@ -10,9 +10,6 @@ import StyledLabel from './StyledLabel';
 
 export default function CreateAccountForm() {
 	const setUser = useStore(state => state.setUser);
-	const user = useStore(state => state.user);
-
-	console.log(user);
 
 	const {
 		register,
@@ -66,7 +63,7 @@ export default function CreateAccountForm() {
 							pattern: {
 								value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/gi,
 								message:
-									'Your password should at least have one number, one letter and on special character',
+									'Your password should at least have one number, one letter and on special character (?#!-...)',
 							},
 						})}
 						placeholder="*************"
@@ -77,6 +74,30 @@ export default function CreateAccountForm() {
 					<ErrorMessage
 						errors={errors}
 						name="password"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
+							))
+						}
+					/>
+				</StyledLabel>
+				<StyledLabel htmlFor="age">
+					Age
+					<input
+						{...register('age', {
+							min: { value: 18, message: 'You need to be 18 or older' },
+							max: { value: 99, message: 'You need to be 99 or younger' },
+						})}
+						name="age"
+						type="number"
+						id="age"
+					/>
+					<ErrorMessage
+						errors={errors}
+						name="age"
 						render={({ messages }) =>
 							messages &&
 							Object.entries(messages).map(([type, message]) => (
