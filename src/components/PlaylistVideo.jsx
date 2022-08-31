@@ -1,4 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -12,6 +13,9 @@ import StyledLabel from './StyledLabel';
 export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 	const categories = useStore(state => state.categories);
 	const setVideos = useStore(state => state.setVideos);
+	const [isDisabled, setIsDisabled] = useState(false);
+
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const {
 		register,
@@ -23,6 +27,8 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 	function onSubmit(data) {
 		setVideos(data);
 		reset();
+		setConfirmationMessage('Great! The video was added!');
+		setIsDisabled(true);
 	}
 	return (
 		<StyledContainer>
@@ -46,6 +52,7 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 				/>
 				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
 				<select
+					disabled={isDisabled}
 					{...register('category', { required: 'This field is required' })}
 					id="categories"
 				>
@@ -69,7 +76,7 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 					}
 				/>
 
-				<StyledButton>Add video</StyledButton>
+				<StyledButton disabled={isDisabled}>Add video</StyledButton>
 			</StyledForm>
 		</StyledContainer>
 	);
