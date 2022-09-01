@@ -1,4 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -9,6 +10,7 @@ import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 
 export default function CreateAccountForm() {
+	const router = useRouter();
 	const setUser = useStore(state => state.setUser);
 
 	const {
@@ -21,6 +23,7 @@ export default function CreateAccountForm() {
 	function onSubmit(data) {
 		setUser(data);
 		reset();
+		router.push('/login');
 	}
 
 	return (
