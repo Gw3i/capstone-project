@@ -15,14 +15,9 @@ import StyledLabel from './StyledLabel';
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
 	const router = useRouter();
-	const loginSession = useStore(state => state.loginSession);
 	const [loginInformationError, setfalseloginInformationError] = useState(false);
 
-	console.log(loginSession);
-
 	const users = useStore(state => state.users);
-
-	console.log(users);
 
 	const {
 		register,

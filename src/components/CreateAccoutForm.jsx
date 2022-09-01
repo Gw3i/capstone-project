@@ -1,6 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { nanoid } from 'nanoid';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -14,7 +15,10 @@ export default function CreateAccountForm() {
 	const router = useRouter();
 	const registerUser = useStore(state => state.registerUser);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
+	const users = useStore(state => state.users);
+	const [loginInformationError, setfalseloginInformationError] = useState(false);
 
+	console.log(users);
 	const {
 		register,
 		handleSubmit,
@@ -27,9 +31,17 @@ export default function CreateAccountForm() {
 			username: data.username,
 			password: data.password,
 		};
-		registerUser(newUser);
-		router.push('/create');
-		setConfirmationMessage('Great! Your account was created');
+		const sameUsername = users.filter(user => {
+			return newUser.username === user.username;
+		});
+
+		if (sameUsername < 1) {
+			registerUser(newUser);
+			router.push('/create');
+			setConfirmationMessage('Great! Your account was created');
+		} else {
+			setfalseloginInformationError(true);
+		}
 	}
 
 	return (
@@ -49,6 +61,9 @@ export default function CreateAccountForm() {
 						name="username"
 						type="text"
 						id="username"
+						onChange={() => {
+							setfalseloginInformationError(false);
+						}}
 					/>
 					<ErrorMessage
 						errors={errors}
@@ -62,6 +77,11 @@ export default function CreateAccountForm() {
 							))
 						}
 					/>
+					{loginInformationError && (
+						<StyledInputWarning role="alert">
+							This username is already taken. Please choose another.
+						</StyledInputWarning>
+					)}
 				</StyledLabel>
 				<StyledLabel htmlFor="password">
 					Password
