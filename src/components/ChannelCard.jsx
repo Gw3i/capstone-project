@@ -1,13 +1,12 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
 
 import useStore from '../hooks/useStore';
 
+import ConfirmationMessage from './ConfirmationMessage';
 import PlaylistVideo from './PlaylistVideo';
 import StyledContainer from './StyledContainer';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
-import StyledSumbitText from './StyledSubmitText';
 
 export default function ChannelCard({ channelItem }) {
 	const setCurrentItem = useStore(state => state.setCurrentItem);
@@ -15,26 +14,9 @@ export default function ChannelCard({ channelItem }) {
 	const channelPlaylists = useStore(state => state.channelPlaylists);
 	const playlistVideos = useStore(state => state.playlistVideos);
 
-	const confirmationMessage = useStore(state => state.confirmationMessage);
-	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
-
-	useEffect(() => {
-		if (confirmationMessage) {
-			const confirmMessage = setTimeout(() => {
-				setConfirmationMessage(null);
-			}, 2000);
-
-			return () => {
-				clearTimeout(confirmMessage);
-			};
-		}
-	}, [setConfirmationMessage, confirmationMessage]);
-
 	return (
 		<>
-			{confirmationMessage && (
-				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
-			)}
+			<ConfirmationMessage />
 			<StyledContainer variant="channelCard">
 				<Image
 					src={channelItem.thumbnails?.high?.url}

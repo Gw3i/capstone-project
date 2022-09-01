@@ -12,6 +12,7 @@ import StyledLabel from './StyledLabel';
 export default function CreateAccountForm() {
 	const router = useRouter();
 	const setUser = useStore(state => state.setUser);
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const {
 		register,
@@ -24,6 +25,7 @@ export default function CreateAccountForm() {
 		setUser(data);
 		reset();
 		router.push('/login');
+		setConfirmationMessage('Great! Your account was created');
 	}
 
 	return (

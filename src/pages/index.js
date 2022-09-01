@@ -1,29 +1,14 @@
-import { useEffect } from 'react';
-
+import ConfirmationMessage from '../components/ConfirmationMessage';
 import Layout from '../components/Layout';
-import StyledSumbitText from '../components/StyledSubmitText';
 import VideoCards from '../components/VideoCards/VideoCards';
 import useStore from '../hooks/useStore';
 
 export default function HomePage() {
-	const confirmationMessage = useStore(state => state.confirmationMessage);
-	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
-
-	useEffect(() => {
-		setTimeout(() => {
-			setConfirmationMessage(null);
-		}, 5000);
-	}, [setConfirmationMessage]);
-
 	const videos = useStore(state => state.videos);
 	return (
 		<Layout>
 			<h1>Home</h1>
-			{confirmationMessage ? (
-				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
-			) : (
-				''
-			)}
+			<ConfirmationMessage />
 			{videos.map(video => {
 				return (
 					<VideoCards
