@@ -18,7 +18,6 @@ export default function CreateAccountForm() {
 	const users = useStore(state => state.users);
 	const [loginInformationError, setfalseloginInformationError] = useState(false);
 
-	console.log(users);
 	const {
 		register,
 		handleSubmit,
@@ -26,6 +25,15 @@ export default function CreateAccountForm() {
 	} = useForm({ criteriaMode: 'all' });
 
 	function onSubmit(data) {
+		var dob = new Date(data.age);
+
+		var month_diff = Date.now() - dob.getTime();
+
+		var age_dt = new Date(month_diff);
+
+		var year = age_dt.getUTCFullYear();
+		var age = Math.abs(year - 1970);
+
 		const newUser = {
 			id: nanoid(),
 			username: data.username,
@@ -35,7 +43,7 @@ export default function CreateAccountForm() {
 			return newUser.username === user.username;
 		});
 
-		if (sameUsername < 1) {
+		if (sameUsername < 1 && age >= 18) {
 			registerUser(newUser);
 			router.push('/create');
 			setConfirmationMessage('Great! Your account was created');
@@ -115,15 +123,7 @@ export default function CreateAccountForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="age">
 					Age
-					<input
-						{...register('age', {
-							min: { value: 18, message: 'You need to be 18 or older' },
-							max: { value: 99, message: 'You need to be 99 or younger' },
-						})}
-						name="age"
-						type="number"
-						id="age"
-					/>
+					<input {...register('age')} name="age" type="date" id="age" />
 					<ErrorMessage
 						errors={errors}
 						name="age"
