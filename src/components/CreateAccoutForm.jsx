@@ -26,7 +26,14 @@ export default function CreateAccountForm() {
 	} = useForm({ criteriaMode: 'all' });
 
 	function onSubmit(data) {
-		const dateOfBirth = new Date(data.age);
+		if (parseInt(data.age) > new Date().getFullYear()) {
+			setLoginAgeError('This date is not valid');
+			return data.age;
+		}
+
+		const date = data.age.toString();
+
+		const dateOfBirth = new Date(date);
 		const dateToday = new Date();
 
 		function calculateDiffYears(dt2, dt1) {
@@ -47,6 +54,7 @@ export default function CreateAccountForm() {
 		});
 
 		if (sameUsername < 1 && age >= 18) {
+			console.log(age);
 			registerUser(newUser);
 			router.push('/create');
 			setConfirmationMessage('Great! Your account was created');
@@ -132,7 +140,7 @@ export default function CreateAccountForm() {
 						type="date"
 						id="age"
 						onChange={() => {
-							setLoginAgeError;
+							setLoginAgeError(false);
 						}}
 					/>
 					<ErrorMessage
