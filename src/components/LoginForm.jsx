@@ -1,4 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
@@ -107,6 +108,10 @@ export default function LoginForm() {
 
 				<StyledButton>Login</StyledButton>
 			</StyledForm>
+			<p>No account yet?</p>
+			<Link href="/create-account">
+				<a>Create new account</a>
+			</Link>
 		</>
 	);
 }
