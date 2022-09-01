@@ -25,14 +25,17 @@ export default function CreateAccountForm() {
 	} = useForm({ criteriaMode: 'all' });
 
 	function onSubmit(data) {
-		var dob = new Date(data.age);
+		//const dateOfBirth = new Date('09/07/1987');
+		const dateOfBirth = new Date(data.age);
+		const dateToday = new Date();
 
-		var month_diff = Date.now() - dob.getTime();
+		function calculateDiffYears(dt2, dt1) {
+			let diff = (dt2.getTime() - dt1.getTime()) / 1000;
+			diff /= 60 * 60 * 24;
+			return Math.abs(Math.round(diff / 365.25));
+		}
 
-		var age_dt = new Date(month_diff);
-
-		var year = age_dt.getUTCFullYear();
-		var age = Math.abs(year - 1970);
+		const age = calculateDiffYears(dateToday, dateOfBirth);
 
 		const newUser = {
 			id: nanoid(),
