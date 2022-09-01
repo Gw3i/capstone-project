@@ -54,7 +54,6 @@ export default function CreateAccountForm() {
 		});
 
 		if (sameUsername < 1 && age >= 18) {
-			console.log(age);
 			registerUser(newUser);
 			router.push('/create');
 			setConfirmationMessage('Great! Your account was created');
