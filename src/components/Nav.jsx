@@ -39,17 +39,7 @@ export default function Nav() {
 						</StyledNavLink>
 					</Link>
 				</StyledListItem>
-				<StyledListItem variant="nav">
-					<Link href="/create">
-						<StyledNavLink>
-							<Icon
-								size="32px"
-								variant={router.pathname === '/create' ? 'createFilled' : 'create'}
-							/>
-							Create
-						</StyledNavLink>
-					</Link>
-				</StyledListItem>
+
 				<StyledListItem variant="nav">
 					<Link href="/bookmarks">
 						<StyledNavLink>
@@ -60,6 +50,17 @@ export default function Nav() {
 								}
 							/>
 							Bookmarks
+						</StyledNavLink>
+					</Link>
+				</StyledListItem>
+				<StyledListItem variant="nav">
+					<Link href="/create">
+						<StyledNavLink>
+							<Icon
+								size="32px"
+								variant={router.pathname === '/create' ? 'createFilled' : 'create'}
+							/>
+							Create
 						</StyledNavLink>
 					</Link>
 				</StyledListItem>
