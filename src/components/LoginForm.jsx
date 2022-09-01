@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
 
-import ConfirmationMessage from './ConfirmationMessage';
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
@@ -16,6 +15,7 @@ export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
 	const router = useRouter();
 	const [loginInformationError, setfalseloginInformationError] = useState(false);
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const users = useStore(state => state.users);
 
@@ -39,6 +39,7 @@ export default function LoginForm() {
 
 		if (validateUser.length === 1) {
 			setLoginSession(loggedInUser);
+			setConfirmationMessage('Great! You are logged in');
 			router.push('/create');
 		} else {
 			setfalseloginInformationError(true);
@@ -47,7 +48,6 @@ export default function LoginForm() {
 
 	return (
 		<>
-			<ConfirmationMessage />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="username">
 					Username
