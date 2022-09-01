@@ -109,7 +109,7 @@ export default function CreateAccountForm() {
 							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
 							pattern: {
-								value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/gi,
+								value: /^(?=.*[A-Za-zäöüÄÖÜß])(?=.*\d)(?=.*[@$!%*#?&zäöüÄÖÜß])[A-Za-zäöüÄÖÜß\d@$!%*#?&zäöüÄÖÜß]{8,}$/gi,
 								message:
 									'Your password should at least have one number, one letter and on special character (?#!-...)',
 							},
