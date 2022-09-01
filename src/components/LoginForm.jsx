@@ -1,5 +1,8 @@
 import { ErrorMessage } from '@hookform/error-message';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+
+import useStore from '../hooks/useStore';
 
 import ConfirmationMessage from './ConfirmationMessage';
 import StyledButton from './StyledButton';
@@ -8,15 +11,40 @@ import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 
 export default function LoginForm() {
+	const setLoginSession = useStore(state => state.setLoginSession);
+	const router = useRouter();
+	const loginSession = useStore(state => state.loginSession);
+
+	console.log(loginSession);
+
+	const users = useStore(state => state.users);
+
+	console.log(users);
+
 	const {
 		register,
 		handleSubmit,
-		reset,
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
-	function onSubmit() {
-		reset();
+	function onSubmit(data) {
+		const loggedInUser = {
+			username: data.username,
+			password: data.password,
+		};
+
+		const validateUser = users.filter(user => {
+			return (
+				user.username === loggedInUser.username && user.password === loggedInUser.password
+			);
+		});
+
+		if (validateUser.length === 1) {
+			setLoginSession(loggedInUser);
+			router.push('/create');
+		} else {
+			alert('Fuck off!');
+		}
 	}
 
 	return (

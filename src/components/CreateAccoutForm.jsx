@@ -1,4 +1,5 @@
 import { ErrorMessage } from '@hookform/error-message';
+import { nanoid } from 'nanoid';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
@@ -11,19 +12,22 @@ import StyledLabel from './StyledLabel';
 
 export default function CreateAccountForm() {
 	const router = useRouter();
-	const setUser = useStore(state => state.setUser);
+	const registerUser = useStore(state => state.registerUser);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const {
 		register,
 		handleSubmit,
-		reset,
 		formState: { errors },
 	} = useForm({ criteriaMode: 'all' });
 
 	function onSubmit(data) {
-		setUser(data);
-		reset();
+		const newUser = {
+			id: nanoid(),
+			username: data.username,
+			password: data.password,
+		};
+		registerUser(newUser);
 		router.push('/login');
 		setConfirmationMessage('Great! Your account was created');
 	}
