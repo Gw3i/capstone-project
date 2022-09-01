@@ -17,6 +17,7 @@ export default function CreateAccountForm() {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	const users = useStore(state => state.users);
 	const [loginInformationError, setfalseloginInformationError] = useState(false);
+	const [loginAgeError, setLoginAgeError] = useState(false);
 
 	const {
 		register,
@@ -25,7 +26,6 @@ export default function CreateAccountForm() {
 	} = useForm({ criteriaMode: 'all' });
 
 	function onSubmit(data) {
-		//const dateOfBirth = new Date('09/07/1987');
 		const dateOfBirth = new Date(data.age);
 		const dateToday = new Date();
 
@@ -51,7 +51,11 @@ export default function CreateAccountForm() {
 			router.push('/create');
 			setConfirmationMessage('Great! Your account was created');
 		} else {
-			setfalseloginInformationError(true);
+			age < 18
+				? setLoginAgeError('You are too young!')
+				: setfalseloginInformationError(
+						'This username is already taken. Please choose another one'
+				  );
 		}
 	}
 
@@ -88,11 +92,7 @@ export default function CreateAccountForm() {
 							))
 						}
 					/>
-					{loginInformationError && (
-						<StyledInputWarning role="alert">
-							This username is already taken. Please choose another.
-						</StyledInputWarning>
-					)}
+					<StyledInputWarning role="alert">{loginInformationError}</StyledInputWarning>
 				</StyledLabel>
 				<StyledLabel htmlFor="password">
 					Password
@@ -126,7 +126,15 @@ export default function CreateAccountForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="age">
 					Age
-					<input {...register('age')} name="age" type="date" id="age" />
+					<input
+						{...register('age')}
+						name="age"
+						type="date"
+						id="age"
+						onChange={() => {
+							setLoginAgeError;
+						}}
+					/>
 					<ErrorMessage
 						errors={errors}
 						name="age"
@@ -139,6 +147,7 @@ export default function CreateAccountForm() {
 							))
 						}
 					/>
+					<StyledInputWarning role="alert">{loginAgeError}</StyledInputWarning>
 				</StyledLabel>
 
 				<StyledButton>Create new account</StyledButton>
