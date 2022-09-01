@@ -15,6 +15,7 @@ import StyledVideoTitle from '../StyledVideoTitle';
 
 export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category }) {
 	const [isShown, setIsShown] = useState(false);
+	const loginSession = useStore(state => state.loginSession);
 
 	function handleVisibility() {
 		setIsShown(!isShown);
@@ -31,17 +32,21 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 	return (
 		<StyledVideoContainer key={videoId} data-testid="videoContainer">
 			<StyledVideoButtonContainer>
-				<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
-					<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
-				</StyledButton>
+				{loginSession && (
+					<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
+						<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
+					</StyledButton>
+				)}
 
-				{isShown ? <DeleteModal onCancel={handleVisibility} videoId={videoId} /> : ''}
+				{isShown && <DeleteModal onCancel={handleVisibility} videoId={videoId} />}
 
-				<Link href={`/edit/${videoId}`}>
-					<StyledLink aria-label="edit">
-						<Icon variant="edit" color="white" />
-					</StyledLink>
-				</Link>
+				{loginSession && (
+					<Link href={`/edit/${videoId}`}>
+						<StyledLink aria-label="edit">
+							<Icon variant="edit" color="white" />
+						</StyledLink>
+					</Link>
+				)}
 
 				<StyledButton
 					type="button"

@@ -1,6 +1,7 @@
 import { ErrorMessage } from '@hookform/error-message';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -15,6 +16,7 @@ export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
 	const router = useRouter();
 	const loginSession = useStore(state => state.loginSession);
+	const [loginInformationError, setfalseloginInformationError] = useState(false);
 
 	console.log(loginSession);
 
@@ -44,7 +46,7 @@ export default function LoginForm() {
 			setLoginSession(loggedInUser);
 			router.push('/create');
 		} else {
-			alert('Fuck off!');
+			setfalseloginInformationError(true);
 		}
 	}
 
@@ -108,6 +110,11 @@ export default function LoginForm() {
 
 				<StyledButton>Login</StyledButton>
 			</StyledForm>
+			{loginInformationError && (
+				<StyledInputWarning role="alert">
+					Your login information is wrong. Please try again.
+				</StyledInputWarning>
+			)}
 			<p>No account yet?</p>
 			<Link href="/create-account">
 				<a>Create new account</a>

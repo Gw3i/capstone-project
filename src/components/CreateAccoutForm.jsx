@@ -28,7 +28,7 @@ export default function CreateAccountForm() {
 			password: data.password,
 		};
 		registerUser(newUser);
-		router.push('/login');
+		router.push('/create');
 		setConfirmationMessage('Great! Your account was created');
 	}
 
