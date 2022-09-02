@@ -104,7 +104,7 @@ export default function CreateAccountForm() {
 							pattern: {
 								value: /^(?=.*[A-Za-zäöüÄÖÜß])(?=.*\d)(?=.*[@$!%*#?&zäöüÄÖÜß])[A-Za-zäöüÄÖÜß\d@$!%*#?&zäöüÄÖÜß]{8,}$/gi,
 								message:
-									'Your password should at least have one number, one letter and on special character (?#!-...)',
+									'Your password should have at least one number, one letter and one special character (?#!-...)',
 							},
 						})}
 						placeholder="*************"
