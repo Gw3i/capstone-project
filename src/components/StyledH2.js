@@ -9,7 +9,7 @@ const StyledH2 = styled.h2`
 			font-size: 1.6rem;
 			color: #f3f3f3;
 			position: absolute;
-			top: 30px;
+			top: 35px;
 			left: 50%;
 			transform: translate(-50%, -50%);
 			transform: translate;

@@ -55,7 +55,6 @@ const StyledContainer = styled.div`
 			position: relative;
 			flex-direction: column;
 			margin-top: 35px;
-
 			min-width: 300px;
 			min-height: 85px;
 			> span {

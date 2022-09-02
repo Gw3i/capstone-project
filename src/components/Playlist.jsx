@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import useStore from '../hooks/useStore';
 
@@ -17,61 +18,68 @@ export default function Playlist() {
 	const currentItem = useStore(state => state.currentItem);
 
 	return (
-		<StyledContainer variant="column">
-			{channelPlaylists
-				.filter(channelPlaylist => {
-					return channelPlaylist.snippet.channelId === currentItem.id;
-				})
-				.map(channelPlaylist => {
-					return (
-						<StyledList variant="playlist" key={channelPlaylist.id}>
-							<StyledListItem>
-								<Image
-									src={channelPlaylist.snippet.thumbnails.standard?.url}
-									alt={channelItem.channelTitle}
-									layout="fixed"
-									width={40}
-									height={40}
-								/>
-								<p>{channelPlaylist.snippet.title}</p>
-								<button
-									onClick={() => {
-										fetchChannelData({
-											variant: 'playlistVideos',
-											id: channelPlaylist.id,
-										});
-									}}
-								>
-									Choose a playlist
-								</button>
+		<>
+			<Link href="/create">
+				<a>{`<- back`}</a>
+			</Link>
+			<StyledContainer variant="column">
+				{channelPlaylists
+					.filter(channelPlaylist => {
+						return channelPlaylist.snippet.channelId === currentItem.id;
+					})
+					.map(channelPlaylist => {
+						return (
+							<StyledList variant="playlist" key={channelPlaylist.id}>
+								<StyledListItem>
+									<Image
+										src={channelPlaylist.snippet.thumbnails.standard?.url}
+										alt={channelItem.channelTitle}
+										layout="fixed"
+										width={40}
+										height={40}
+									/>
+									<p>{channelPlaylist.snippet.title}</p>
+									<button
+										onClick={() => {
+											fetchChannelData({
+												variant: 'playlistVideos',
+												id: channelPlaylist.id,
+											});
+										}}
+									>
+										Choose a playlist
+									</button>
 
-								{playlistVideos
-									.filter(playlistVideo => {
-										return (
-											playlistVideo.snippet.playlistId === channelPlaylist.id
-										);
-									})
-									.map(playlistVideo => {
-										return (
-											<StyledList
-												variant="playlistVideo"
-												key={playlistVideo.snippet.resourceId.videoId}
-											>
-												<StyledListItem>
-													<PlaylistVideo
-														videoTitle={playlistVideo.snippet.title}
-														YouTubeLink={
-															playlistVideo.snippet.resourceId.videoId
-														}
-													/>
-												</StyledListItem>
-											</StyledList>
-										);
-									})}
-							</StyledListItem>
-						</StyledList>
-					);
-				})}
-		</StyledContainer>
+									{playlistVideos
+										.filter(playlistVideo => {
+											return (
+												playlistVideo.snippet.playlistId ===
+												channelPlaylist.id
+											);
+										})
+										.map(playlistVideo => {
+											return (
+												<StyledList
+													variant="playlistVideo"
+													key={playlistVideo.snippet.resourceId.videoId}
+												>
+													<StyledListItem>
+														<PlaylistVideo
+															videoTitle={playlistVideo.snippet.title}
+															YouTubeLink={
+																playlistVideo.snippet.resourceId
+																	.videoId
+															}
+														/>
+													</StyledListItem>
+												</StyledList>
+											);
+										})}
+								</StyledListItem>
+							</StyledList>
+						);
+					})}
+			</StyledContainer>
+		</>
 	);
 }
