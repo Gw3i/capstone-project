@@ -17,7 +17,7 @@ export default function Category() {
 		return (
 			<StyledContainer key={category.id} variant="exploreWrapper">
 				<StyledHeadline key={category}>{category}</StyledHeadline>
-				<StyledContainer variant="scroll">
+				<StyledContainer variant="scrollVideos">
 					{videos
 						.filter(video => {
 							return video.category === category;
