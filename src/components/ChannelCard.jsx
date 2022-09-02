@@ -14,35 +14,34 @@ export default function ChannelCard({ channelItem }) {
 	const fetchChannelData = useStore(state => state.fetchChannelData);
 
 	return (
-		<>
-			<ConfirmationMessage />
-			<StyledContainer variant="channelCard">
-				<Image
-					src={channelItem.thumbnails?.high?.url}
-					alt={channelItem.channelTitle}
-					objectFit="cover"
-					width={300}
-					height={85}
-				/>
-				<StyledContainer variant="channelCardText">
-					<StyledH2 variant="channelCard">{channelItem.channelTitle}</StyledH2>
-					{/* <h3>{channelItem.descrition}</h3> */}
-					<Link href={`/create/${channelItem.channelId}`}>
-						<StyledLink
-							variant="channelCard"
-							onClick={() => {
-								setCurrentItem(channelItem.channelId);
-								fetchChannelData({
-									variant: 'channelPlaylists',
-									id: channelItem.channelId,
-								});
-							}}
-						>
+		<Link href={`/create/${channelItem.channelId}`}>
+			<StyledLink
+				variant="channelCard"
+				onClick={() => {
+					setCurrentItem(channelItem.channelId);
+					fetchChannelData({
+						variant: 'channelPlaylists',
+						id: channelItem.channelId,
+					});
+				}}
+			>
+				<ConfirmationMessage />
+				<StyledContainer variant="channelCard">
+					<Image
+						src={channelItem.thumbnails?.high?.url}
+						alt={channelItem.channelTitle}
+						objectFit="cover"
+						width={300}
+						height={85}
+					/>
+					<StyledContainer variant="channelCardText">
+						<StyledH2 variant="channelCard">{channelItem.channelTitle}</StyledH2>
+						<StyledContainer variant="channelArrow">
 							<Icon variant="arrow" />
-						</StyledLink>
-					</Link>
+						</StyledContainer>
+					</StyledContainer>
 				</StyledContainer>
-			</StyledContainer>
-		</>
+			</StyledLink>
+		</Link>
 	);
 }

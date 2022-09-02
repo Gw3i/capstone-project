@@ -68,6 +68,16 @@ const StyledContainer = styled.div`
 		css`
 			flex-direction: column;
 		`}
+		${({ variant }) =>
+		variant === 'channelArrow' &&
+		css`
+			position: absolute;
+			top: 30px;
+			right: -20px;
+			background: transparent;
+			border: none;
+			color: #f3f3f3;
+		`}
 `;
 
 export default StyledContainer;

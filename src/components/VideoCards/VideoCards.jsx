@@ -42,7 +42,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 
 				{loginSession && (
 					<Link href={`/edit/${videoId}`}>
-						<StyledLink aria-label="edit">
+						<StyledLink aria-label="edit" variant="default">
 							<Icon variant="edit" color="white" />
 						</StyledLink>
 					</Link>
