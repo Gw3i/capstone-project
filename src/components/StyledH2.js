@@ -6,6 +6,7 @@ const StyledH2 = styled.h2`
 		variant === 'channelCard' &&
 		css`
 			text-align: center;
+			font-size: 1.6rem;
 			color: #f3f3f3;
 			position: absolute;
 			top: 30px;

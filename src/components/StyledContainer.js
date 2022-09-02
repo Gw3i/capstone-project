@@ -55,11 +55,13 @@ const StyledContainer = styled.div`
 			position: relative;
 			flex-direction: column;
 			margin-top: 35px;
-			border: 2px solid black;
-			border-radius: 5px;
+
 			min-width: 300px;
 			min-height: 85px;
-			gap: 20px;
+			> span {
+				border: 2px solid transparent;
+				border-radius: 5px;
+			}
 		`}
 		${({ variant }) =>
 		variant === 'channelCardText' &&

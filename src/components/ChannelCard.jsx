@@ -3,7 +3,9 @@ import Image from 'next/image';
 import useStore from '../hooks/useStore';
 
 import ConfirmationMessage from './ConfirmationMessage';
+import Icon from './Icon';
 import PlaylistVideo from './PlaylistVideo';
+import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledH2 from './StyledH2';
 import StyledList from './StyledList';
@@ -28,8 +30,9 @@ export default function ChannelCard({ channelItem }) {
 				/>
 				<StyledContainer variant="channelCardText">
 					<StyledH2 variant="channelCard">{channelItem.channelTitle}</StyledH2>
-					<h3>{channelItem.descrition}</h3>
-					<button
+					{/* <h3>{channelItem.descrition}</h3> */}
+					<StyledButton
+						variant="channelCard"
 						onClick={() => {
 							setCurrentItem(channelItem.channelId);
 							fetchChannelData({
@@ -38,8 +41,8 @@ export default function ChannelCard({ channelItem }) {
 							});
 						}}
 					>
-						Choose this channel
-					</button>
+						<Icon variant="arrow" />
+					</StyledButton>
 				</StyledContainer>
 				<StyledContainer variant="column">
 					{channelPlaylists

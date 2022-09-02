@@ -23,8 +23,12 @@ const StyledButton = styled.button`
 		${({ variant }) =>
 		variant === 'channelCard' &&
 		css`
+			position: absolute;
+			top: 24px;
+			right: -35px;
 			background: transparent;
 			border: none;
+			color: #f3f3f3;
 		`}
 `;
 
