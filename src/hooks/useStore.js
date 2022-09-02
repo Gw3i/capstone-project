@@ -131,5 +131,21 @@ const useStore = create(set => ({
 			console.error(`Upps, there is a problem: ${error}`);
 		}
 	},
+	users: [],
+	registerUser: user => {
+		set(state => {
+			return {
+				users: [...state.users, user],
+			};
+		});
+	},
+	loginSession: null,
+	setLoginSession: loginData => {
+		set(() => {
+			return {
+				loginSession: loginData,
+			};
+		});
+	},
 }));
 export default useStore;
