@@ -16,7 +16,7 @@ const StyledLink = styled.a`
 			padding: 4px 10px;
 			border: 2px solid black;
 			border-radius: 6px;
-			font-size: 1.2rem;
+			font-size: 1rem;
 			font-weight: bold;
 			white-space: nowrap;
 		`}
