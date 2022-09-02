@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledLink = styled.a`
 	display: flex;
@@ -8,6 +8,17 @@ const StyledLink = styled.a`
 	border: none;
 	text-decoration: none;
 	cursor: pointer;
+	${({ variant }) =>
+		variant === 'channelCard' &&
+		css`
+			max-width: none;
+			position: absolute;
+			top: 30px;
+			right: -20px;
+			background: transparent;
+			border: none;
+			color: #f3f3f3;
+		`}
 `;
 
 export default StyledLink;
