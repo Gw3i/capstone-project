@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledLink = styled.a`
 	display: flex;
@@ -8,6 +8,18 @@ const StyledLink = styled.a`
 	border: none;
 	text-decoration: none;
 	cursor: pointer;
+	${({ variant }) =>
+		variant === 'tags' &&
+		css`
+			max-width: none;
+			flex-direction: row;
+			padding: 4px 10px;
+			border: 2px solid black;
+			border-radius: 6px;
+			font-size: 1rem;
+			font-weight: bold;
+			white-space: nowrap;
+		`}
 `;
 
 export default StyledLink;
