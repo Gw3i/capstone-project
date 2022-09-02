@@ -49,12 +49,16 @@ const StyledContainer = styled.div`
 		${({ variant }) =>
 		variant === 'channelCard' &&
 		css`
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			position: relative;
 			flex-direction: column;
-			margin-top: 20px;
+			margin-top: 35px;
 			border: 2px solid black;
 			border-radius: 5px;
 			min-width: 300px;
-			padding: 10px;
+			min-height: 85px;
 			gap: 20px;
 		`}
 		${({ variant }) =>

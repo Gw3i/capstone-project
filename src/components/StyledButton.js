@@ -20,6 +20,12 @@ const StyledButton = styled.button`
 			border: 2px solid salmon;
 			border-radius: 2px;
 		`}
+		${({ variant }) =>
+		variant === 'channelCard' &&
+		css`
+			background: transparent;
+			border: none;
+		`}
 `;
 
 export default StyledButton;

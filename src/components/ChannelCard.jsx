@@ -5,6 +5,7 @@ import useStore from '../hooks/useStore';
 import ConfirmationMessage from './ConfirmationMessage';
 import PlaylistVideo from './PlaylistVideo';
 import StyledContainer from './StyledContainer';
+import StyledH2 from './StyledH2';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
 
@@ -21,12 +22,12 @@ export default function ChannelCard({ channelItem }) {
 				<Image
 					src={channelItem.thumbnails?.high?.url}
 					alt={channelItem.channelTitle}
-					layout="fixed"
-					width={70}
-					height={70}
+					objectFit="cover"
+					width={300}
+					height={85}
 				/>
 				<StyledContainer variant="channelCardText">
-					<h2>{channelItem.channelTitle}</h2>
+					<StyledH2 variant="channelCard">{channelItem.channelTitle}</StyledH2>
 					<h3>{channelItem.descrition}</h3>
 					<button
 						onClick={() => {
