@@ -31,19 +31,13 @@ export default function CreateAccountForm() {
 			return data.age;
 		}
 
-		const date = data.age.toString();
+		const calculateAge = dayOfBirth => {
+			const ageDifMs = Date.now() - new Date(dayOfBirth).getTime();
+			const ageDate = new Date(ageDifMs);
+			return Math.abs(ageDate.getUTCFullYear() - 1970);
+		};
 
-		const dateOfBirth = new Date(date);
-		const dateToday = new Date();
-
-		function calculateDiffYears(dt2, dt1) {
-			let diff = (dt2.getTime() - dt1.getTime()) / 1000;
-			diff /= 60 * 60 * 24;
-			return Math.abs(Math.round(diff / 365.25));
-		}
-
-		const age = calculateDiffYears(dateToday, dateOfBirth);
-
+		const age = calculateAge(data.age);
 		const newUser = {
 			id: nanoid(),
 			username: data.username,
