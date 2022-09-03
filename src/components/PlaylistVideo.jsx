@@ -42,12 +42,12 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 		setIsDisabled(true);
 	}
 	return (
-		<StyledContainer>
+		<StyledContainer variant="playlistVideo">
 			{confirmationMessage && (
 				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
 			)}
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
-				<StyledLabel htmlFor="title">
+				<StyledLabel variant="playlistVideo" htmlFor="title">
 					{videoTitle}
 					<input
 						{...register('videoTitle')}

@@ -22,16 +22,16 @@ const StyledList = styled.ul`
 			padding: 10px;
 			border: 1px solid black;
 			border-radius: 5px;
-			background-color: #f1f1f1;
+			background-color: #fcfdff;
 		`}
 		${({ variant }) =>
 		variant === 'playlistVideo' &&
 		css`
-			margin: 10px 0;
-			padding: 10px;
+			padding: 0;
+			justify-content: center;
 			border: 1px solid black;
 			border-radius: 5px;
-			background-color: lightblue;
+			border: var(--border-accent);
 		`}
 `;
 

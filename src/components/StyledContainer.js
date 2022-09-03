@@ -44,7 +44,8 @@ const StyledContainer = styled.div`
 			position: relative;
 			max-width: 100vw;
 			max-height: 250px;
-			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			overflow-x: scroll;
 			gap: 25px;
 			> * {
 				min-width: 190px;
@@ -54,6 +55,9 @@ const StyledContainer = styled.div`
 				border: var(--border-accent);
 				border-radius: 5px;
 				padding: 0;
+			}
+			> ul > li {
+				scroll-snap-align: center;
 			}
 		`}
 	${({ variant }) =>
@@ -96,7 +100,16 @@ const StyledContainer = styled.div`
 			border: none;
 			color: #f3f3f3;
 		`}
-${({ variant }) =>
+		${({ variant }) =>
+		variant === 'playlistVideo' &&
+		css`
+			width: 140px;
+			height: 140px;
+			padding: 0;
+		`}
+
+
+		${({ variant }) =>
 		variant === 'snapScroll' &&
 		css`
 			flex-direction: column;

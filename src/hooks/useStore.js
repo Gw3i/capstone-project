@@ -95,6 +95,7 @@ const useStore = create(set => ({
 			currentItem: { id },
 		});
 	},
+
 	channelSearch: [],
 	setChannelSearch: data => {
 		set(() => {

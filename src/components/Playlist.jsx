@@ -8,6 +8,7 @@ import Icon from './Icon';
 import PlaylistVideo from './PlaylistVideo';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
+import StyledGridContainer from './StyledGridContainer';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
 import StyledText from './StyledText';
@@ -61,7 +62,7 @@ export default function Playlist() {
 											variant={areShownVideos ? 'arrowDown' : 'arrow'}
 											size="24px"
 											position="relative"
-											top={areShownVideos ? '5px' : '6px'}
+											top={areShownVideos ? '6px' : '5px'}
 										/>{' '}
 										Choose a playlist
 									</StyledButton>
@@ -77,27 +78,42 @@ export default function Playlist() {
 				.map(channelPlaylist => {
 					return (
 						<>
-							{playlistVideos
-								.filter(playlistVideo => {
-									return playlistVideo.snippet.playlistId === channelPlaylist.id;
-								})
-								.map(playlistVideo => {
-									return (
-										<StyledList
-											variant="playlistVideo"
-											key={playlistVideo.snippet.resourceId.videoId}
-										>
-											<StyledListItem>
-												<PlaylistVideo
-													videoTitle={playlistVideo.snippet.title}
-													YouTubeLink={
-														playlistVideo.snippet.resourceId.videoId
-													}
-												/>
-											</StyledListItem>
-										</StyledList>
-									);
-								})}
+							<StyledGridContainer variant="2Columns">
+								{playlistVideos
+									.filter(playlistVideo => {
+										console.log(playlistVideo);
+										return (
+											playlistVideo.snippet.playlistId === channelPlaylist.id
+										);
+									})
+									.map(playlistVideo => {
+										return (
+											<StyledList
+												variant="playlistVideo"
+												key={playlistVideo.snippet.resourceId.videoId}
+											>
+												<StyledListItem variant="playlistVideo">
+													<Image
+														src={
+															playlistVideo.snippet.thumbnails
+																.standard?.url
+														}
+														alt={channelItem.channelTitle}
+														objectFit="cover"
+														width={190}
+														height={110}
+													/>
+													<PlaylistVideo
+														videoTitle={playlistVideo.snippet.title}
+														YouTubeLink={
+															playlistVideo.snippet.resourceId.videoId
+														}
+													/>
+												</StyledListItem>
+											</StyledList>
+										);
+									})}
+							</StyledGridContainer>
 						</>
 					);
 				})}
