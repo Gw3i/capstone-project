@@ -7,6 +7,7 @@ import PlaylistVideo from './PlaylistVideo';
 import StyledContainer from './StyledContainer';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
+import StyledText from './StyledText';
 
 export default function Playlist() {
 	const channels = useStore(state => state.channels);
@@ -30,15 +31,17 @@ export default function Playlist() {
 					.map(channelPlaylist => {
 						return (
 							<StyledList variant="playlist" key={channelPlaylist.id}>
-								<StyledListItem>
+								<StyledListItem variant="playlist">
 									<Image
 										src={channelPlaylist.snippet.thumbnails.standard?.url}
 										alt={channelItem.channelTitle}
-										layout="fixed"
-										width={40}
-										height={40}
+										objectFit="cover"
+										width={190}
+										height={110}
 									/>
-									<p>{channelPlaylist.snippet.title}</p>
+									<StyledText variant="playlist">
+										{channelPlaylist.snippet.title}
+									</StyledText>
 									<button
 										onClick={() => {
 											fetchChannelData({

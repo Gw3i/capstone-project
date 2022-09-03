@@ -10,6 +10,13 @@ const StyledListItem = styled.li`
 	${({ variant }) =>
 		variant === 'playlist' &&
 		css`
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		`}
+	${({ variant }) =>
+		variant === 'playlistVideo' &&
+		css`
 			background-color: aliceblue;
 		`}
 `;
