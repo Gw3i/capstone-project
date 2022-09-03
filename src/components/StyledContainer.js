@@ -50,8 +50,8 @@ const StyledContainer = styled.div`
 				min-width: 190px;
 				height: 230px;
 				overflow: hidden;
-				background-color: lightgray;
-				border: 1px solid grey;
+				background-color: #fcfdff;
+				border: var(--border-accent);
 				border-radius: 5px;
 				padding: 0;
 			}
