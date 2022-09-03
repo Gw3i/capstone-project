@@ -17,12 +17,16 @@ const StyledModalSection = styled.section`
 		variant === 'addVideo' &&
 		css`
 			position: fixed;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			top: 25%;
 			text-align: center;
-			width: 300px;
+			width: 220px;
 			height: 200px;
-			padding: 10px;
-			border-radius: 20px;
+			padding: 10px 30px 0;
+			border: 2px solid black;
+			border-radius: 10px;
 			background-color: #fcfdff;
 			margin: 0 auto;
 		`}

@@ -8,6 +8,12 @@ const StyledContainer = styled.div`
 			flex-direction: column;
 		`}
 	${({ variant }) =>
+		variant === 'buttons' &&
+		css`
+			gap: 5px;
+			margin-top: 10px;
+		`}
+	${({ variant }) =>
 		variant === 'hidden' &&
 		css`
 			display: none;

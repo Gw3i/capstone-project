@@ -118,7 +118,6 @@ export default function Playlist() {
 													<StyledButton
 														variant="add"
 														onClick={() => {
-															console.log(isShown);
 															handleVisibility();
 														}}
 													>
