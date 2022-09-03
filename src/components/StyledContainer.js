@@ -37,6 +37,24 @@ const StyledContainer = styled.div`
 				border-radius: 20px;
 			}
 		`}
+		${({ variant }) =>
+		variant === 'scrollPlaylists' &&
+		css`
+			padding-left: 50px;
+			position: relative;
+			max-width: 100vw;
+			max-height: 250px;
+			overflow-x: auto;
+			gap: 25px;
+			> * {
+				min-width: 190px;
+				height: 230px;
+				overflow: hidden;
+				background-color: lightgray;
+				border: 1px solid grey;
+				border-radius: 5px;
+			}
+		`}
 	${({ variant }) =>
 		variant === 'exploreImg' &&
 		css`

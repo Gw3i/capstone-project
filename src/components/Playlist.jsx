@@ -22,7 +22,7 @@ export default function Playlist() {
 			<Link href="/create">
 				<a>{`<- back`}</a>
 			</Link>
-			<StyledContainer variant="column">
+			<StyledContainer variant="scrollPlaylists">
 				{channelPlaylists
 					.filter(channelPlaylist => {
 						return channelPlaylist.snippet.channelId === currentItem.id;
@@ -49,37 +49,42 @@ export default function Playlist() {
 									>
 										Choose a playlist
 									</button>
-
-									{playlistVideos
-										.filter(playlistVideo => {
-											return (
-												playlistVideo.snippet.playlistId ===
-												channelPlaylist.id
-											);
-										})
-										.map(playlistVideo => {
-											return (
-												<StyledList
-													variant="playlistVideo"
-													key={playlistVideo.snippet.resourceId.videoId}
-												>
-													<StyledListItem>
-														<PlaylistVideo
-															videoTitle={playlistVideo.snippet.title}
-															YouTubeLink={
-																playlistVideo.snippet.resourceId
-																	.videoId
-															}
-														/>
-													</StyledListItem>
-												</StyledList>
-											);
-										})}
 								</StyledListItem>
 							</StyledList>
 						);
 					})}
 			</StyledContainer>
+			{channelPlaylists
+				.filter(channelPlaylist => {
+					return channelPlaylist.snippet.channelId === currentItem.id;
+				})
+				.map(channelPlaylist => {
+					return (
+						<>
+							{playlistVideos
+								.filter(playlistVideo => {
+									return playlistVideo.snippet.playlistId === channelPlaylist.id;
+								})
+								.map(playlistVideo => {
+									return (
+										<StyledList
+											variant="playlistVideo"
+											key={playlistVideo.snippet.resourceId.videoId}
+										>
+											<StyledListItem>
+												<PlaylistVideo
+													videoTitle={playlistVideo.snippet.title}
+													YouTubeLink={
+														playlistVideo.snippet.resourceId.videoId
+													}
+												/>
+											</StyledListItem>
+										</StyledList>
+									);
+								})}
+						</>
+					);
+				})}
 		</>
 	);
 }
