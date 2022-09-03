@@ -1,7 +1,7 @@
-import StyledButton from '../StyledButton';
-import StyledModalSection from '../StyledModalSection';
+import StyledButton from './StyledButton';
+import StyledModalSection from './StyledModalSection';
 
-export default function DeleteModal() {
+export default function AddVideoModal() {
 	return (
 		<StyledModalSection>
 			<h2>Please add your video to a category</h2>

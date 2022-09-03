@@ -14,7 +14,11 @@ const StyledListItem = styled.li`
 			flex-direction: column;
 			align-items: center;
 		`}
-	${({ variant }) => variant === 'playlistVideo' && css``}
+	${({ variant }) =>
+		variant === 'playlistVideo' &&
+		css`
+			position: relative;
+		`}
 `;
 
 export default StyledListItem;

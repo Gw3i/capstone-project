@@ -5,6 +5,20 @@ const StyledButton = styled.button`
 	padding: 5px 15px;
 	cursor: pointer;
 	${({ variant }) =>
+		variant === 'add' &&
+		css`
+			width: 32px;
+			height: 32px;
+			padding: 2px;
+			max-width: none;
+			background-color: #fcfdff;
+			border: 2px solid black;
+			border-radius: 8px;
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+		`}
+	${({ variant }) =>
 		variant === 'videoIcons' &&
 		css`
 			background-color: transparent;

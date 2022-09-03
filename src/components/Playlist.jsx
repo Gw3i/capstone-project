@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import useStore from '../hooks/useStore';
 
+import AddVideoModal from './AddVideoModal';
 import Icon from './Icon';
 import PlaylistVideo from './PlaylistVideo';
 import StyledButton from './StyledButton';
@@ -21,6 +22,12 @@ export default function Playlist() {
 	const channelPlaylists = useStore(state => state.channelPlaylists);
 	const playlistVideos = useStore(state => state.playlistVideos);
 	const currentItem = useStore(state => state.currentItem);
+
+	// const [isShown, setIsShown] = useState(false);
+
+	// function handleVisibility() {
+	// 	setIsShown(!isShown);
+	// }
 
 	const [areShownVideos, setAreShownVideos] = useState(false);
 
@@ -109,6 +116,9 @@ export default function Playlist() {
 															playlistVideo.snippet.resourceId.videoId
 														}
 													/>
+													<StyledButton variant="add">
+														<Icon variant="add" size="24px" />
+													</StyledButton>
 												</StyledListItem>
 											</StyledList>
 										);
@@ -117,6 +127,7 @@ export default function Playlist() {
 						</>
 					);
 				})}
+			{/*isShown &&*/ <AddVideoModal />}
 		</>
 	);
 }
