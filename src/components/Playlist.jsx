@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import useStore from '../hooks/useStore';
 
@@ -19,6 +20,8 @@ export default function Playlist() {
 	const channelPlaylists = useStore(state => state.channelPlaylists);
 	const playlistVideos = useStore(state => state.playlistVideos);
 	const currentItem = useStore(state => state.currentItem);
+
+	const [areShownVideos, setAreShownVideos] = useState(false);
 
 	return (
 		<>
@@ -47,6 +50,7 @@ export default function Playlist() {
 									<StyledButton
 										variant="playlist"
 										onClick={() => {
+											setAreShownVideos(!areShownVideos);
 											fetchChannelData({
 												variant: 'playlistVideos',
 												id: channelPlaylist.id,
@@ -54,10 +58,10 @@ export default function Playlist() {
 										}}
 									>
 										<Icon
-											variant="arrow"
+											variant={areShownVideos ? 'arrowDown' : 'arrow'}
 											size="24px"
 											position="relative"
-											top="6px"
+											top={areShownVideos ? '5px' : '6px'}
 										/>{' '}
 										Choose a playlist
 									</StyledButton>
