@@ -23,11 +23,11 @@ export default function Playlist() {
 	const playlistVideos = useStore(state => state.playlistVideos);
 	const currentItem = useStore(state => state.currentItem);
 
-	// const [isShown, setIsShown] = useState(false);
+	const [isShown, setIsShown] = useState(false);
 
-	// function handleVisibility() {
-	// 	setIsShown(!isShown);
-	// }
+	function handleVisibility() {
+		setIsShown(!isShown);
+	}
 
 	const [areShownVideos, setAreShownVideos] = useState(false);
 
@@ -88,7 +88,6 @@ export default function Playlist() {
 							<StyledGridContainer variant="2Columns">
 								{playlistVideos
 									.filter(playlistVideo => {
-										console.log(playlistVideo);
 										return (
 											playlistVideo.snippet.playlistId === channelPlaylist.id
 										);
@@ -116,7 +115,13 @@ export default function Playlist() {
 															playlistVideo.snippet.resourceId.videoId
 														}
 													/>
-													<StyledButton variant="add">
+													<StyledButton
+														variant="add"
+														onClick={() => {
+															console.log(isShown);
+															handleVisibility();
+														}}
+													>
 														<Icon variant="add" size="24px" />
 													</StyledButton>
 												</StyledListItem>
@@ -127,7 +132,7 @@ export default function Playlist() {
 						</>
 					);
 				})}
-			{/*isShown &&*/ <AddVideoModal />}
+			{isShown && <AddVideoModal onCancel={handleVisibility} />}
 		</>
 	);
 }
