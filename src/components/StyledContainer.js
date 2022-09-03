@@ -95,6 +95,17 @@ const StyledContainer = styled.div`
 			border: none;
 			color: #f3f3f3;
 		`}
+${({ variant }) =>
+		variant === 'snapScroll' &&
+		css`
+			flex-direction: column;
+			scroll-snap-type: y mandatory;
+			overflow-y: scroll;
+			max-height: 100vh;
+			& > section {
+				scroll-snap-align: center;
+			}
+		`}
 `;
 
 export default StyledContainer;
