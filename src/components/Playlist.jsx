@@ -3,7 +3,9 @@ import Link from 'next/link';
 
 import useStore from '../hooks/useStore';
 
+import Icon from './Icon';
 import PlaylistVideo from './PlaylistVideo';
+import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
@@ -42,7 +44,8 @@ export default function Playlist() {
 									<StyledText variant="playlist">
 										{channelPlaylist.snippet.title}
 									</StyledText>
-									<button
+									<StyledButton
+										variant="playlist"
 										onClick={() => {
 											fetchChannelData({
 												variant: 'playlistVideos',
@@ -50,8 +53,14 @@ export default function Playlist() {
 											});
 										}}
 									>
+										<Icon
+											variant="arrow"
+											size="24px"
+											position="relative"
+											top="6px"
+										/>{' '}
 										Choose a playlist
-									</button>
+									</StyledButton>
 								</StyledListItem>
 							</StyledList>
 						);

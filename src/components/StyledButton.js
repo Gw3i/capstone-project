@@ -20,6 +20,19 @@ const StyledButton = styled.button`
 			border: 2px solid salmon;
 			border-radius: 2px;
 		`}
+	${({ variant }) =>
+		variant === 'playlist' &&
+		css`
+			max-width: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 160px;
+			padding: 0;
+			border: 1px solid black;
+			border-radius: 6px;
+			background-color: transparent;
+		`}
 `;
 
 export default StyledButton;
