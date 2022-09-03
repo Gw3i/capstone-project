@@ -28,7 +28,8 @@ const StyledModalSection = styled.section`
 			border: 2px solid black;
 			border-radius: 10px;
 			background-color: #fcfdff;
-			margin: 0 auto;
+			left: 21.5%;
+			z-index: 50;
 		`}
 `;
 

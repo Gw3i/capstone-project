@@ -11,7 +11,6 @@ const StyledContainer = styled.div`
 		variant === 'buttons' &&
 		css`
 			gap: 5px;
-			margin-top: 10px;
 		`}
 	${({ variant }) =>
 		variant === 'hidden' &&
@@ -112,19 +111,6 @@ const StyledContainer = styled.div`
 			width: 140px;
 			height: 140px;
 			padding: 0;
-		`}
-
-
-		${({ variant }) =>
-		variant === 'snapScroll' &&
-		css`
-			flex-direction: column;
-			scroll-snap-type: y mandatory;
-			overflow-y: scroll;
-			max-height: 100vh;
-			& > section {
-				scroll-snap-align: center;
-			}
 		`}
 `;
 

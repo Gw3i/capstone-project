@@ -6,7 +6,6 @@ import useStore from '../hooks/useStore';
 
 import AddVideoModal from './AddVideoModal';
 import Icon from './Icon';
-import PlaylistVideo from './PlaylistVideo';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledGridContainer from './StyledGridContainer';
@@ -22,6 +21,8 @@ export default function Playlist() {
 	const channelPlaylists = useStore(state => state.channelPlaylists);
 	const playlistVideos = useStore(state => state.playlistVideos);
 	const currentItem = useStore(state => state.currentItem);
+	const setCurrentVideo = useStore(state => state.setCurrentVideo);
+	const currentVideo = useStore(state => state.currentVideo);
 
 	const [isShown, setIsShown] = useState(false);
 
@@ -93,45 +94,57 @@ export default function Playlist() {
 										);
 									})
 									.map(playlistVideo => {
+										console.log(playlistVideo);
 										return (
-											<StyledList
-												variant="playlistVideo"
-												key={playlistVideo.snippet.resourceId.videoId}
-											>
-												<StyledListItem variant="playlistVideo">
-													<Image
-														src={
-															playlistVideo.snippet.thumbnails
-																.standard?.url
-														}
-														alt={channelItem.channelTitle}
-														objectFit="cover"
-														width={190}
-														height={110}
-													/>
-													<PlaylistVideo
-														videoTitle={playlistVideo.snippet.title}
-														YouTubeLink={
-															playlistVideo.snippet.resourceId.videoId
-														}
-													/>
-													<StyledButton
-														variant="add"
-														onClick={() => {
-															handleVisibility();
-														}}
-													>
-														<Icon variant="add" size="24px" />
-													</StyledButton>
-												</StyledListItem>
-											</StyledList>
+											<>
+												<StyledList
+													variant="playlistVideo"
+													key={playlistVideo.snippet.resourceId.videoId}
+												>
+													<StyledListItem variant="playlistVideo">
+														<Image
+															src={
+																playlistVideo.snippet.thumbnails
+																	.standard?.url
+															}
+															alt={channelItem.channelTitle}
+															objectFit="cover"
+															width={190}
+															height={110}
+														/>
+
+														{isShown &&
+															playlistVideo.id ===
+																currentVideo.id && (
+																<AddVideoModal
+																	onCancel={handleVisibility}
+																	videoTitle={
+																		playlistVideo.snippet.title
+																	}
+																	YouTubeLink={
+																		playlistVideo.snippet
+																			.resourceId.videoId
+																	}
+																/>
+															)}
+														<StyledButton
+															variant="add"
+															onClick={() => {
+																setCurrentVideo(playlistVideo.id);
+																handleVisibility();
+															}}
+														>
+															<Icon variant="add" size="24px" />
+														</StyledButton>
+													</StyledListItem>
+												</StyledList>
+											</>
 										);
 									})}
 							</StyledGridContainer>
 						</>
 					);
 				})}
-			{isShown && <AddVideoModal onCancel={handleVisibility} />}
 		</>
 	);
 }

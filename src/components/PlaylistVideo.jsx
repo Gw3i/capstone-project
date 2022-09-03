@@ -6,10 +6,10 @@ import { useForm } from 'react-hook-form';
 import useStore from '../hooks/useStore';
 
 import StyledButton from './StyledButton';
-import StyledContainer from './StyledContainer';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
+import StyledModalSection from './StyledModalSection';
 import StyledSumbitText from './StyledSubmitText';
 
 export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
@@ -42,7 +42,7 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 		setIsDisabled(true);
 	}
 	return (
-		<StyledContainer variant="playlistVideo">
+		<StyledModalSection variant="addVideo">
 			{confirmationMessage && (
 				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
 			)}
@@ -90,8 +90,8 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 					}
 				/>
 
-				<StyledButton disabled={isDisabled}>Add video</StyledButton>
+				<StyledButton disabled={isDisabled}>Add</StyledButton>
 			</StyledForm>
-		</StyledContainer>
+		</StyledModalSection>
 	);
 }
