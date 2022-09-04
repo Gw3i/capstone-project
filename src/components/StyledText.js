@@ -4,8 +4,16 @@ const StyledText = styled.p`
 	${({ variant }) =>
 		variant === 'playlist' &&
 		css`
-			font-size: 1.3rem;
+			margin: 10px 0;
+			font-size: 1.1rem;
 			text-align: center;
+			max-width: ;
+		`}
+	${({ variant }) =>
+		variant === 'videoCard' &&
+		css`
+			font-size: 1rem;
+			padding: 5px;
 		`}
 `;
 

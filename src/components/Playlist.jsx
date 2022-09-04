@@ -184,7 +184,9 @@ export default function Playlist() {
 																width={190}
 																height={110}
 															/>
-															<p>{playlistVideo.snippet.title}</p>
+															<StyledText variant="videoCard">
+																{playlistVideo.snippet.title}
+															</StyledText>
 															{isShown && (
 																<StyledContainer variant="overlay" />
 															)}

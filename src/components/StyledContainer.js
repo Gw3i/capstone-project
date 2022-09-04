@@ -51,10 +51,10 @@ const StyledContainer = styled.div`
 		${({ variant }) =>
 		variant === 'scrollPlaylists' &&
 		css`
-			padding-left: 50px;
+			padding: 0 25vw;
 			position: relative;
 			max-width: 100vw;
-			max-height: 250px;
+			max-height: 270px;
 			scroll-snap-type: x mandatory;
 			overflow-x: scroll;
 			gap: 25px;
