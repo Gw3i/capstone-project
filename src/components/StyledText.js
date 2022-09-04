@@ -15,6 +15,11 @@ const StyledText = styled.p`
 			font-size: 1rem;
 			padding: 5px;
 		`}
+		${({ variant }) =>
+		variant === 'minMargin' &&
+		css`
+			margin: 5px 0;
+		`}
 `;
 
 export default StyledText;

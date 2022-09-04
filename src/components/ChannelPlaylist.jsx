@@ -1,6 +1,7 @@
 import useStore from '../hooks/useStore';
 
 import ChannelCard from './ChannelCard';
+import StyledContainer from './StyledContainer';
 
 export default function ChannelPlaylist() {
 	const currentItem = useStore(state => state.currentItem);
@@ -13,7 +14,12 @@ export default function ChannelPlaylist() {
 			{currentItem.id === ''
 				? channelItems?.map(channelItem => {
 						return (
-							<ChannelCard key={channelItem.channelId} channelItem={channelItem} />
+							<StyledContainer
+								key={channelItem.channelId}
+								variant="channelCardWrapper"
+							>
+								<ChannelCard channelItem={channelItem} />
+							</StyledContainer>
 						);
 				  })
 				: channelItems
@@ -22,10 +28,12 @@ export default function ChannelPlaylist() {
 						})
 						.map(channelItem => {
 							return (
-								<ChannelCard
+								<StyledContainer
 									key={channelItem.channelId}
-									channelItem={channelItem}
-								/>
+									variant="channelCardWrapper"
+								>
+									<ChannelCard channelItem={channelItem} />
+								</StyledContainer>
 							);
 						})}
 		</>

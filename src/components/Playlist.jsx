@@ -69,13 +69,18 @@ export default function Playlist() {
 			<Link href="/create">
 				<StyledLink variant="backButton">{`< Back`}</StyledLink>
 			</Link>
+
 			{channelItem
 				.filter(channel => {
 					return router.query.id === channel.channelId;
 				})
 				.map(channel => {
 					return (
-						<StyledContainer variant="channelBanner" key={channel.channelId}>
+						<StyledContainer
+							variant="channelCardWrapperPlaylists"
+							key={channel.channelId}
+						>
+							<StyledText variant="minMargin">Channel</StyledText>
 							<ChannelCard channelItem={channel} />
 						</StyledContainer>
 					);

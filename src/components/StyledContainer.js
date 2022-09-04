@@ -88,13 +88,24 @@ const StyledContainer = styled.div`
 			align-items: center;
 			position: relative;
 			flex-direction: column;
-			margin-top: 35px;
 			min-width: 300px;
 			min-height: 85px;
 			> span {
 				border: 2px solid transparent;
 				border-radius: 5px;
 			}
+		`}
+		${({ variant }) =>
+		variant === 'channelCardWrapper' &&
+		css`
+			margin: 20px 0 50px;
+		`}
+		${({ variant }) =>
+		variant === 'channelCardWrapperPlaylists' &&
+		css`
+			text-align: center;
+			flex-direction: column;
+			margin: 40px 0 25px;
 		`}
 		${({ variant }) =>
 		variant === 'channelCardText' &&
@@ -129,11 +140,6 @@ const StyledContainer = styled.div`
 			background-color: rgba(0, 0, 0, 0.3);
 			z-index: 90;
 			width: 110%;
-		`}
-		${({ variant }) =>
-		variant === 'channelBanner' &&
-		css`
-			margin: 0 0 20px 0;
 		`}
 `;
 
