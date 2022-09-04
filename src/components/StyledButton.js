@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
-	max-width: 100px;
 	padding: 5px 15px;
 	cursor: pointer;
 	${({ variant }) =>
@@ -17,6 +16,21 @@ const StyledButton = styled.button`
 			position: absolute;
 			bottom: 20px;
 			right: 20px;
+		`}
+	${({ variant }) =>
+		variant === 'standard' &&
+		css`
+			background-color: transparent;
+			border: 1px solid var(--dark);
+			border-radius: 6px;
+		`}
+		${({ variant }) =>
+		variant === 'filled' &&
+		css`
+			border: 1px solid var(--dark);
+			border-radius: 6px;
+			background-color: var(--dark);
+			color: var(--white);
 		`}
 	${({ variant }) =>
 		variant === 'videoIcons' &&

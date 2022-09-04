@@ -90,10 +90,12 @@ export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 					}
 				/>
 				<StyledContainer variant="buttons">
-					<StyledButton type="button" onClick={onCancel}>
+					<StyledButton type="button" variant="standard" onClick={onCancel}>
 						Cancel
 					</StyledButton>
-					<StyledButton type="submit">Add</StyledButton>
+					<StyledButton type="submit" variant="filled">
+						Add
+					</StyledButton>
 				</StyledContainer>
 			</StyledForm>
 		</StyledModalSection>

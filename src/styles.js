@@ -21,5 +21,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	:root {
 		--border-accent: 2px solid #D2B6FF;
+		--dark: #09070B;
+		--white: #FCFDFF;
 	}
 `;
