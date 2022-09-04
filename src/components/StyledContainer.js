@@ -105,7 +105,7 @@ const StyledContainer = styled.div`
 		variant === 'channelArrow' &&
 		css`
 			position: absolute;
-			top: calc(50% - 24px);
+			top: calc(50% - 18px);
 			right: 0;
 			background: transparent;
 			border: none;

@@ -37,7 +37,7 @@ export default function ChannelCard({ channelItem }) {
 					<StyledContainer variant="channelCardText">
 						<StyledH2 variant="channelCard">{channelItem.channelTitle}</StyledH2>
 						<StyledContainer variant="channelArrow">
-							<Icon variant="arrow" />
+							<Icon variant="arrow" size="36px" />
 						</StyledContainer>
 					</StyledContainer>
 				</StyledContainer>
