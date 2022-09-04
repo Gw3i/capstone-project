@@ -17,7 +17,11 @@ const StyledListItem = styled.li`
 	${({ variant }) =>
 		variant === 'playlistVideo' &&
 		css`
+			display: flex;
+			flex-direction: column;
 			position: relative;
+			justify-content: space-between;
+			height: 100%;
 		`}
 `;
 

@@ -4,33 +4,32 @@ const StyledButton = styled.button`
 	padding: 5px 15px;
 	cursor: pointer;
 	${({ variant }) =>
-		variant === 'add' &&
-		css`
-			width: 32px;
-			height: 32px;
-			padding: 2px;
-			max-width: none;
-			background-color: #fcfdff;
-			border: 2px solid black;
-			border-radius: 8px;
-			position: absolute;
-			bottom: 20px;
-			right: 20px;
-		`}
-	${({ variant }) =>
 		variant === 'standard' &&
 		css`
 			background-color: transparent;
 			border: 1px solid var(--dark);
 			border-radius: 6px;
 		`}
-		${({ variant }) =>
+	${({ variant }) =>
 		variant === 'filled' &&
 		css`
 			border: 1px solid var(--dark);
 			border-radius: 6px;
 			background-color: var(--dark);
 			color: var(--white);
+		`}
+		${({ variant }) =>
+		variant === 'add' &&
+		css`
+			width: 32px;
+			height: 32px;
+			padding: 2px;
+			margin: 5px;
+			max-width: none;
+			background-color: #fcfdff;
+			border: 2px solid black;
+			border-radius: 8px;
+			align-self: flex-end;
 		`}
 	${({ variant }) =>
 		variant === 'videoIcons' &&
