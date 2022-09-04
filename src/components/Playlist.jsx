@@ -13,6 +13,7 @@ import Icon from './Icon';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledGridContainer from './StyledGridContainer';
+import StyledH3 from './StyledH3';
 import StyledLink from './StyledLink';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
@@ -79,7 +80,7 @@ export default function Playlist() {
 						</StyledContainer>
 					);
 				})}
-			<h3>Playlists: {channelPlaylists.length}</h3>
+			<StyledH3 variant="playlists">Playlists: {channelPlaylists.length}</StyledH3>
 			<StyledContainer variant="scrollPlaylists">
 				{channelPlaylists
 					?.filter(channelPlaylist => {
