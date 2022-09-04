@@ -11,6 +11,7 @@ import Icon from './Icon';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledGridContainer from './StyledGridContainer';
+import StyledLink from './StyledLink';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
 import StyledText from './StyledText';
@@ -61,7 +62,7 @@ export default function Playlist() {
 	return (
 		<>
 			<Link href="/create">
-				<a>{`<- back`}</a>
+				<StyledLink variant="backButton">{`< Back`}</StyledLink>
 			</Link>
 			<StyledContainer variant="scrollPlaylists">
 				{channelPlaylists

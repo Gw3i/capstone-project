@@ -25,6 +25,14 @@ const StyledLink = styled.a`
 			font-weight: bold;
 			white-space: nowrap;
 		`}
+		${({ variant }) =>
+		variant === 'backButton' &&
+		css`
+			position: absolute;
+			top: 2%;
+			left: 5%;
+			font-weight: bold;
+		`}
 `;
 
 export default StyledLink;
