@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
@@ -7,6 +8,7 @@ import { useEffect } from 'react';
 import useStore from '../hooks/useStore';
 
 import AddVideoModal from './AddVideoModal';
+import ChannelCard from './ChannelCard';
 import Icon from './Icon';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
@@ -30,6 +32,8 @@ export default function Playlist() {
 	const currentPlaylist = useStore(state => state.currentPlaylist);
 
 	const [isShown, setIsShown] = useState(false);
+
+	const router = useRouter();
 
 	function handleVisibility() {
 		setIsShown(!isShown);
@@ -64,9 +68,21 @@ export default function Playlist() {
 			<Link href="/create">
 				<StyledLink variant="backButton">{`< Back`}</StyledLink>
 			</Link>
+			{channelItem
+				.filter(channel => {
+					return router.query.id === channel.channelId;
+				})
+				.map(channel => {
+					return (
+						<StyledContainer variant="channelBanner" key={channel.channelId}>
+							<ChannelCard channelItem={channel} />
+						</StyledContainer>
+					);
+				})}
+			<h3>Playlists: {channelPlaylists.length}</h3>
 			<StyledContainer variant="scrollPlaylists">
 				{channelPlaylists
-					.filter(channelPlaylist => {
+					?.filter(channelPlaylist => {
 						return channelPlaylist.snippet.channelId === currentItem.id;
 					})
 					.map(channelPlaylist => {
@@ -132,7 +148,7 @@ export default function Playlist() {
 					})}
 			</StyledContainer>
 			{channelPlaylists
-				.filter(channelPlaylist => {
+				?.filter(channelPlaylist => {
 					return channelPlaylist.snippet.channelId === currentItem.id;
 				})
 				.map(channelPlaylist => {

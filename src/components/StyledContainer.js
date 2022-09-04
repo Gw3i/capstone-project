@@ -130,6 +130,11 @@ const StyledContainer = styled.div`
 			z-index: 90;
 			width: 110%;
 		`}
+		${({ variant }) =>
+		variant === 'channelBanner' &&
+		css`
+			margin: 0 0 50px 0;
+		`}
 `;
 
 export default StyledContainer;
