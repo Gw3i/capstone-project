@@ -118,64 +118,72 @@ export default function Playlist() {
 				.map(channelPlaylist => {
 					return (
 						<>
-							<StyledGridContainer variant="2Columns">
-								{playlistVideos
-									.filter(playlistVideo => {
-										return (
-											playlistVideo.snippet.playlistId === channelPlaylist.id
-										);
-									})
-									.map(playlistVideo => {
-										return (
-											<>
-												<StyledList
-													variant="playlistVideo"
-													key={playlistVideo.snippet.resourceId.videoId}
-												>
-													<StyledListItem variant="playlistVideo">
-														<Image
-															src={
-																playlistVideo.snippet.thumbnails
-																	.standard?.url
-															}
-															alt={channelItem.channelTitle}
-															objectFit="cover"
-															width={190}
-															height={110}
-														/>
-														{isShown && (
-															<StyledContainer variant="overlay" />
-														)}
-														{isShown &&
-															playlistVideo.id ===
-																currentVideo.id && (
-																<AddVideoModal
-																	ref={ref}
-																	onCancel={handleVisibility}
-																	videoTitle={
-																		playlistVideo.snippet.title
-																	}
-																	YouTubeLink={
-																		playlistVideo.snippet
-																			.resourceId.videoId
-																	}
-																/>
+							{areShownVideos && (
+								<StyledGridContainer variant="2Columns">
+									{playlistVideos
+										.filter(playlistVideo => {
+											return (
+												playlistVideo.snippet.playlistId ===
+												channelPlaylist.id
+											);
+										})
+										.map(playlistVideo => {
+											return (
+												<>
+													<StyledList
+														variant="playlistVideo"
+														key={
+															playlistVideo.snippet.resourceId.videoId
+														}
+													>
+														<StyledListItem variant="playlistVideo">
+															<Image
+																src={
+																	playlistVideo.snippet.thumbnails
+																		.standard?.url
+																}
+																alt={channelItem.channelTitle}
+																objectFit="cover"
+																width={190}
+																height={110}
+															/>
+															{isShown && (
+																<StyledContainer variant="overlay" />
 															)}
-														<StyledButton
-															variant="add"
-															onClick={() => {
-																setCurrentVideo(playlistVideo.id);
-																handleVisibility();
-															}}
-														>
-															<Icon variant="add" size="24px" />
-														</StyledButton>
-													</StyledListItem>
-												</StyledList>
-											</>
-										);
-									})}
-							</StyledGridContainer>
+															{isShown &&
+																playlistVideo.id ===
+																	currentVideo.id && (
+																	<AddVideoModal
+																		ref={ref}
+																		onCancel={handleVisibility}
+																		videoTitle={
+																			playlistVideo.snippet
+																				.title
+																		}
+																		YouTubeLink={
+																			playlistVideo.snippet
+																				.resourceId.videoId
+																		}
+																	/>
+																)}
+															<StyledButton
+																variant="add"
+																onClick={() => {
+																	setCurrentVideo(
+																		playlistVideo.id
+																	);
+																	handleVisibility();
+																}}
+															>
+																<Icon variant="add" size="24px" />
+															</StyledButton>
+														</StyledListItem>
+													</StyledList>
+												</>
+											);
+										})}
+								</StyledGridContainer>
+							)}
 						</>
 					);
 				})}
