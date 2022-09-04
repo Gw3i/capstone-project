@@ -12,6 +12,12 @@ const StyledContainer = styled.div`
 		css`
 			gap: 5px;
 		`}
+		${({ variant }) =>
+		variant === 'columnButtons' &&
+		css`
+			flex-direction: column;
+			gap: 5px;
+		`}
 	${({ variant }) =>
 		variant === 'hidden' &&
 		css`

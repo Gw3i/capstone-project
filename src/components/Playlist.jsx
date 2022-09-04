@@ -82,30 +82,42 @@ export default function Playlist() {
 									<StyledText variant="playlist">
 										{channelPlaylist.snippet.title}
 									</StyledText>
-									<StyledButton
-										variant="playlist"
-										onClick={() => {
-											setCurrentPlaylist(channelPlaylist.id);
-											setAreShownVideos(!areShownVideos);
-											fetchChannelData({
-												variant: 'playlistVideos',
-												id: channelPlaylist.id,
-											});
-										}}
-									>
-										<Icon
-											variant={
-												areShownVideos &&
-												channelPlaylist.id === currentPlaylist.id
-													? 'arrowDown'
-													: 'arrow'
-											}
-											size="24px"
-											position="relative"
-											top={areShownVideos ? '6px' : '5px'}
-										/>{' '}
-										Choose a playlist
-									</StyledButton>
+									<StyledContainer variant="columnButtons">
+										<StyledButton variant="StandatdFlexIcon">
+											<Icon variant="add" size="16px" /> Add whole playlist
+										</StyledButton>
+										<StyledButton
+											variant="StandatdFlexIcon"
+											onClick={() => {
+												setCurrentPlaylist(channelPlaylist.id);
+												if (!currentPlaylist.id) {
+													setAreShownVideos(!areShownVideos);
+												} else {
+													setAreShownVideos(true);
+												}
+												fetchChannelData({
+													variant: 'playlistVideos',
+													id: channelPlaylist.id,
+												});
+											}}
+										>
+											<Icon
+												variant={
+													areShownVideos &&
+													channelPlaylist.id === currentPlaylist.id
+														? 'arrowDown'
+														: 'arrow'
+												}
+												size={
+													areShownVideos &&
+													channelPlaylist.id === currentPlaylist.id
+														? '24px'
+														: '14px'
+												}
+											/>
+											Choose a playlist
+										</StyledButton>
+									</StyledContainer>
 								</StyledListItem>
 							</StyledList>
 						);

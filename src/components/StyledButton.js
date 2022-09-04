@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
-	padding: 5px 15px;
+	padding: 3px 12px;
 	cursor: pointer;
 	${({ variant }) =>
 		variant === 'standard' &&
@@ -17,6 +17,15 @@ const StyledButton = styled.button`
 			border-radius: 6px;
 			background-color: var(--dark);
 			color: var(--white);
+		`}
+		${({ variant }) =>
+		variant === 'StandatdFlexIcon' &&
+		css`
+			background-color: transparent;
+			border: 1px solid var(--dark);
+			border-radius: 6px;
+			display: flex;
+			gap: 2px;
 		`}
 		${({ variant }) =>
 		variant === 'add' &&
