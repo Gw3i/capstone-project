@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 import useStore from '../hooks/useStore';
 
@@ -31,6 +33,28 @@ export default function Playlist() {
 	}
 
 	const [areShownVideos, setAreShownVideos] = useState(false);
+
+	// Clicking outside modal closes it
+	const ref = useRef();
+
+	function useOnClickOutside(ref, handler) {
+		useEffect(() => {
+			const listener = event => {
+				if (!ref.current || ref.current.contains(event.target)) {
+					return;
+				}
+				handler(event);
+			};
+			document.addEventListener('mousedown', listener);
+			document.addEventListener('touchstart', listener);
+			return () => {
+				document.removeEventListener('mousedown', listener);
+				document.removeEventListener('touchstart', listener);
+			};
+		}, [ref, handler]);
+	}
+
+	useOnClickOutside(ref, () => setIsShown(false));
 
 	return (
 		<>
@@ -94,7 +118,6 @@ export default function Playlist() {
 										);
 									})
 									.map(playlistVideo => {
-										console.log(playlistVideo);
 										return (
 											<>
 												<StyledList
@@ -112,11 +135,14 @@ export default function Playlist() {
 															width={190}
 															height={110}
 														/>
-
+														{isShown && (
+															<StyledContainer variant="overlay" />
+														)}
 														{isShown &&
 															playlistVideo.id ===
 																currentVideo.id && (
 																<AddVideoModal
+																	ref={ref}
 																	onCancel={handleVisibility}
 																	videoTitle={
 																		playlistVideo.snippet.title
