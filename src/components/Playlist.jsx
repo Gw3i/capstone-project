@@ -25,6 +25,8 @@ export default function Playlist() {
 	const currentItem = useStore(state => state.currentItem);
 	const setCurrentVideo = useStore(state => state.setCurrentVideo);
 	const currentVideo = useStore(state => state.currentVideo);
+	const setCurrentPlaylist = useStore(state => state.setCurrentPlaylist);
+	const currentPlaylist = useStore(state => state.currentPlaylist);
 
 	const [isShown, setIsShown] = useState(false);
 
@@ -83,6 +85,7 @@ export default function Playlist() {
 									<StyledButton
 										variant="playlist"
 										onClick={() => {
+											setCurrentPlaylist(channelPlaylist.id);
 											setAreShownVideos(!areShownVideos);
 											fetchChannelData({
 												variant: 'playlistVideos',
@@ -91,7 +94,12 @@ export default function Playlist() {
 										}}
 									>
 										<Icon
-											variant={areShownVideos ? 'arrowDown' : 'arrow'}
+											variant={
+												areShownVideos &&
+												channelPlaylist.id === currentPlaylist.id
+													? 'arrowDown'
+													: 'arrow'
+											}
 											size="24px"
 											position="relative"
 											top={areShownVideos ? '6px' : '5px'}

@@ -101,6 +101,12 @@ const useStore = create(set => ({
 			currentVideo: { id },
 		});
 	},
+	currentPlaylist: '',
+	setCurrentPlaylist: id => {
+		set({
+			currentPlaylist: { id },
+		});
+	},
 	channelSearch: [],
 	setChannelSearch: data => {
 		set(() => {
