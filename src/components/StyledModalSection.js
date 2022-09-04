@@ -23,8 +23,7 @@ const StyledModalSection = styled.section`
 			top: 25%;
 			text-align: center;
 			width: 220px;
-			height: 200px;
-			padding: 10px 30px 0;
+			padding: 10px 30px;
 			border: 2px solid black;
 			border-radius: 10px;
 			background-color: #fcfdff;
