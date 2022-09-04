@@ -108,11 +108,18 @@ export default function Playlist() {
 														? 'arrowDown'
 														: 'arrow'
 												}
-												size={
+												size="14px"
+												position={
 													areShownVideos &&
 													channelPlaylist.id === currentPlaylist.id
-														? '24px'
-														: '14px'
+														? 'relative'
+														: ''
+												}
+												top={
+													areShownVideos &&
+													channelPlaylist.id === currentPlaylist.id
+														? '4px'
+														: ''
 												}
 											/>
 											Choose a playlist
