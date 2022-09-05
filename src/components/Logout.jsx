@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import useStore from '../hooks/useStore';
 
-import ConfirmationMessage from './ConfirmationMessage';
 import StyledLink from './StyledLink';
 
 export default function Logout() {
@@ -10,7 +9,6 @@ export default function Logout() {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	return (
 		<>
-			<ConfirmationMessage />
 			<Link href="/">
 				<StyledLink
 					variant="buttonSmall"

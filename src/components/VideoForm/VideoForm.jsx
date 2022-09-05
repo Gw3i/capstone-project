@@ -1,8 +1,8 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
+import ConfirmationMessage from '../ConfirmationMessage';
 import SearchForm from '../SearchForm.jsx';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
@@ -11,10 +11,10 @@ import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
 import StyledSelect from '../StyledSelect';
-import StyledSumbitText from '../StyledSubmitText';
 
 export default function VideoForm() {
-	const [showText, setShowText] = useState(false);
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
+	const confirmationMessage = useStore(state => state.confirmationMessage);
 
 	const setVideos = useStore(state => state.setVideos);
 	const categories = useStore(state => state.categories);
@@ -29,13 +29,7 @@ export default function VideoForm() {
 	function onSubmit(data) {
 		setVideos(data);
 		reset();
-		setShowText(true);
-		const fadeMessage = setTimeout(() => {
-			setShowText(false);
-		}, 3000);
-		return () => {
-			clearTimeout(fadeMessage);
-		};
+		setConfirmationMessage('Greate! You are logged in now');
 	}
 
 	return (
@@ -122,7 +116,7 @@ export default function VideoForm() {
 				</StyledLabel>
 				<StyledButton variant="submit">Submit</StyledButton>
 			</StyledForm>
-			{showText && <StyledSumbitText>Great! Your video was added</StyledSumbitText>}
+			{confirmationMessage && <ConfirmationMessage />}
 			<StyledH2 variant="borderBottom">OR</StyledH2>
 			<SearchForm />
 		</>

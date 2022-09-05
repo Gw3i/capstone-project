@@ -4,14 +4,19 @@ const StyledModalSection = styled.section`
 	${({ variant }) =>
 		variant === 'delete' &&
 		css`
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			position: absolute;
-			top: 50px;
+			top: 35px;
 			right: 0;
-			width: 300px;
+			width: 220px;
 			height: 200px;
 			padding: 10px;
-			border-radius: 20px;
+			border: 2px solid black;
+			border-radius: 8px;
 			background-color: #fcfdff;
+			text-align: center;
 		`}
 	${({ variant }) =>
 		variant === 'addVideo' &&
@@ -25,7 +30,7 @@ const StyledModalSection = styled.section`
 			width: 220px;
 			padding: 10px 30px;
 			border: 2px solid black;
-			border-radius: 10px;
+			border-radius: 8px;
 			background-color: #fcfdff;
 			left: calc(50% - 110px);
 			z-index: 100;

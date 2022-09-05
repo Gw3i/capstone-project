@@ -21,6 +21,13 @@ const StyledText = styled.p`
 		css`
 			margin: 5px 0;
 		`}
+		${({ variant }) =>
+		variant === 'h3' &&
+		css`
+			font-size: var(--h3);
+			margin: 5px 0 15px;
+			font-weight: bold;
+		`}
 `;
 
 export default StyledText;

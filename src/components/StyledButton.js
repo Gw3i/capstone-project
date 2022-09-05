@@ -12,6 +12,15 @@ const StyledButton = styled.button`
 			font-weight: bold;
 		`}
 	${({ variant }) =>
+		variant === 'highlight' &&
+		css`
+			background-color: var(--accent-purple);
+			border: 2px solid var(--dark);
+			border-radius: 6px;
+			font-weight: bold;
+			color: var(--dark);
+		`}
+	${({ variant }) =>
 		variant === 'submit' &&
 		css`
 			padding: 4px 20px;
@@ -62,13 +71,6 @@ const StyledButton = styled.button`
 			display: flex;
 			padding: 0;
 			margin: 0;
-		`}
-	${({ variant }) =>
-		variant === 'delete' &&
-		css`
-			background-color: lightsalmon;
-			border: 2px solid salmon;
-			border-radius: 2px;
 		`}
 	${({ variant }) =>
 		variant === 'playlist' &&
