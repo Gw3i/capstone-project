@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -17,15 +16,6 @@ export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 	const setVideos = useStore(state => state.setVideos);
 	const confirmationMessage = useStore(state => state.confirmationMessage);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
-
-	useEffect(() => {
-		const confirmMessage = setTimeout(() => {
-			setConfirmationMessage(null);
-		}, 2000);
-		return () => {
-			clearTimeout(confirmMessage);
-		};
-	}, [setConfirmationMessage, confirmationMessage]);
 
 	const {
 		register,

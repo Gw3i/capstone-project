@@ -14,7 +14,6 @@ export default function ChannelCard({ channelItem }) {
 	const setCurrentItem = useStore(state => state.setCurrentItem);
 	const fetchChannelData = useStore(state => state.fetchChannelData);
 	const routerId = useRouter().query.id;
-	console.log(routerId);
 
 	return (
 		<Link href={`/create/${channelItem?.channelId}`}>
