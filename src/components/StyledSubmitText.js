@@ -18,19 +18,19 @@ const move = keyframes`
 
 const StyledSumbitText = styled.p`
 	padding: 10px;
-	border: 2px solid lightgreen;
-	border-radius: 5px;
-	color: lightgreen;
-	${({ variant }) =>
-		variant === 'editConfirm' &&
-		css`
-			position: fixed;
-			top: -10vh;
-			z-index: 50;
-			background-color: lightgreen;
-			color: white;
-			animation: ${move} 1.5s ease-in;
-			animation-fill-mode: forwards;
-		`}
+	border: 2px solid var(--dark);
+	border-radius: 6px;
+	color: var(--dark)
+		${({ variant }) =>
+			variant === 'editConfirm' &&
+			css`
+				position: fixed;
+				top: -10vh;
+				z-index: 50;
+				background-color: var(--accent-purple);
+				color: var(--dark);
+				animation: ${move} 1.5s ease-in;
+				animation-fill-mode: forwards;
+			`};
 `;
 export default StyledSumbitText;
