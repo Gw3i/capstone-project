@@ -7,6 +7,7 @@ import DeleteModal from '../DeleteModal/DeleteModal';
 import Icon from '../Icon';
 import StyledButton from '../StyledButton';
 import StyledCategoryTag from '../StyledCategoryTag';
+import StyledContainer from '../StyledContainer';
 import StyledLink from '../StyledLink';
 import StyledVideoButtonContainer from '../StyledVideoButtonContainer';
 import StyledVideoContainer from '../StyledVideoContainer';
@@ -56,8 +57,10 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 					<Icon variant="bookmark" color={bookmark ? 'var(--accent-purple)' : 'white'} />
 				</StyledButton>
 			</StyledVideoButtonContainer>
-			<StyledCategoryTag>{category}</StyledCategoryTag>
-			<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
+			<StyledContainer variant="blurContainer">
+				<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
+				<StyledCategoryTag>{category}</StyledCategoryTag>
+			</StyledContainer>
 			<StyledVideoFrame
 				width="180"
 				height="315"

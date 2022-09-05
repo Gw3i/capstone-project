@@ -174,6 +174,21 @@ const StyledContainer = styled.div`
 		css`
 			margin: 10px 0;
 		`}
+		${({ variant }) =>
+		variant === 'blurContainer' &&
+		css`
+			display: flex;
+			flex-direction: column;
+			padding: 20px;
+			position: absolute;
+			width: 100%;
+			height: 140px;
+			left: 0px;
+			bottom: 0;
+
+			background: rgba(163, 163, 163, 0.1);
+			backdrop-filter: blur(20px);
+		`}
 `;
 
 export default StyledContainer;

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 const StyledCategoryTag = styled.a`
-	position: absolute;
-	bottom: 65px;
-	left: 20px;
+	max-width: fit-content;
+	margin-top: 5px;
 	padding: 5px 15px;
 	border: 2px solid white;
 	border-radius: 5px;
