@@ -18,10 +18,11 @@ const StyledLink = styled.a`
 		css`
 			max-width: none;
 			flex-direction: row;
-			padding: 4px 10px;
-			border: 2px solid black;
+			padding: 3px 12px;
+			background-color: transparent;
+			border: 2px solid var(--dark);
 			border-radius: 6px;
-			font-size: 1rem;
+			font-size: var(--text-m);
 			font-weight: bold;
 			white-space: nowrap;
 		`}

@@ -7,7 +7,7 @@ const StyledButton = styled.button`
 		variant === 'standard' &&
 		css`
 			background-color: transparent;
-			border: 1px solid var(--dark);
+			border: 2px solid var(--dark);
 			border-radius: 6px;
 		`}
 	${({ variant }) =>

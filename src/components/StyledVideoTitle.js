@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 const StyledVideoTitle = styled.h2`
 	color: var(--white);
-	font-size: var(--h4);
+	font-size: var(--text-m);
 	${({ position }) =>
 		position === 'explore' &&
 		css`
