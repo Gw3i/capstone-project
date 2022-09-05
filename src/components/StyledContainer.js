@@ -31,8 +31,30 @@ const StyledContainer = styled.div`
 			margin-bottom: 30px;
 			text-align: left;
 		`}
+
+		${({ variant }) =>
+		variant === 'tags' &&
+		css`
+			max-width: 100vw;
+			padding: 0 10px;
+			gap: 10px;
+			margin-bottom: 5px;
+			display: grid;
+			grid-auto-flow: column;
+			overflow-x: scroll;
+			> a {
+				width: auto;
+			}
+		`}
+        ${({ variant }) =>
+		variant === 'tagsWrapper' &&
+		css`
+			display: block;
+			margin-bottom: 20px;
+		`}
+
 	${({ variant }) =>
-		variant === 'scroll' &&
+		variant === 'scrollVideos' &&
 		css`
 			position: relative;
 			max-width: 100vw;
@@ -41,7 +63,7 @@ const StyledContainer = styled.div`
 			gap: 10px;
 			> * {
 				min-width: 250px;
-				height: 400px;
+				height: 200px;
 				overflow: hidden;
 				background-color: lightgray;
 				border: 1px solid grey;

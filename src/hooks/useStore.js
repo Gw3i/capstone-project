@@ -81,6 +81,8 @@ const useStore = create(set => ({
 		{ id: nanoid(), name: 'Biology' },
 		{ id: nanoid(), name: 'Chemistry' },
 		{ id: nanoid(), name: 'Uncategorized' },
+		{ id: nanoid(), name: 'History' },
+		{ id: nanoid(), name: 'Around the world' },
 	],
 	confirmationMessage: null,
 	setConfirmationMessage: message => {
