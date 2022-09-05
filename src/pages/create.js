@@ -1,6 +1,7 @@
 import Layout from '../components/Layout';
 import LoginForm from '../components/LoginForm';
 import Logout from '../components/Logout';
+import StyledContainer from '../components/StyledContainer';
 import StyledH1 from '../components/StyledH1';
 import VideoForm from '../components/VideoForm/VideoForm';
 import useStore from '../hooks/useStore';
@@ -12,7 +13,10 @@ export default function Create() {
 			<StyledH1 variant="borderBottom">Add</StyledH1>
 			{loginSession ? (
 				<>
-					<Logout />
+					<StyledContainer variant="logout">
+						<Logout />
+					</StyledContainer>
+
 					<VideoForm />
 				</>
 			) : (

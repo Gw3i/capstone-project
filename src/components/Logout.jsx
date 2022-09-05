@@ -3,6 +3,7 @@ import Link from 'next/link';
 import useStore from '../hooks/useStore';
 
 import ConfirmationMessage from './ConfirmationMessage';
+import StyledLink from './StyledLink';
 
 export default function Logout() {
 	const setLoginSession = useStore(state => state.setLoginSession);
@@ -11,14 +12,15 @@ export default function Logout() {
 		<>
 			<ConfirmationMessage />
 			<Link href="/">
-				<a
+				<StyledLink
+					variant="tags"
 					onClick={() => {
 						setLoginSession(null);
 						setConfirmationMessage('You are logged out now');
 					}}
 				>
 					Logout
-				</a>
+				</StyledLink>
 			</Link>
 		</>
 	);

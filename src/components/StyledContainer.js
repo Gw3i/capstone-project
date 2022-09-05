@@ -209,6 +209,13 @@ const StyledContainer = styled.div`
 				z-index: 150;
 			}
 		`}
+		${({ variant }) =>
+		variant === 'logout' &&
+		css`
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		`}
 `;
 
 export default StyledContainer;
