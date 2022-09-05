@@ -7,6 +7,7 @@ import useStore from '../hooks/useStore';
 
 import AddVideoModal from './AddVideoModal';
 import ChannelCard from './ChannelCard';
+import ConfirmationMessage from './ConfirmationMessage';
 import Icon from './Icon';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
@@ -30,9 +31,9 @@ export default function Playlist() {
 	const setCurrentPlaylist = useStore(state => state.setCurrentPlaylist);
 	const currentPlaylist = useStore(state => state.currentPlaylist);
 	const addAllPlaylistVideos = useStore(state => state.addAllPlaylistVideos);
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const [isShown, setIsShown] = useState(false);
-	const [isDisabled, setIsDisabled] = useState(false);
 	const router = useRouter();
 
 	function handleVisibility() {
@@ -63,6 +64,7 @@ export default function Playlist() {
 					);
 				})}
 			<StyledH3 variant="playlists">Playlists: {channelPlaylists.length}</StyledH3>
+			<ConfirmationMessage />
 			<StyledContainer variant="scrollPlaylists">
 				{channelPlaylists
 					?.filter(channelPlaylist => {
@@ -131,11 +133,10 @@ export default function Playlist() {
 			{areShownVideos && (
 				<StyledContainer variant="margin10TopBottom">
 					<StyledButton
-						disabled={isDisabled}
 						variant="standardFlexIcon"
 						onClick={() => {
 							addAllPlaylistVideos();
-							setIsDisabled(!isDisabled);
+							setConfirmationMessage('Great! All playlist videos were added');
 						}}
 					>
 						<Icon variant="add" size="16px" /> Add whole playlist

@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 
 import useStore from '../hooks/useStore';
 
-import ConfirmationMessage from './ConfirmationMessage';
 import Icon from './Icon';
 import StyledContainer from './StyledContainer';
 import StyledH2 from './StyledH2';
@@ -27,7 +26,6 @@ export default function ChannelCard({ channelItem }) {
 					});
 				}}
 			>
-				<ConfirmationMessage />
 				<StyledContainer variant="channelCard">
 					<Image
 						src={channelItem?.thumbnails?.high?.url}
