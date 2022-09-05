@@ -9,6 +9,7 @@ const StyledH1 = styled.h1`
 			line-height: 20px;
 			margin: 65px 0 40px;
 			line-height: 25px;
+			text-align: center;
 		`}
 `;
 

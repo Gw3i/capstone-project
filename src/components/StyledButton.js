@@ -9,6 +9,7 @@ const StyledButton = styled.button`
 			background-color: transparent;
 			border: 2px solid var(--dark);
 			border-radius: 6px;
+			font-weight: bold;
 		`}
 	${({ variant }) =>
 		variant === 'submit' &&
