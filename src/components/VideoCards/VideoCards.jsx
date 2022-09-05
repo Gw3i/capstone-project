@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 import useStore from '../../hooks/useStore';
@@ -17,6 +18,7 @@ import StyledVideoTitle from '../StyledVideoTitle';
 export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category }) {
 	const [isShown, setIsShown] = useState(false);
 	const loginSession = useStore(state => state.loginSession);
+	const routerId = useRouter().query.id;
 
 	function handleVisibility() {
 		setIsShown(!isShown);
@@ -59,7 +61,15 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 			</StyledVideoButtonContainer>
 			<StyledContainer variant="blurContainer">
 				<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
-				<StyledCategoryTag>{category}</StyledCategoryTag>
+				{routerId === [category] ? (
+					<Link>
+						<StyledCategoryTag>{category}</StyledCategoryTag>
+					</Link>
+				) : (
+					<Link href={`/explore/${category}`}>
+						<StyledCategoryTag>{category}</StyledCategoryTag>
+					</Link>
+				)}
 			</StyledContainer>
 			<StyledVideoFrame
 				width="180"
