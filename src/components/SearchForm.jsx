@@ -37,9 +37,10 @@ export default function SearchForm() {
 	return (
 		<>
 			<StyledForm onSubmit={handleSubmit(onSearch)}>
-				<StyledLabel htmlFor="videoPlaylist">
+				<StyledLabel variant="search" htmlFor="videoPlaylist">
 					Search for a YouTube channels playlist
 					<StyledInput
+						variant="margin"
 						{...register('playlistSearch', {
 							required: 'This field is required',
 						})}

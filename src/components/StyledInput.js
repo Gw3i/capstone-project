@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const StyledInput = styled.input`
 	width: 274px;
@@ -7,6 +7,11 @@ const StyledInput = styled.input`
 	border: 1px solid var(--dark);
 	border-radius: 6px;
 	font-size: var(--text-s);
+	${({ variant }) =>
+		variant === 'margin' &&
+		css`
+			margin: 10px 0 0;
+		`}
 `;
 
 export default StyledInput;

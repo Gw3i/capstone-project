@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const StyledH2 = styled.h2`
-	font-size: 2rem;
+	font-size: var(--h2);
 	${({ variant }) =>
 		variant === 'channelCard' &&
 		css`
@@ -13,6 +13,13 @@ const StyledH2 = styled.h2`
 			left: 50%;
 			transform: translate(-50%, -50%);
 			transform: translate;
+		`}
+	${({ variant }) =>
+		variant === 'borderBottom' &&
+		css`
+			border-bottom: 4px solid var(--accent-yellow);
+			line-height: 20px;
+			margin: 20px 0;
 		`}
 `;
 

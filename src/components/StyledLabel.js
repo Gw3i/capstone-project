@@ -9,6 +9,13 @@ const StyledLabel = styled.label`
 		css`
 			font-size: 1rem;
 		`}
+	${({ variant }) =>
+		variant === 'search' &&
+		css`
+			text-align: center;
+			font-size: var(--h4);
+			font-weight: bold;
+		`}
 `;
 
 export default StyledLabel;

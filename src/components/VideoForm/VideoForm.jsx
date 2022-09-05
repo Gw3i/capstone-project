@@ -6,6 +6,7 @@ import useStore from '../../hooks/useStore';
 import SearchForm from '../SearchForm.jsx';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
+import StyledH2 from '../StyledH2';
 import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
@@ -93,35 +94,36 @@ export default function VideoForm() {
 						}
 					/>
 				</StyledLabel>
-				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
-				<StyledSelect
-					{...register('category', { required: 'This filed is required' })}
-					id="categories"
-				>
-					<option value="">-- Choose a category --</option>
-					{categories.map(category => (
-						<option key={category.id} value={category.name}>
-							{category.name}
-						</option>
-					))}
-				</StyledSelect>
-				<ErrorMessage
-					errors={errors}
-					name="category"
-					render={({ messages }) =>
-						messages &&
-						Object.entries(messages).map(([type, message]) => (
-							<StyledInputWarning key={type} role="alert">
-								{message}
-							</StyledInputWarning>
-						))
-					}
-				/>
-
+				<StyledLabel htmlFor="categories">
+					Choose a category
+					<StyledSelect
+						{...register('category', { required: 'This filed is required' })}
+						id="categories"
+					>
+						<option value="">-- Choose a category --</option>
+						{categories.map(category => (
+							<option key={category.id} value={category.name}>
+								{category.name}
+							</option>
+						))}
+					</StyledSelect>
+					<ErrorMessage
+						errors={errors}
+						name="category"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
+							))
+						}
+					/>
+				</StyledLabel>
 				<StyledButton variant="submit">Submit</StyledButton>
 			</StyledForm>
 			{showText && <StyledSumbitText>Great! Your video was added</StyledSumbitText>}
-			<h2>OR</h2>
+			<StyledH2 variant="borderBottom">OR</StyledH2>
 			<SearchForm />
 		</>
 	);
