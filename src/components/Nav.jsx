@@ -46,7 +46,9 @@ export default function Nav() {
 							<Icon
 								size="32px"
 								variant={
-									router.pathname === '/bookmarks' ? 'bookmarkFilled' : 'bookmark'
+									router.pathname === '/bookmarks'
+										? 'bookmark'
+										: 'bookmarkOutline'
 								}
 							/>
 							Bookmarks
