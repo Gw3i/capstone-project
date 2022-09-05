@@ -6,8 +6,10 @@ import useStore from '../../hooks/useStore';
 import SearchForm from '../SearchForm.jsx';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
+import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
+import StyledSelect from '../StyledSelect';
 import StyledSumbitText from '../StyledSubmitText';
 
 export default function VideoForm() {
@@ -40,7 +42,7 @@ export default function VideoForm() {
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="link">
 					YouTube link
-					<input
+					<StyledInput
 						{...register('YouTubeLink', {
 							required: 'This field is required',
 							pattern: {
@@ -68,7 +70,7 @@ export default function VideoForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="title">
 					Video title
-					<input
+					<StyledInput
 						{...register('videoTitle', {
 							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
@@ -92,7 +94,7 @@ export default function VideoForm() {
 					/>
 				</StyledLabel>
 				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
-				<select
+				<StyledSelect
 					{...register('category', { required: 'This filed is required' })}
 					id="categories"
 				>
@@ -102,7 +104,7 @@ export default function VideoForm() {
 							{category.name}
 						</option>
 					))}
-				</select>
+				</StyledSelect>
 				<ErrorMessage
 					errors={errors}
 					name="category"

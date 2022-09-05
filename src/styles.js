@@ -34,7 +34,8 @@ export const GlobalStyle = createGlobalStyle`
 		--h3: 24px;
 		--h4: 20px;
 		--text-m: 16px;
-		--text-s: 12px;
+		--text-s: 14px;
+		--text-xs: 12px;
 	}
 
 	/* inter-regular - latin */

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const StyledLabel = styled.label`
 	display: flex;
 	flex-direction: column;
-	font-size: 1.2rem;
+	font-size: var(--text-m);
 	${({ variant }) =>
 		variant === 'playlistVideo' &&
 		css`

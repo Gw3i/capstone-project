@@ -8,6 +8,7 @@ import useStore from '../hooks/useStore';
 
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
+import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 
@@ -65,7 +66,7 @@ export default function CreateAccountForm() {
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="username">
 					Username
-					<input
+					<StyledInput
 						{...register('username', {
 							required: 'This field is required',
 							pattern: {
@@ -97,7 +98,7 @@ export default function CreateAccountForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="password">
 					Password
-					<input
+					<StyledInput
 						{...register('password', {
 							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
@@ -127,7 +128,7 @@ export default function CreateAccountForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="age">
 					Age
-					<input
+					<StyledInput
 						{...register('age')}
 						name="age"
 						type="date"

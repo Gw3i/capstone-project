@@ -7,6 +7,7 @@ import useStore from '../hooks/useStore';
 import ChannelPlaylist from './ChannelPlaylist';
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
+import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 
@@ -38,7 +39,7 @@ export default function SearchForm() {
 			<StyledForm onSubmit={handleSubmit(onSearch)}>
 				<StyledLabel htmlFor="videoPlaylist">
 					Search for a YouTube channels playlist
-					<input
+					<StyledInput
 						{...register('playlistSearch', {
 							required: 'This field is required',
 						})}
