@@ -34,7 +34,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 			<StyledVideoButtonContainer>
 				{loginSession && (
 					<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
-						<Icon variant={isShown ? 'deleteFilled' : 'delete'} color="white" />
+						<Icon variant="delete" color={isShown ? 'var(--accent-purple)' : 'white'} />
 					</StyledButton>
 				)}
 
@@ -53,7 +53,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 					variant="videoIcons"
 					onClick={() => handleBookmark(videoId)}
 				>
-					<Icon variant={bookmark ? 'bookmarkFilled' : 'bookmark'} color="white" />
+					<Icon variant="bookmark" color={bookmark ? 'var(--accent-purple)' : 'white'} />
 				</StyledButton>
 			</StyledVideoButtonContainer>
 			<StyledCategoryTag>{category}</StyledCategoryTag>
