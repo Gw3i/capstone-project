@@ -118,7 +118,7 @@ export default function VideoForm() {
 					}
 				/>
 
-				<StyledButton>Submit</StyledButton>
+				<StyledButton variant="submit">Submit</StyledButton>
 			</StyledForm>
 			{showText && <StyledSumbitText>Great! Your video was added</StyledSumbitText>}
 			<h2>OR</h2>

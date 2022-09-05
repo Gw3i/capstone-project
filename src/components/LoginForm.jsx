@@ -106,7 +106,7 @@ export default function LoginForm() {
 					/>
 				</StyledLabel>
 
-				<StyledButton>Login</StyledButton>
+				<StyledButton variant="submit">Login</StyledButton>
 			</StyledForm>
 			{loginInformationError && (
 				<StyledInputWarning role="alert">

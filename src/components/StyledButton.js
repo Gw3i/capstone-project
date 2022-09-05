@@ -11,6 +11,18 @@ const StyledButton = styled.button`
 			border-radius: 6px;
 		`}
 	${({ variant }) =>
+		variant === 'submit' &&
+		css`
+			padding: 4px 20px;
+			max-width: fit-content;
+			background-color: var(--dark);
+			border: 2px solid var(--dark);
+			border-radius: 6px;
+			color: var(--white);
+			font-size: var(--text-s);
+			font-weight: bold;
+		`}
+	${({ variant }) =>
 		variant === 'filled' &&
 		css`
 			border: 1px solid var(--dark);

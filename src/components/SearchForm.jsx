@@ -61,7 +61,7 @@ export default function SearchForm() {
 						}
 					/>
 				</StyledLabel>
-				<StyledButton>Search</StyledButton>
+				<StyledButton variant="submit">Search</StyledButton>
 			</StyledForm>
 			<ChannelPlaylist />
 		</>
