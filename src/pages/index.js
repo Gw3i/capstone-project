@@ -9,7 +9,6 @@ export default function HomePage() {
 	const videos = useStore(state => state.videos);
 	return (
 		<Layout>
-			<h1>Home</h1>
 			<ConfirmationMessage />
 			{videos.map(video => {
 				return (

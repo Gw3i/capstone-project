@@ -24,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
 
 	:root {
 		--border-accent: 2px solid #D2B6FF;
+		--border-yellow: 4px solid #FFF800;
 		--dark: #09070B;
 		--white: #FCFDFF;
 		--accent-purple: #D2B6FF;
