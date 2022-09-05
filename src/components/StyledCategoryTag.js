@@ -3,10 +3,12 @@ import styled from 'styled-components';
 const StyledCategoryTag = styled.a`
 	max-width: fit-content;
 	margin-top: 5px;
-	padding: 5px 15px;
-	border: 2px solid white;
-	border-radius: 5px;
-	color: white;
+	padding: 3px 12px;
+	border: 2px solid var(--white);
+	border-radius: 6px;
+	background-color: transparent;
+	color: var(--white);
+	font-size: var(--text);
 	font-weight: bold;
 	cursor: pointer;
 `;
