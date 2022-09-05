@@ -44,6 +44,12 @@ const StyledLink = styled.a`
 			font-size: var(--text-s);
 			font-weight: bold;
 		`}
+		${({ variant }) =>
+		variant === 'link' &&
+		css`
+			color: var(--accent-purple);
+			text-decoration: underline;
+		`}
 `;
 
 export default StyledLink;

@@ -7,10 +7,13 @@ import { useForm } from 'react-hook-form';
 import useStore from '../hooks/useStore';
 
 import StyledButton from './StyledButton';
+import StyledContainer from './StyledContainer';
 import StyledForm from './StyledForm';
 import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
+import StyledLink from './StyledLink';
+import StyledText from './StyledText';
 
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
@@ -48,7 +51,7 @@ export default function LoginForm() {
 	}
 
 	return (
-		<>
+		<StyledContainer variant="exploreWrapper">
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="username">
 					Username
@@ -111,10 +114,12 @@ export default function LoginForm() {
 					Your login information is wrong. Please try again.
 				</StyledInputWarning>
 			)}
-			<p>No account yet?</p>
-			<Link href="/create-account">
-				<a>Create new account</a>
-			</Link>
-		</>
+			<StyledContainer variant="column">
+				<StyledText variant="minMargin">No account yet?</StyledText>
+				<Link href="/create-account">
+					<StyledLink variant="link">Create new account</StyledLink>
+				</Link>
+			</StyledContainer>
+		</StyledContainer>
 	);
 }

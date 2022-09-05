@@ -217,6 +217,13 @@ const StyledContainer = styled.div`
 			top: 20px;
 			right: 20px;
 		`}
+		${({ variant }) =>
+		variant === 'newAccountLink' &&
+		css`
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		`}
 `;
 
 export default StyledContainer;

@@ -152,7 +152,7 @@ export default function CreateAccountForm() {
 					<StyledInputWarning role="alert">{loginAgeError}</StyledInputWarning>
 				</StyledLabel>
 
-				<StyledButton>Create new account</StyledButton>
+				<StyledButton variant="submit">Create new account</StyledButton>
 			</StyledForm>
 		</>
 	);
