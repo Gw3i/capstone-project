@@ -19,7 +19,7 @@ const StyledButton = styled.button`
 			color: var(--white);
 		`}
 		${({ variant }) =>
-		variant === 'StandatdFlexIcon' &&
+		variant === 'standardFlexIcon' &&
 		css`
 			background-color: transparent;
 			border: 1px solid var(--dark);

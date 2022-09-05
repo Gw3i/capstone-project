@@ -85,7 +85,7 @@ export default function Playlist() {
 										</StyledText>
 
 										<StyledButton
-											variant="StandatdFlexIcon"
+											variant="standardFlexIcon"
 											onClick={() => {
 												setCurrentPlaylist(channelPlaylist.id);
 												if (!currentPlaylist.id) {
@@ -129,16 +129,18 @@ export default function Playlist() {
 					})}
 			</StyledContainer>
 			{areShownVideos && (
-				<StyledButton
-					disabled={isDisabled}
-					variant="StandatdFlexIcon"
-					onClick={() => {
-						addAllPlaylistVideos();
-						setIsDisabled(!isDisabled);
-					}}
-				>
-					<Icon variant="add" size="16px" /> Add whole playlist
-				</StyledButton>
+				<StyledContainer variant="margin10TopBottom">
+					<StyledButton
+						disabled={isDisabled}
+						variant="standardFlexIcon"
+						onClick={() => {
+							addAllPlaylistVideos();
+							setIsDisabled(!isDisabled);
+						}}
+					>
+						<Icon variant="add" size="16px" /> Add whole playlist
+					</StyledButton>
+				</StyledContainer>
 			)}
 			{channelPlaylists
 				?.filter(channelPlaylist => {

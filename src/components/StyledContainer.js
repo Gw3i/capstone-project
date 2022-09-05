@@ -147,6 +147,11 @@ const StyledContainer = styled.div`
 			flex-direction: column;
 			justify-content: space-evenly;
 		`}
+		${({ variant }) =>
+		variant === 'margin10TopBottom' &&
+		css`
+			margin: 10px 0;
+		`}
 `;
 
 export default StyledContainer;
