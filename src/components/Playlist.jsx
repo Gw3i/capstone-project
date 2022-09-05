@@ -29,9 +29,10 @@ export default function Playlist() {
 	const currentVideo = useStore(state => state.currentVideo);
 	const setCurrentPlaylist = useStore(state => state.setCurrentPlaylist);
 	const currentPlaylist = useStore(state => state.currentPlaylist);
+	const addAllPlaylistVideos = useStore(state => state.addAllPlaylistVideos);
 
 	const [isShown, setIsShown] = useState(false);
-
+	const [isDisabled, setIsDisabled] = useState(false);
 	const router = useRouter();
 
 	function handleVisibility() {
@@ -82,9 +83,6 @@ export default function Playlist() {
 										{channelPlaylist.snippet.title}
 									</StyledText>
 									<StyledContainer variant="columnButtons">
-										<StyledButton variant="StandatdFlexIcon">
-											<Icon variant="add" size="16px" /> Add whole playlist
-										</StyledButton>
 										<StyledButton
 											variant="StandatdFlexIcon"
 											onClick={() => {
@@ -129,6 +127,18 @@ export default function Playlist() {
 						);
 					})}
 			</StyledContainer>
+			{areShownVideos && (
+				<StyledButton
+					disabled={isDisabled}
+					variant="StandatdFlexIcon"
+					onClick={() => {
+						addAllPlaylistVideos();
+						setIsDisabled(!isDisabled);
+					}}
+				>
+					<Icon variant="add" size="16px" /> Add whole playlist
+				</StyledButton>
+			)}
 			{channelPlaylists
 				?.filter(channelPlaylist => {
 					return channelPlaylist.snippet.channelId === currentItem.id;

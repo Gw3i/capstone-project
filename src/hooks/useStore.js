@@ -77,9 +77,10 @@ const useStore = create(set => ({
 		{ id: nanoid(), name: 'Finances' },
 		{ id: nanoid(), name: 'Art' },
 		{ id: nanoid(), name: 'English' },
-		{ id: nanoid(), name: 'Daylie hacks' },
+		{ id: nanoid(), name: 'Daily hacks' },
 		{ id: nanoid(), name: 'Biology' },
 		{ id: nanoid(), name: 'Chemistry' },
+		{ id: nanoid(), name: 'Uncategorized' },
 	],
 	confirmationMessage: null,
 	setConfirmationMessage: message => {
@@ -118,6 +119,25 @@ const useStore = create(set => ({
 	channels: [],
 	channelPlaylists: [],
 	playlistVideos: [],
+	addAllPlaylistVideos: () => {
+		set(state => {
+			return {
+				videos: [
+					...state.videos,
+					...state.playlistVideos.map(playlistVideo => {
+						return {
+							YouTubeLink: `https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`,
+							videoTitle: playlistVideo.snippet.title,
+							category: 'Uncategorized',
+							id: nanoid(),
+							isBookmarked: false,
+							timeStamp: '',
+						};
+					}),
+				],
+			};
+		});
+	},
 	fetchChannelData: async ({ variant, searchQuery, id }) => {
 		try {
 			if (variant === 'channels') {
