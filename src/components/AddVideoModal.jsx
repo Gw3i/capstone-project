@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
@@ -9,12 +8,13 @@ import StyledContainer from './StyledContainer';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
+import StyledModalSection from './StyledModalSection';
+import StyledSumbitText from './StyledSubmitText';
 
-export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
+export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 	const categories = useStore(state => state.categories);
 	const setVideos = useStore(state => state.setVideos);
-	const [isDisabled, setIsDisabled] = useState(false);
-
+	const confirmationMessage = useStore(state => state.confirmationMessage);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const {
@@ -28,13 +28,17 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 		setVideos(data);
 		reset();
 		setConfirmationMessage('Great! The video was added!');
-		setIsDisabled(true);
 	}
+
 	return (
-		<StyledContainer>
-			<StyledForm onSubmit={handleSubmit(onSubmit)}>
-				<StyledLabel htmlFor="title">
-					{videoTitle}
+		<StyledModalSection variant="addVideo">
+			<h2>Please add your video to a category</h2>
+
+			{confirmationMessage && (
+				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
+			)}
+			<StyledForm variant="addVideo" onSubmit={handleSubmit(onSubmit)}>
+				<StyledLabel variant="playlistVideo" htmlFor="title">
 					<input
 						{...register('videoTitle')}
 						name="videoTitle"
@@ -50,19 +54,19 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 					id="link"
 					value={YouTubeLink}
 				/>
-				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
-				<select
-					disabled={isDisabled}
-					{...register('category', { required: 'This field is required' })}
-					id="categories"
-				>
-					<option value="">-- Choose a category --</option>
-					{categories.map(category => (
-						<option key={category.id} value={category.name}>
-							{category.name}
-						</option>
-					))}
-				</select>
+				<StyledLabel htmlFor="categories">
+					<select
+						{...register('category', { required: 'This field is required' })}
+						id="categories"
+					>
+						<option value="">-- Choose a category --</option>
+						{categories.map(category => (
+							<option key={category.id} value={category.name}>
+								{category.name}
+							</option>
+						))}
+					</select>
+				</StyledLabel>
 				<ErrorMessage
 					errors={errors}
 					name="category"
@@ -75,9 +79,15 @@ export default function PlaylistVideo({ videoTitle, YouTubeLink }) {
 						))
 					}
 				/>
-
-				<StyledButton disabled={isDisabled}>Add video</StyledButton>
+				<StyledContainer variant="buttons">
+					<StyledButton type="button" variant="standard" onClick={onCancel}>
+						Cancel
+					</StyledButton>
+					<StyledButton type="submit" variant="filled">
+						Add
+					</StyledButton>
+				</StyledContainer>
 			</StyledForm>
-		</StyledContainer>
+		</StyledModalSection>
 	);
 }

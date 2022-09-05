@@ -6,6 +6,7 @@ import ConfirmationMessage from './ConfirmationMessage';
 
 export default function Logout() {
 	const setLoginSession = useStore(state => state.setLoginSession);
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	return (
 		<>
 			<ConfirmationMessage />
@@ -13,6 +14,7 @@ export default function Logout() {
 				<a
 					onClick={() => {
 						setLoginSession(null);
+						setConfirmationMessage('You are logged out now');
 					}}
 				>
 					Logout

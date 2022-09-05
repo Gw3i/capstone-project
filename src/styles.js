@@ -18,4 +18,10 @@ export const GlobalStyle = createGlobalStyle`
 	h2, h3 {
 		margin: 5px 0;
 	}
+
+	:root {
+		--border-accent: 2px solid #D2B6FF;
+		--dark: #09070B;
+		--white: #FCFDFF;
+	}
 `;

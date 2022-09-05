@@ -1,13 +1,18 @@
 import styled, { css } from 'styled-components';
 
 const StyledLink = styled.a`
-	display: flex;
-	max-width: 100px;
-	margin: 0;
-	padding: 0;
-	border: none;
 	text-decoration: none;
 	cursor: pointer;
+	${({ variant }) =>
+		variant === 'default' &&
+		css`
+			display: flex;
+			max-width: 100px;
+			margin: 0;
+			padding: 0;
+			border: none;
+			cursor: pointer;
+		`}
 	${({ variant }) =>
 		variant === 'tags' &&
 		css`
@@ -19,6 +24,14 @@ const StyledLink = styled.a`
 			font-size: 1rem;
 			font-weight: bold;
 			white-space: nowrap;
+		`}
+		${({ variant }) =>
+		variant === 'backButton' &&
+		css`
+			position: absolute;
+			top: 2%;
+			left: 5%;
+			font-weight: bold;
 		`}
 `;
 
