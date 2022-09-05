@@ -39,7 +39,7 @@ const useStore = create(set => ({
 	setVideos: data => {
 		set(state => {
 			return {
-				videos: [...state.videos, { ...data, id: nanoid() }],
+				videos: [{ ...data, id: nanoid() }, ...state.videos],
 			};
 		});
 	},
@@ -80,9 +80,10 @@ const useStore = create(set => ({
 		{ id: nanoid(), name: 'Daily hacks' },
 		{ id: nanoid(), name: 'Biology' },
 		{ id: nanoid(), name: 'Chemistry' },
-		{ id: nanoid(), name: 'Uncategorized' },
+		{ id: nanoid(), name: 'Climate' },
 		{ id: nanoid(), name: 'History' },
 		{ id: nanoid(), name: 'Around the world' },
+		{ id: nanoid(), name: 'Uncategorized' },
 	],
 	confirmationMessage: null,
 	setConfirmationMessage: message => {
