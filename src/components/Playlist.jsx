@@ -79,10 +79,11 @@ export default function Playlist() {
 										width={190}
 										height={110}
 									/>
-									<StyledText variant="playlist">
-										{channelPlaylist.snippet.title}
-									</StyledText>
-									<StyledContainer variant="columnButtons">
+									<StyledContainer variant="columnSpaceEvenly">
+										<StyledText variant="playlist">
+											{channelPlaylist.snippet.title}
+										</StyledText>
+
 										<StyledButton
 											variant="StandatdFlexIcon"
 											onClick={() => {

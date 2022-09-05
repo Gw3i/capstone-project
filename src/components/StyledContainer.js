@@ -141,6 +141,12 @@ const StyledContainer = styled.div`
 			z-index: 90;
 			width: 110%;
 		`}
+		${({ variant }) =>
+		variant === 'columnSpaceEvenly' &&
+		css`
+			flex-direction: column;
+			justify-content: space-evenly;
+		`}
 `;
 
 export default StyledContainer;
