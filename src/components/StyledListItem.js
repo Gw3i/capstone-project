@@ -22,6 +22,9 @@ const StyledListItem = styled.li`
 			position: relative;
 			justify-content: space-between;
 			height: 100%;
+			> span {
+				border-radius: 3px 3px 0 0;
+			}
 		`}
 `;
 
