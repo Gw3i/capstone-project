@@ -19,13 +19,16 @@ export default function VideoThumbnail({ YouTubeLink, videoTitle, category, id }
 						setTimeStamp(id);
 					}}
 				>
-					<StyledVideoTitle position="explore">{videoTitle}</StyledVideoTitle>
+					<StyledContainer variant="blurContainerExplore">
+						<StyledVideoTitle position="explore">{videoTitle}</StyledVideoTitle>
+					</StyledContainer>
+
 					<Image
 						src={`https://i3.ytimg.com/vi/${videoID}/maxresdefault.jpg`}
 						alt={videoTitle}
-						layout="responsive"
-						width={500}
-						height={400}
+						objectFit="cover"
+						width={250}
+						height={250}
 					/>
 				</a>
 			</Link>

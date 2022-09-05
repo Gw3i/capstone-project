@@ -61,13 +61,14 @@ const StyledContainer = styled.div`
 			max-height: 500px;
 			overflow-x: auto;
 			gap: 10px;
+
 			> * {
 				min-width: 250px;
 				height: 200px;
 				overflow: hidden;
 				background-color: lightgray;
-				border: 1px solid grey;
-				border-radius: 20px;
+				border: 1px solid transparent;
+				border-radius: 8px;
 			}
 		`}
 		${({ variant }) =>
@@ -98,8 +99,8 @@ const StyledContainer = styled.div`
 		css`
 			position: relative;
 			display: block;
-			width: 200px;
-			height: 200px;
+			width: 225px;
+			height: 225px;
 			overflow: hidden;
 		`}
 		${({ variant }) =>
@@ -188,6 +189,24 @@ const StyledContainer = styled.div`
 
 			background: rgba(163, 163, 163, 0.1);
 			backdrop-filter: blur(20px);
+		`}
+		${({ variant }) =>
+		variant === 'blurContainerExplore' &&
+		css`
+			display: flex;
+			flex-direction: column;
+			padding: 10px;
+			position: absolute;
+			width: 100%;
+			height: 80px;
+			left: 0px;
+			bottom: 0;
+			z-index: 100;
+			background: rgba(163, 163, 163, 0.1);
+			backdrop-filter: blur(20px);
+			&:only-child {
+				z-index: 150;
+			}
 		`}
 `;
 

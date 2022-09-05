@@ -8,7 +8,7 @@ const StyledCategoryTag = styled.a`
 	border-radius: 6px;
 	background-color: transparent;
 	color: var(--white);
-	font-size: var(--text);
+	font-size: var(--text-m);
 	font-weight: bold;
 	cursor: pointer;
 `;
