@@ -34,6 +34,16 @@ const StyledLink = styled.a`
 			left: 5%;
 			font-weight: bold;
 		`}
+		${({ variant }) =>
+		variant === 'buttonSmall' &&
+		css`
+			padding: 3px 12px;
+			background-color: transparent;
+			border: 2px solid var(--dark);
+			border-radius: 6px;
+			font-size: var(--text-s);
+			font-weight: bold;
+		`}
 `;
 
 export default StyledLink;

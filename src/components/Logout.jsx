@@ -13,7 +13,7 @@ export default function Logout() {
 			<ConfirmationMessage />
 			<Link href="/">
 				<StyledLink
-					variant="tags"
+					variant="buttonSmall"
 					onClick={() => {
 						setLoginSession(null);
 						setConfirmationMessage('You are logged out now');
