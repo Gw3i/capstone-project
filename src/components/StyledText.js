@@ -12,7 +12,7 @@ const StyledText = styled.p`
 	${({ variant }) =>
 		variant === 'videoCard' &&
 		css`
-			font-size: 1rem;
+			font-size: var(--text-xs);
 			padding: 5px;
 			margin: 0;
 		`}

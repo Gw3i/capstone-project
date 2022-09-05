@@ -33,6 +33,7 @@ const StyledButton = styled.button`
 		${({ variant }) =>
 		variant === 'standardFlexIcon' &&
 		css`
+			max-width: max-content;
 			background-color: transparent;
 			border: 1px solid var(--dark);
 			border-radius: 6px;

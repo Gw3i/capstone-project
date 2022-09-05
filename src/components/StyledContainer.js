@@ -170,6 +170,7 @@ const StyledContainer = styled.div`
 		css`
 			flex-direction: column;
 			justify-content: space-evenly;
+			align-items: center;
 		`}
 		${({ variant }) =>
 		variant === 'margin10TopBottom' &&
