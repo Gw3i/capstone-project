@@ -98,7 +98,7 @@ const StyledContainer = styled.div`
 		${({ variant }) =>
 		variant === 'channelCardWrapper' &&
 		css`
-			margin: 20px 0 50px;
+			margin: 25px 0 25px;
 		`}
 		${({ variant }) =>
 		variant === 'channelCardWrapperPlaylists' &&
