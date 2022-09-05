@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
 
+import ConfirmationMessage from './ConfirmationMessage';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 import StyledModalSection from './StyledModalSection';
-import StyledSumbitText from './StyledSubmitText';
 
 export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 	const categories = useStore(state => state.categories);
@@ -34,9 +34,7 @@ export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 		<StyledModalSection variant="addVideo">
 			<h2>Please add your video to a category</h2>
 
-			{confirmationMessage && (
-				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
-			)}
+			{confirmationMessage && <ConfirmationMessage />}
 			<StyledForm variant="addVideo" onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel variant="playlistVideo" htmlFor="title">
 					<input

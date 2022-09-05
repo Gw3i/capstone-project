@@ -1,6 +1,5 @@
 import ConfirmationMessage from '../components/ConfirmationMessage';
 import Layout from '../components/Layout';
-import StyledSumbitText from '../components/StyledSubmitText';
 import VideoCards from '../components/VideoCards/VideoCards';
 import useStore from '../hooks/useStore';
 
@@ -9,7 +8,6 @@ export default function HomePage() {
 	const videos = useStore(state => state.videos);
 	return (
 		<Layout>
-			<ConfirmationMessage />
 			{videos.map(video => {
 				return (
 					<VideoCards
@@ -22,9 +20,7 @@ export default function HomePage() {
 					/>
 				);
 			})}
-			{confirmationMessage && (
-				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
-			)}
+			{confirmationMessage && <ConfirmationMessage />}
 		</Layout>
 	);
 }

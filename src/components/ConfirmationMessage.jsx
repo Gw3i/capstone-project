@@ -20,11 +20,5 @@ export default function ConfirmationMessage() {
 		}
 	}, [setConfirmationMessage, confirmationMessage]);
 
-	return (
-		<>
-			{confirmationMessage && (
-				<StyledSumbitText variant="editConfirm">{confirmationMessage}</StyledSumbitText>
-			)}
-		</>
-	);
+	return <>{confirmationMessage && <StyledSumbitText>{confirmationMessage}</StyledSumbitText>}</>;
 }
