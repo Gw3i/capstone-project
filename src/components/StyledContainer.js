@@ -57,7 +57,7 @@ const StyledContainer = styled.div`
 		variant === 'scrollVideos' &&
 		css`
 			position: relative;
-			padding: 0 10%;
+
 			max-width: 100vw;
 			max-height: 500px;
 			overflow-x: auto;
