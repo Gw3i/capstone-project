@@ -11,6 +11,7 @@ import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
 import StyledSelect from '../StyledSelect';
 import Typography from '../Typography';
+import Vectors from '../Vectors';
 
 export default function VideoForm() {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
@@ -34,6 +35,7 @@ export default function VideoForm() {
 
 	return (
 		<>
+			<Vectors variant="smallBlobAdd" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="link">
 					YouTube link

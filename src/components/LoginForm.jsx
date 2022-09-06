@@ -53,6 +53,7 @@ export default function LoginForm() {
 
 	return (
 		<>
+			<Vectors variant="smallBlob" />
 			<Vectors variant="bigPurpleLogin" />
 			<StyledContainer variant="exploreWrapper">
 				<StyledForm onSubmit={handleSubmit(onSubmit)}>
