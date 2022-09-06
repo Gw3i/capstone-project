@@ -14,7 +14,7 @@ export default function Nav() {
 			<StyledList variant="nav">
 				<StyledListItem variant="nav">
 					<Link href="/">
-						<StyledNavLink>
+						<StyledNavLink variant={router.pathname === '/' && 'bold'}>
 							<Icon
 								size="32px"
 								variant={router.pathname === '/' ? 'homeFilled' : 'home'}
@@ -25,7 +25,7 @@ export default function Nav() {
 				</StyledListItem>
 				<StyledListItem variant="nav">
 					<Link href="/explore">
-						<StyledNavLink>
+						<StyledNavLink variant={router.pathname === '/explore' && 'bold'}>
 							<Icon
 								size="32px"
 								variant={
@@ -42,7 +42,7 @@ export default function Nav() {
 
 				<StyledListItem variant="nav">
 					<Link href="/bookmarks">
-						<StyledNavLink>
+						<StyledNavLink variant={router.pathname === '/bookmarks' && 'bold'}>
 							<Icon
 								size="32px"
 								variant={
@@ -57,7 +57,7 @@ export default function Nav() {
 				</StyledListItem>
 				<StyledListItem variant="nav">
 					<Link href="/create">
-						<StyledNavLink>
+						<StyledNavLink variant={router.pathname === '/create' && 'bold'}>
 							<Icon
 								size="32px"
 								variant={router.pathname === '/create' ? 'createFilled' : 'create'}
