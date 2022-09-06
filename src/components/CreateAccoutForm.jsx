@@ -11,6 +11,7 @@ import StyledForm from './StyledForm';
 import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
+import Vectors from './Vectors';
 
 export default function CreateAccountForm() {
 	const router = useRouter();
@@ -63,6 +64,7 @@ export default function CreateAccountForm() {
 
 	return (
 		<>
+			<Vectors variant="bigPurpleCreateAccount" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="username">
 					Username

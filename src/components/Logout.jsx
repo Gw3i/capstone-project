@@ -9,7 +9,8 @@ export default function Logout() {
 	const setLoginSession = useStore(state => state.setLoginSession);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	return (
-		<Vectors variant="bigPurple">
+		<>
+			<Vectors variant="bigPurple" />
 			<Link href="/">
 				<StyledLink
 					variant="buttonSmall"
@@ -21,6 +22,6 @@ export default function Logout() {
 					Logout
 				</StyledLink>
 			</Link>
-		</Vectors>
+		</>
 	);
 }

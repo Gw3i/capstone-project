@@ -12,7 +12,7 @@ const Vector = ({
 	size,
 	color = 'currentColor',
 	fill = 'var(--accent-yellow)',
-	position,
+	position = 'absolute',
 	top,
 	overflow = 'hidden',
 }) => {

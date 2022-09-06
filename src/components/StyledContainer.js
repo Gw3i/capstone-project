@@ -67,7 +67,6 @@ const StyledContainer = styled.div`
 		variant === 'scrollVideos' &&
 		css`
 			position: relative;
-
 			max-width: 100vw;
 			max-height: 500px;
 			overflow-x: auto;
@@ -234,20 +233,6 @@ const StyledContainer = styled.div`
 			position: absolute;
 			top: 20px;
 			right: 20px;
-		`}
-		${({ variant }) =>
-		variant === 'bigPurple' &&
-		css`
-			position: absolute;
-			z-index: -1000;
-			top: 480px;
-			right: -20px;
-			width: 100vw;
-			height: 400px;
-			overflow: hidden;
-			& > svg {
-				right: -240px;
-			}
 		`}
 `;
 

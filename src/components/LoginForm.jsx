@@ -14,6 +14,7 @@ import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 import StyledLink from './StyledLink';
 import Typography from './Typography';
+import Vectors from './Vectors';
 
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
@@ -51,77 +52,83 @@ export default function LoginForm() {
 	}
 
 	return (
-		<StyledContainer variant="exploreWrapper">
-			<StyledForm onSubmit={handleSubmit(onSubmit)}>
-				<StyledLabel htmlFor="username">
-					Username
-					<StyledInput
-						{...register('username', {
-							required: 'This field is required',
-							pattern: {
-								value: 3,
-								message: 'The min. length is 3 characters',
-							},
-						})}
-						placeholder="parent123"
-						name="username"
-						type="text"
-						id="username"
-					/>
-					<ErrorMessage
-						errors={errors}
-						name="username"
-						render={({ messages }) =>
-							messages &&
-							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type} role="alert">
-									{message}
-								</StyledInputWarning>
-							))
-						}
-					/>
-				</StyledLabel>
-				<StyledLabel htmlFor="password">
-					Password
-					<StyledInput
-						{...register('password', {
-							required: 'This field is required',
-							minLength: { value: 10, message: 'The min. length is 10 characters' },
-						})}
-						placeholder="*************"
-						name="password"
-						type="password"
-						id="password"
-					/>
-					<ErrorMessage
-						errors={errors}
-						name="password"
-						render={({ messages }) =>
-							messages &&
-							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type} role="alert">
-									{message}
-								</StyledInputWarning>
-							))
-						}
-					/>
-				</StyledLabel>
+		<>
+			<Vectors variant="bigPurpleLogin" />
+			<StyledContainer variant="exploreWrapper">
+				<StyledForm onSubmit={handleSubmit(onSubmit)}>
+					<StyledLabel htmlFor="username">
+						Username
+						<StyledInput
+							{...register('username', {
+								required: 'This field is required',
+								pattern: {
+									value: 3,
+									message: 'The min. length is 3 characters',
+								},
+							})}
+							placeholder="parent123"
+							name="username"
+							type="text"
+							id="username"
+						/>
+						<ErrorMessage
+							errors={errors}
+							name="username"
+							render={({ messages }) =>
+								messages &&
+								Object.entries(messages).map(([type, message]) => (
+									<StyledInputWarning key={type} role="alert">
+										{message}
+									</StyledInputWarning>
+								))
+							}
+						/>
+					</StyledLabel>
+					<StyledLabel htmlFor="password">
+						Password
+						<StyledInput
+							{...register('password', {
+								required: 'This field is required',
+								minLength: {
+									value: 10,
+									message: 'The min. length is 10 characters',
+								},
+							})}
+							placeholder="*************"
+							name="password"
+							type="password"
+							id="password"
+						/>
+						<ErrorMessage
+							errors={errors}
+							name="password"
+							render={({ messages }) =>
+								messages &&
+								Object.entries(messages).map(([type, message]) => (
+									<StyledInputWarning key={type} role="alert">
+										{message}
+									</StyledInputWarning>
+								))
+							}
+						/>
+					</StyledLabel>
 
-				<StyledButton variant="submit">Login</StyledButton>
-			</StyledForm>
-			{loginInformationError && (
-				<StyledInputWarning role="alert">
-					Your login information is wrong. Please try again.
-				</StyledInputWarning>
-			)}
-			<StyledContainer variant="column">
-				<Typography variant="p" margin="minMargin" size="medium">
-					No account yet?
-				</Typography>
-				<Link href="/create-account">
-					<StyledLink variant="link">Create new account</StyledLink>
-				</Link>
+					<StyledButton variant="submit">Login</StyledButton>
+				</StyledForm>
+				{loginInformationError && (
+					<StyledInputWarning role="alert">
+						Your login information is wrong. Please try again.
+					</StyledInputWarning>
+				)}
+				<StyledContainer variant="column">
+					<Typography variant="p" margin="minMargin" size="medium">
+						No account yet?
+					</Typography>
+					<Link href="/create-account">
+						<StyledLink variant="link">Create new account</StyledLink>
+					</Link>
+				</StyledContainer>
 			</StyledContainer>
-		</StyledContainer>
+		</>
 	);
 }
