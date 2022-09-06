@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 
 import Layout from '../../components/Layout';
 import StyledContainer from '../../components/StyledContainer';
+import Typography from '../../components/Typography';
 import VideoCard from '../../components/VideoCards/VideoCards';
 import useStore from '../../hooks/useStore';
 
@@ -20,7 +21,9 @@ export default function ExploreCategory() {
 
 	return (
 		<Layout>
-			<h1>{ref.id}</h1>
+			<Typography variant="h1" decoration="borderBottom">
+				{ref.id}
+			</Typography>
 			<StyledContainer variant="snapScroll">
 				{sortedCategoryVideos.map(video => {
 					return (
