@@ -51,6 +51,18 @@ export default function Vectors({ variant }) {
 				<Vector variant="bigBlob" size="700" color="var(--accent-yellow)" />
 			</StyledVectorContainer>
 		);
+	} else if (variant === 'bigBlobCreateAccount') {
+		return (
+			<StyledVectorContainer variant="bigBlobCreateAccount">
+				<Vector variant="bigBlob" size="700" color="var(--accent-yellow)" />
+			</StyledVectorContainer>
+		);
+	} else if (variant === 'bigBlobAdd') {
+		return (
+			<StyledVectorContainer variant="bigBlobAdd">
+				<Vector variant="bigBlob" size="1000" color="var(--accent-yellow)" />
+			</StyledVectorContainer>
+		);
 	}
 }
 
@@ -133,8 +145,8 @@ const StyledVectorContainer = styled.div`
 			height: 100px;
 			width: 400px;
 			& > svg {
-				right: 10px;
-				top: 150px;
+				right: 100px;
+				top: 130px;
 				transform: rotate(100deg);
 			}
 		`}
@@ -149,6 +161,34 @@ const StyledVectorContainer = styled.div`
 			& > svg {
 				right: -590px;
 				top: 50px;
+			}
+		`}
+		${({ variant }) =>
+		variant === 'bigBlobCreateAccount' &&
+		css`
+			top: 0;
+			right: 0;
+			height: 700px;
+			width: 700px;
+
+			& > svg {
+				right: -115px;
+				top: -20px;
+				transform: rotate(160deg);
+			}
+		`}
+		${({ variant }) =>
+		variant === 'bigBlobAdd' &&
+		css`
+			top: 0;
+			right: 0;
+			height: 700px;
+			width: 700px;
+
+			& > svg {
+				right: -160px;
+				top: 40px;
+				transform: rotate(160deg);
 			}
 		`}
 `;

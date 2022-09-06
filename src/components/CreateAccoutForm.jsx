@@ -64,6 +64,7 @@ export default function CreateAccountForm() {
 
 	return (
 		<>
+			<Vectors variant="bigBlobCreateAccount" />
 			<Vectors variant="smallBlobCreateAccount" />
 			<Vectors variant="bigPurpleCreateAccount" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>

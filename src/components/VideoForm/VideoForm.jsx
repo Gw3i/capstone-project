@@ -35,6 +35,7 @@ export default function VideoForm() {
 
 	return (
 		<>
+			<Vectors variant="bigBlobAdd" />
 			<Vectors variant="smallBlobAdd" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="link">

@@ -53,6 +53,7 @@ export default function LoginForm() {
 
 	return (
 		<>
+			<Vectors variant="bigBlobExplore" />
 			<Vectors variant="smallBlob" />
 			<Vectors variant="bigPurpleLogin" />
 			<StyledContainer variant="exploreWrapper">
