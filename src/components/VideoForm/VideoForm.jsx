@@ -6,11 +6,11 @@ import ConfirmationMessage from '../ConfirmationMessage';
 import SearchForm from '../SearchForm.jsx';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
-import StyledH2 from '../StyledH2';
 import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
 import StyledSelect from '../StyledSelect';
+import Typography from '../Typography';
 
 export default function VideoForm() {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
@@ -117,7 +117,9 @@ export default function VideoForm() {
 				<StyledButton variant="submit">Submit</StyledButton>
 			</StyledForm>
 			{confirmationMessage && <ConfirmationMessage />}
-			<StyledH2 variant="borderBottom">OR</StyledH2>
+			<Typography variant="h2" decoration="borderBottom">
+				OR
+			</Typography>
 			<SearchForm />
 		</>
 	);

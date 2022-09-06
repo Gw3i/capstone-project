@@ -13,7 +13,7 @@ import StyledLink from '../StyledLink';
 import StyledVideoButtonContainer from '../StyledVideoButtonContainer';
 import StyledVideoContainer from '../StyledVideoContainer';
 import StyledVideoFrame from '../StyledVideoFrame';
-import StyledVideoTitle from '../StyledVideoTitle';
+import Typography from '../Typography';
 
 export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, category }) {
 	const [isShown, setIsShown] = useState(false);
@@ -60,7 +60,9 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 				</StyledButton>
 			</StyledVideoButtonContainer>
 			<StyledContainer variant="blurContainer">
-				<StyledVideoTitle>{videoTitle}</StyledVideoTitle>
+				<Typography variant="h2" color="white" size="medium">
+					{videoTitle}
+				</Typography>
 				{routerId === [category] ? (
 					<Link>
 						<StyledCategoryTag>{category}</StyledCategoryTag>

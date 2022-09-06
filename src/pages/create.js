@@ -23,7 +23,9 @@ export default function Create() {
 				</>
 			) : (
 				<>
-					<p>You need to be logged in to use this page</p>
+					<Typography variant="p" size="medium" component="h2" padding="minTopBottom">
+						You need to be logged in to use this page
+					</Typography>
 					<LoginForm />
 				</>
 			)}

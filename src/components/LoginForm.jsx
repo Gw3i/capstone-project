@@ -13,7 +13,7 @@ import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 import StyledLink from './StyledLink';
-import StyledText from './StyledText';
+import Typography from './Typography';
 
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
@@ -115,7 +115,9 @@ export default function LoginForm() {
 				</StyledInputWarning>
 			)}
 			<StyledContainer variant="column">
-				<StyledText variant="minMargin">No account yet?</StyledText>
+				<Typography variant="p" margin="minMargin" size="medium">
+					No account yet?
+				</Typography>
 				<Link href="/create-account">
 					<StyledLink variant="link">Create new account</StyledLink>
 				</Link>

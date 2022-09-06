@@ -7,7 +7,6 @@ const StyledText = styled.p`
 			margin: 10px 0;
 			font-size: 1.1rem;
 			text-align: center;
-			max-width: ;
 		`}
 	${({ variant }) =>
 		variant === 'videoCard' &&

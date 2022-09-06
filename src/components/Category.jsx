@@ -1,7 +1,7 @@
-import StyledHeadline from '../components/StyledHeadline';
 import useStore from '../hooks/useStore';
 
 import StyledContainer from './StyledContainer';
+import Typography from './Typography';
 import VideoThumbnail from './VideoThumbnail';
 
 export default function Category() {
@@ -16,7 +16,9 @@ export default function Category() {
 	return uniqueCategories.map(category => {
 		return (
 			<StyledContainer key={category.id} variant="exploreWrapper">
-				<StyledHeadline key={category}>{category}</StyledHeadline>
+				<Typography variant="h3" component="h2" position="explore" key={category}>
+					{category}
+				</Typography>
 				<StyledContainer variant="scrollVideos">
 					{videos
 						.filter(video => {

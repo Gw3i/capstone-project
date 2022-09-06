@@ -10,6 +10,7 @@ import StyledForm from './StyledForm';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
 import StyledModalSection from './StyledModalSection';
+import Typography from './Typography';
 
 export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 	const categories = useStore(state => state.categories);
@@ -32,7 +33,7 @@ export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 
 	return (
 		<StyledModalSection variant="addVideo">
-			<h2>Please add your video to a category</h2>
+			<Typography variant="h2">Please add your video to a category</Typography>
 
 			{confirmationMessage && <ConfirmationMessage />}
 			<StyledForm variant="addVideo" onSubmit={handleSubmit(onSubmit)}>

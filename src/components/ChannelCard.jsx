@@ -6,8 +6,8 @@ import useStore from '../hooks/useStore';
 
 import Icon from './Icon';
 import StyledContainer from './StyledContainer';
-import StyledH2 from './StyledH2';
 import StyledLink from './StyledLink';
+import Typography from './Typography';
 
 export default function ChannelCard({ channelItem }) {
 	const setCurrentItem = useStore(state => state.setCurrentItem);
@@ -35,7 +35,9 @@ export default function ChannelCard({ channelItem }) {
 						height={85}
 					/>
 					<StyledContainer variant="channelCardText">
-						<StyledH2 variant="channelCard">{channelItem?.channelTitle}</StyledH2>
+						<Typography variant="h2" decoration="channelCard">
+							{channelItem?.channelTitle}
+						</Typography>
 						{routerId === undefined && (
 							<StyledContainer variant="channelArrow">
 								<Icon variant="arrow" size="36px" />
