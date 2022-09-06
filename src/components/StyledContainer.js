@@ -235,6 +235,20 @@ const StyledContainer = styled.div`
 			top: 20px;
 			right: 20px;
 		`}
+		${({ variant }) =>
+		variant === 'bigPurple' &&
+		css`
+			position: absolute;
+			z-index: -1000;
+			top: 480px;
+			right: -20px;
+			width: 100vw;
+			height: 400px;
+			overflow: hidden;
+			& > svg {
+				right: -240px;
+			}
+		`}
 `;
 
 export default StyledContainer;

@@ -14,10 +14,18 @@ const Vector = ({
 	fill = 'var(--accent-yellow)',
 	position,
 	top,
+	overflow = 'hidden',
 }) => {
 	return (
 		<svg
-			style={{ width: size, color: color, fill: fill, position: position, top: top }}
+			style={{
+				width: size,
+				color: color,
+				fill: fill,
+				position: position,
+				top: top,
+				overflow: overflow,
+			}}
 			viewBox="0 0 800 400"
 		>
 			<path fill={color} d={vectors[variant]} />
