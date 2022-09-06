@@ -19,7 +19,7 @@ const StyledLink = styled.a`
 			max-width: none;
 			flex-direction: row;
 			padding: 3px 12px;
-			background-color: transparent;
+			background-color: var(--white);
 			border: 2px solid var(--dark);
 			border-radius: 6px;
 			font-size: var(--text-m);

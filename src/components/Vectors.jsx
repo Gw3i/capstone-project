@@ -45,6 +45,12 @@ export default function Vectors({ variant }) {
 				<Vector variant="smallBlob" size="900" color="var(--accent-yellow)" />
 			</StyledVectorContainer>
 		);
+	} else if (variant === 'bigBlobExplore') {
+		return (
+			<StyledVectorContainer variant="bigBlobExplore">
+				<Vector variant="bigBlob" size="700" color="var(--accent-yellow)" />
+			</StyledVectorContainer>
+		);
 	}
 }
 
@@ -86,12 +92,12 @@ const StyledVectorContainer = styled.div`
 		${({ variant }) =>
 		variant === 'bigPurpleExplore' &&
 		css`
-			top: 400px;
+			top: 420px;
 			right: 0px;
 			height: 500px;
 			& > svg {
 				right: -260px;
-				transform: rotate(-10deg);
+				transform: rotate(0deg);
 			}
 		`}
 		${({ variant }) =>
@@ -127,9 +133,22 @@ const StyledVectorContainer = styled.div`
 			height: 100px;
 			width: 400px;
 			& > svg {
-				right: 100px;
+				right: 10px;
 				top: 150px;
 				transform: rotate(100deg);
+			}
+		`}
+		${({ variant }) =>
+		variant === 'bigBlobExplore' &&
+		css`
+			top: 0;
+			right: 0;
+			height: 700px;
+			width: 700px;
+
+			& > svg {
+				right: -590px;
+				top: 50px;
 			}
 		`}
 `;

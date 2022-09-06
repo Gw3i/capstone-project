@@ -17,6 +17,7 @@ export default function Category() {
 	return uniqueCategories.map(category => {
 		return (
 			<>
+				<Vectors variant="bigBlobExplore" />
 				<Vectors variant="bigPurpleExplore" />
 				<StyledContainer key={category.id} variant="exploreWrapper">
 					<Typography variant="h3" component="h2" position="explore" key={category}>
