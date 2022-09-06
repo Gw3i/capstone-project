@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 
 import Layout from '../../components/Layout';
+import StyledContainer from '../../components/StyledContainer';
 import VideoCard from '../../components/VideoCards/VideoCards';
 import useStore from '../../hooks/useStore';
 
@@ -20,18 +21,20 @@ export default function ExploreCategory() {
 	return (
 		<Layout>
 			<h1>{ref.id}</h1>
-			{sortedCategoryVideos.map(video => {
-				return (
-					<VideoCard
-						key={video.id}
-						YouTubeLink={video.YouTubeLink}
-						videoTitle={video.videoTitle}
-						videoId={video.id}
-						bookmark={video.isBookmarked}
-						category={video.category}
-					/>
-				);
-			})}
+			<StyledContainer variant="snapScroll">
+				{sortedCategoryVideos.map(video => {
+					return (
+						<VideoCard
+							key={video.id}
+							YouTubeLink={video.YouTubeLink}
+							videoTitle={video.videoTitle}
+							videoId={video.id}
+							bookmark={video.isBookmarked}
+							category={video.category}
+						/>
+					);
+				})}
+			</StyledContainer>
 		</Layout>
 	);
 }

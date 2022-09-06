@@ -33,7 +33,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 	const videoID = useYouTubeId(YouTubeLink);
 
 	return (
-		<StyledVideoContainer key={videoId} data-testid="videoContainer">
+		<StyledVideoContainer key={videoId}>
 			<StyledVideoButtonContainer>
 				{loginSession && (
 					<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>

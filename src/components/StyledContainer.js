@@ -52,7 +52,17 @@ const StyledContainer = styled.div`
 			display: block;
 			margin-bottom: 20px;
 		`}
-
+		${({ variant }) =>
+		variant === 'snapScroll' &&
+		css`
+			flex-direction: column;
+			max-height: calc(100vh - 60px);
+			overflow-y: scroll;
+			scroll-snap-type: y mandatory;
+			& > section {
+				scroll-snap-align: center;
+			}
+		`}
 	${({ variant }) =>
 		variant === 'scrollVideos' &&
 		css`
