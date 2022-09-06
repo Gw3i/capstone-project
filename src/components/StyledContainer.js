@@ -192,12 +192,13 @@ const StyledContainer = styled.div`
 		css`
 			display: flex;
 			flex-direction: column;
-			padding: 20px;
+			padding: 10px;
 			position: absolute;
-			width: 100%;
-			height: 140px;
-			left: 0px;
-			bottom: 0;
+			height: 100px;
+			left: 10px;
+			right: 10px;
+			bottom: 65px;
+			border-radius: 8px;
 
 			background: rgba(163, 163, 163, 0.1);
 			backdrop-filter: blur(20px);
