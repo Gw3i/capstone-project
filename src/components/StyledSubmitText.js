@@ -22,7 +22,6 @@ const StyledSumbitText = styled.p`
 	top: -10vh;
 	padding: 10px;
 	animation: ${move} 1.5s ease-in;
-	border: 2px solid var(--dark);
 	border-radius: 6px;
 	background-color: var(--accent-purple);
 	color: var(--dark);
