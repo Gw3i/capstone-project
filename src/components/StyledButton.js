@@ -2,12 +2,13 @@ import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
 	padding: 3px 12px;
+	font-size: var(--text-s);
 	cursor: pointer;
 	${({ variant }) =>
 		variant === 'standard' &&
 		css`
 			background-color: var(--white);
-			border: 2px solid var(--dark);
+			border: 1.5px solid var(--dark);
 			border-radius: 6px;
 			font-weight: bold;
 		`}
@@ -19,6 +20,7 @@ const StyledButton = styled.button`
 			border-radius: 6px;
 			font-weight: bold;
 			color: var(--dark);
+			font-weight: bold;
 		`}
 	${({ variant }) =>
 		variant === 'submit' &&
@@ -29,7 +31,6 @@ const StyledButton = styled.button`
 			border: 2px solid var(--dark);
 			border-radius: 6px;
 			color: var(--white);
-			font-size: var(--text-s);
 			font-weight: bold;
 		`}
 	${({ variant }) =>
