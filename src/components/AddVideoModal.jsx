@@ -28,6 +28,7 @@ export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 	function onSubmit(data) {
 		setVideos(data);
 		reset();
+		onCancel();
 		setConfirmationMessage('Great! The video was added!');
 	}
 
