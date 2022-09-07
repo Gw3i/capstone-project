@@ -20,10 +20,10 @@ const StyledLink = styled.a`
 			flex-direction: row;
 			padding: 3px 12px;
 			background-color: var(--white);
-			border: 2px solid var(--dark);
+			border: 1.5px solid var(--dark);
 			border-radius: 6px;
-			font-size: var(--text-m);
-			font-weight: bold;
+			font-size: var(--text-s);
+			font-weight: 700;
 			white-space: nowrap;
 		`}
 		${({ variant }) =>
