@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
 
+import EmojiIcons from './EmojiIcons';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledForm from './StyledForm';
@@ -53,11 +54,13 @@ export default function LoginForm() {
 
 	return (
 		<>
+			<EmojiIcons variant="smileyHappy" />
 			<Vectors variant="bigBlobExplore" />
 			<Vectors variant="smallBlob" />
 			<Vectors variant="bigPurpleLogin" />
 			<StyledContainer variant="exploreWrapper">
 				<StyledForm onSubmit={handleSubmit(onSubmit)}>
+					<EmojiIcons variant="highlight" />
 					<StyledLabel htmlFor="username">
 						Username
 						<StyledInput

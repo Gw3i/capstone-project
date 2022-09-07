@@ -39,6 +39,11 @@ const StyledH1 = styled.h1`
 			line-height: 25px;
 			text-align: center;
 		`}
+	${({ position }) =>
+		position === 'relative' &&
+		css`
+			position: relative;
+		`}
 `;
 const StyledH2 = styled.h2`
 	font-size: var(--h2);
@@ -105,15 +110,15 @@ const StyledParagraph = styled.p`
 		css`
 			margin: 5px 0;
 		`}
+		${({ margin }) =>
+		margin === 'bottom' &&
+		css`
+			margin-bottom: 25px;
+		`}
 		${({ padding }) =>
 		padding === 'minSides' &&
 		css`
 			padding: 0 5px;
-		`}
-		${({ padding }) =>
-		padding === 'minTopBottom' &&
-		css`
-			padding: 5px 0;
 		`}
 		${({ align }) =>
 		align === 'center' &&
