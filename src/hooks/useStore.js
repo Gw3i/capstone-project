@@ -230,7 +230,6 @@ const useStore = create(set => ({
 		set(state => {
 			return {
 				videos: [
-					...state.videos,
 					...state.playlistVideos.map(playlistVideo => {
 						return {
 							YouTubeLink: `https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`,
@@ -241,6 +240,7 @@ const useStore = create(set => ({
 							timeStamp: '',
 						};
 					}),
+					...state.videos,
 				],
 			};
 		});
