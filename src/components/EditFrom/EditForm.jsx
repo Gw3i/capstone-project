@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
+import EmojiIcons from '../EmojiIcons';
 import StyledButton from '../StyledButton';
 import StyledContainer from '../StyledContainer';
 import StyledForm from '../StyledForm';
@@ -10,6 +11,8 @@ import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
 import StyledSelect from '../StyledSelect';
+import Vectors from '../Vectors';
+
 export default function EditForm() {
 	const router = useRouter();
 	const videos = useStore(state => state.videos);
@@ -39,6 +42,10 @@ export default function EditForm() {
 
 	return (
 		<>
+			<EmojiIcons variant="nice" />
+			<Vectors variant="bigBlobExplore" />
+			<Vectors variant="smallBlob" />
+			<Vectors variant="bigPurpleLogin" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="link">
 					YouTube link

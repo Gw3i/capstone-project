@@ -5,6 +5,7 @@ import Crown from '../../public/EmojiIcons/Crown.js';
 import Highlight from '../../public/EmojiIcons/Highlight.js';
 import Lens from '../../public/EmojiIcons/Lens.js';
 import LightBulb from '../../public/EmojiIcons/LightBulb.js';
+import Nice from '../../public/EmojiIcons/Nice.js';
 import Ribbon from '../../public/EmojiIcons/Ribbon';
 import SmileyHappy from '../../public/EmojiIcons/SmileyHappy.js';
 import SmileySurprised from '../../public/EmojiIcons/SmileySurprised.js';
@@ -69,6 +70,12 @@ export default function EmojiIcons({ variant }) {
 		return (
 			<StyledEmojiContainer variant="lightBulb">
 				<LightBulb />
+			</StyledEmojiContainer>
+		);
+	} else if (variant === 'nice') {
+		return (
+			<StyledEmojiContainer variant="nice">
+				<Nice />
 			</StyledEmojiContainer>
 		);
 	}
@@ -137,5 +144,12 @@ const StyledEmojiContainer = styled.div`
 			position: absolute;
 			top: 1%;
 			left: 5%;
+		`}
+		${({ variant }) =>
+		variant === 'nice' &&
+		css`
+			position: absolute;
+			top: 30%;
+			right: 10%;
 		`}
 `;

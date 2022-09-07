@@ -16,8 +16,8 @@ export default function Edit() {
 				/>
 			</Head>
 			<Layout>
-				<Typography variant="h1" decoration="borderBottom">
-					Edit video information
+				<Typography variant="h1" decoration="borderBottomCreateAccount">
+					Create new account
 				</Typography>
 				<EditForm />
 			</Layout>
