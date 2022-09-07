@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import Layout from '../components/Layout';
 import StyledContainer from '../components/StyledContainer';
 import Typography from '../components/Typography';
@@ -8,30 +10,40 @@ export default function Bookmarks() {
 	const videos = useStore(state => state.videos);
 
 	return (
-		<Layout>
-			<StyledContainer variant="blurContainerHeadline">
-				<Typography variant="h1" decoration="borderBottom">
-					Bookmarks
-				</Typography>
-			</StyledContainer>
-			<StyledContainer variant="snapScroll">
-				{videos
-					.filter(video => {
-						return video.isBookmarked;
-					})
-					.map(video => {
-						return (
-							<VideoCards
-								key={video.id}
-								YouTubeLink={video.YouTubeLink}
-								videoTitle={video.videoTitle}
-								videoId={video.id}
-								bookmark={video.isBookmarked}
-								category={video.category}
-							/>
-						);
-					})}
-			</StyledContainer>
-		</Layout>
+		<>
+			<Head>
+				<title key="title">Kiddio Bookmarks</title>
+				<meta
+					key="description"
+					name="description"
+					content="Kiddio - the kids leaning app"
+				/>
+			</Head>
+			<Layout>
+				<StyledContainer variant="blurContainerHeadline">
+					<Typography variant="h1" decoration="borderBottom">
+						Bookmarks
+					</Typography>
+				</StyledContainer>
+				<StyledContainer variant="snapScroll">
+					{videos
+						.filter(video => {
+							return video.isBookmarked;
+						})
+						.map(video => {
+							return (
+								<VideoCards
+									key={video.id}
+									YouTubeLink={video.YouTubeLink}
+									videoTitle={video.videoTitle}
+									videoId={video.id}
+									bookmark={video.isBookmarked}
+									category={video.category}
+								/>
+							);
+						})}
+				</StyledContainer>
+			</Layout>
+		</>
 	);
 }

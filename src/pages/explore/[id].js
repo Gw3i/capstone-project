@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import Layout from '../../components/Layout';
@@ -20,26 +21,36 @@ export default function ExploreCategory() {
 	);
 
 	return (
-		<Layout>
-			<StyledContainer variant="blurContainerHeadline">
-				<Typography variant="h1" decoration="borderBottom">
-					{ref.id}
-				</Typography>
-			</StyledContainer>
-			<StyledContainer variant="snapScroll">
-				{sortedCategoryVideos.map(video => {
-					return (
-						<VideoCard
-							key={video.id}
-							YouTubeLink={video.YouTubeLink}
-							videoTitle={video.videoTitle}
-							videoId={video.id}
-							bookmark={video.isBookmarked}
-							category={video.category}
-						/>
-					);
-				})}
-			</StyledContainer>
-		</Layout>
+		<>
+			<Head>
+				<title key="title">Kiddio Explore Category</title>
+				<meta
+					key="description"
+					name="description"
+					content="Kiddio - the kids leaning app"
+				/>
+			</Head>
+			<Layout>
+				<StyledContainer variant="blurContainerHeadline">
+					<Typography variant="h1" decoration="borderBottom">
+						{ref.id}
+					</Typography>
+				</StyledContainer>
+				<StyledContainer variant="snapScroll">
+					{sortedCategoryVideos.map(video => {
+						return (
+							<VideoCard
+								key={video.id}
+								YouTubeLink={video.YouTubeLink}
+								videoTitle={video.videoTitle}
+								videoId={video.id}
+								bookmark={video.isBookmarked}
+								category={video.category}
+							/>
+						);
+					})}
+				</StyledContainer>
+			</Layout>
+		</>
 	);
 }
