@@ -71,10 +71,10 @@ const StyledContainer = styled.div`
 			max-height: 500px;
 			overflow-x: auto;
 			gap: 10px;
-
-			> * {
+			padding: 0 20px;
+			& > * {
 				min-width: 250px;
-				height: 200px;
+				height: 250px;
 				overflow: hidden;
 				background-color: lightgray;
 				border: 1px solid transparent;
