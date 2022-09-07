@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const StyledCategoryTag = styled.a`
 	max-width: fit-content;
-	margin-top: 5px;
 	padding: 3px 12px;
 	border: 2px solid var(--white);
 	border-radius: 6px;

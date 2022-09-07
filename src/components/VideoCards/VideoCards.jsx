@@ -34,35 +34,39 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 
 	return (
 		<StyledVideoContainer key={videoId}>
-			<StyledVideoButtonContainer>
-				{loginSession && (
-					<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
-						<Icon variant="delete" color={isShown ? 'var(--accent-purple)' : 'white'} />
-					</StyledButton>
-				)}
-
-				{isShown && <DeleteModal onCancel={handleVisibility} videoId={videoId} />}
-
-				{loginSession && (
-					<Link href={`/edit/${videoId}`}>
-						<StyledLink aria-label="edit" variant="default">
-							<Icon variant="edit" color="white" />
-						</StyledLink>
-					</Link>
-				)}
-
-				<StyledButton
-					type="button"
-					variant="videoIcons"
-					onClick={() => handleBookmark(videoId)}
-				>
-					<Icon variant="bookmark" color={bookmark ? 'var(--accent-purple)' : 'white'} />
-				</StyledButton>
-			</StyledVideoButtonContainer>
 			<StyledContainer variant="blurContainer">
-				<Typography variant="h2" color="white" size="medium">
-					{videoTitle}
-				</Typography>
+				<StyledVideoButtonContainer>
+					{loginSession && (
+						<StyledButton type="button" variant="videoIcons" onClick={handleVisibility}>
+							<Icon
+								variant="delete"
+								color={isShown ? 'var(--accent-purple)' : 'white'}
+							/>
+						</StyledButton>
+					)}
+
+					{isShown && <DeleteModal onCancel={handleVisibility} videoId={videoId} />}
+
+					{loginSession && (
+						<Link href={`/edit/${videoId}`}>
+							<StyledLink aria-label="edit" variant="default">
+								<Icon variant="edit" color="white" />
+							</StyledLink>
+						</Link>
+					)}
+
+					<StyledButton
+						type="button"
+						variant="videoIcons"
+						onClick={() => handleBookmark(videoId)}
+					>
+						<Icon
+							variant="bookmark"
+							color={bookmark ? 'var(--accent-purple)' : 'white'}
+						/>
+					</StyledButton>
+				</StyledVideoButtonContainer>
+
 				{routerId === [category] ? (
 					<Link>
 						<StyledCategoryTag>{category}</StyledCategoryTag>
@@ -72,6 +76,9 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 						<StyledCategoryTag>{category}</StyledCategoryTag>
 					</Link>
 				)}
+				<Typography variant="h2" color="white" size="medium">
+					{videoTitle}
+				</Typography>
 			</StyledContainer>
 			<StyledVideoFrame
 				width="180"

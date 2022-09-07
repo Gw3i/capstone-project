@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const StyledVideoButtonContainer = styled.div`
 	display: flex;
 	position: absolute;
-	top: 80px;
-	right: 20px;
-	flex-direction: column;
+	top: 5px;
+	right: 5px;
+	flex-direction: row-reverse;
 	gap: 10px;
 `;
 
