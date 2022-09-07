@@ -84,9 +84,12 @@ const StyledVectorContainer = styled.div`
 			top: 389px;
 			right: 0px;
 			height: 250px;
+			width: 100vw;
+			height: 300px;
 			& > svg {
 				right: -260px;
 				transform: rotate(-3deg);
+				width: 100vw;
 			}
 		`}
 	${({ variant }) =>
