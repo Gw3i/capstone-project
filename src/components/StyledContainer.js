@@ -234,6 +234,26 @@ const StyledContainer = styled.div`
 			top: 20px;
 			right: 20px;
 		`}
+		${({ variant }) =>
+		variant === 'blurContainerHeadline' &&
+		css`
+			padding: 10px;
+			position: absolute;
+			height: 50px;
+			top: 7%;
+			z-index: 100;
+			left: 15%;
+			right: 15%;
+			border-radius: 8px;
+			justify-content: center;
+			align-items: center;
+			background: rgba(163, 163, 163, 0.1);
+			backdrop-filter: blur(20px);
+			& > h1 {
+				margin: 0;
+				color: var(--white);
+			}
+		`}
 `;
 
 export default StyledContainer;

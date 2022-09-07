@@ -121,7 +121,8 @@ export default function LoginForm() {
 				</StyledForm>
 				{loginInformationError && (
 					<StyledInputWarning role="alert">
-						Wrong login information. Please try again.
+						Wrong login information. <br />
+						Please try again.
 					</StyledInputWarning>
 				)}
 				<StyledContainer variant="column">

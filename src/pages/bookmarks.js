@@ -9,9 +9,11 @@ export default function Bookmarks() {
 
 	return (
 		<Layout>
-			<Typography variant="h1" decoration="borderBottom">
-				Bookmarks
-			</Typography>
+			<StyledContainer variant="blurContainerHeadline">
+				<Typography variant="h1" decoration="borderBottom">
+					Bookmarks
+				</Typography>
+			</StyledContainer>
 			<StyledContainer variant="snapScroll">
 				{videos
 					.filter(video => {

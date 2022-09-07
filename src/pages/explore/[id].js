@@ -21,9 +21,11 @@ export default function ExploreCategory() {
 
 	return (
 		<Layout>
-			<Typography variant="h1" decoration="borderBottom">
-				{ref.id}
-			</Typography>
+			<StyledContainer variant="blurContainerHeadline">
+				<Typography variant="h1" decoration="borderBottom">
+					{ref.id}
+				</Typography>
+			</StyledContainer>
 			<StyledContainer variant="snapScroll">
 				{sortedCategoryVideos.map(video => {
 					return (

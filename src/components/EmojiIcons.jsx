@@ -121,7 +121,7 @@ const StyledEmojiContainer = styled.div`
 		variant === 'thunder' &&
 		css`
 			position: absolute;
-			top: 102%;
+			top: 97%;
 			right: 2%;
 		`}
 		${({ variant }) =>

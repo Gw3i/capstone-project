@@ -11,7 +11,7 @@ const StyledList = styled.ul`
 			justify-content: space-evenly;
 			width: 100vw;
 			margin: 0;
-			padding: 5px 0;
+			padding: 10px 0;
 			border-top: 2px solid black;
 			background-color: white;
 		`}
