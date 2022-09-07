@@ -33,7 +33,7 @@ export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 	}
 
 	return (
-		<StyledModalSection variant="addVideo">
+		<StyledModalSection>
 			<Typography variant="h3">Please add your video to a category</Typography>
 
 			{confirmationMessage && <ConfirmationMessage />}

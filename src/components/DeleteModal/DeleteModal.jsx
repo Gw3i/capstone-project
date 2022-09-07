@@ -8,7 +8,7 @@ export default function DeleteModal({ onCancel, videoId }) {
 	const deleteVideo = useStore(state => state.deleteVideo);
 
 	return (
-		<StyledModalSection variant="delete">
+		<StyledModalSection>
 			<Typography variant="h3" decoration="modal" component="p">
 				Are you sure you want to delete this video?
 			</Typography>

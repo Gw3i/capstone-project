@@ -193,28 +193,34 @@ export default function Playlist() {
 															>
 																{playlistVideo.snippet.title}
 															</Typography>
-															{isShown && (
-																<StyledContainer
-																	variant="overlay"
-																	onClick={() => {
-																		setIsShown(!isShown);
-																	}}
-																/>
-															)}
 															{isShown &&
 																playlistVideo.id ===
 																	currentVideo.id && (
-																	<AddVideoModal
-																		onCancel={handleVisibility}
-																		videoTitle={
-																			playlistVideo.snippet
-																				.title
-																		}
-																		YouTubeLink={
-																			playlistVideo.snippet
-																				.resourceId.videoId
-																		}
-																	/>
+																	<>
+																		<AddVideoModal
+																			onCancel={
+																				handleVisibility
+																			}
+																			videoTitle={
+																				playlistVideo
+																					.snippet.title
+																			}
+																			YouTubeLink={
+																				playlistVideo
+																					.snippet
+																					.resourceId
+																					.videoId
+																			}
+																		/>
+																		<StyledContainer
+																			variant="overlay"
+																			onClick={() => {
+																				setIsShown(
+																					!isShown
+																				);
+																			}}
+																		/>
+																	</>
 																)}
 															<StyledButton
 																variant="add"

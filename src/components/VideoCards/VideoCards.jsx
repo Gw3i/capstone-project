@@ -45,8 +45,6 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 						</StyledButton>
 					)}
 
-					{isShown && <DeleteModal onCancel={handleVisibility} videoId={videoId} />}
-
 					{loginSession && (
 						<Link href={`/edit/${videoId}`}>
 							<StyledLink aria-label="edit" variant="default">
@@ -88,6 +86,17 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 				frameBorder="0"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 			></StyledVideoFrame>
+			{isShown && (
+				<>
+					<DeleteModal onCancel={handleVisibility} videoId={videoId} />
+					<StyledContainer
+						variant="overlay"
+						onClick={() => {
+							setIsShown(!isShown);
+						}}
+					/>
+				</>
+			)}
 		</StyledVideoContainer>
 	);
 }
