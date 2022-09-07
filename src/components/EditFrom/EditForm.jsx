@@ -27,7 +27,6 @@ export default function EditForm() {
 
 	const onSubmit = data => {
 		toBeEditedVideo.videoTitle = data.videoTitle;
-		toBeEditedVideo.YouTubeLink = data.YouTubeLink;
 		toBeEditedVideo.category = data.category;
 		setConfirmationMessage('Great! The video was edited!');
 		router.push('/');
@@ -47,35 +46,6 @@ export default function EditForm() {
 			<Vectors variant="smallBlob" />
 			<Vectors variant="bigPurpleLogin" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
-				<StyledLabel htmlFor="link">
-					YouTube link
-					<StyledInput
-						{...register('YouTubeLink', {
-							required: 'This field is required',
-							pattern: {
-								value: /^(https:\/\/www.)?(youtube.com\/)(embed)?[\w\d]{5,}[^\s$#]*$/gi,
-								message: 'This is not the right YouTube url',
-							},
-						})}
-						placeholder="https://www.youtube.com/..."
-						name="YouTubeLink"
-						type="text"
-						id="link"
-						defaultValue={toBeEditedVideo?.YouTubeLink}
-					/>
-					<ErrorMessage
-						errors={errors}
-						name="YouTubeLink"
-						render={({ messages }) =>
-							messages &&
-							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type} role="alert">
-									{message}
-								</StyledInputWarning>
-							))
-						}
-					/>
-				</StyledLabel>
 				<StyledLabel htmlFor="title">
 					Video title
 					<StyledInput
