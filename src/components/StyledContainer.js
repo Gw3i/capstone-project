@@ -56,7 +56,7 @@ const StyledContainer = styled.div`
 		variant === 'snapScroll' &&
 		css`
 			flex-direction: column;
-			max-height: calc(100vh - 60px);
+			max-height: calc(100vh - 70px);
 			overflow-y: scroll;
 			scroll-snap-type: y mandatory;
 			& > section {

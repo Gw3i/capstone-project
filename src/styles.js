@@ -16,6 +16,11 @@ export const GlobalStyle = createGlobalStyle`
 	body {
 		margin: 0;
 		font-size: 1rem;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		& ::-webkit-scrollbar {
+  			display: none;
+		}
 
 	}
 	h2, h3 {
@@ -29,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
 		--white: #FCFDFF;
 		--accent-purple: #D2B6FF;
 		--accent-yellow: #FFF800;
+		--contrast-purple: #B082FB;
 		--h1: 36px;
 		--h2: 32px;
 		--h3: 24px;

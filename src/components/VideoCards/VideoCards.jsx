@@ -60,7 +60,7 @@ export default function VideoCard({ YouTubeLink, videoTitle, videoId, bookmark, 
 					>
 						<Icon
 							variant="bookmark"
-							color={bookmark ? 'var(--accent-purple)' : 'white'}
+							color={bookmark ? 'var(--contrast-purple)' : 'white'}
 						/>
 					</StyledButton>
 				</StyledVideoButtonContainer>
