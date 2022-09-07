@@ -193,14 +193,17 @@ const StyledContainer = styled.div`
 			flex-direction: column;
 			padding: 10px;
 			position: absolute;
-			height: 100px;
 			left: 10px;
 			right: 10px;
+			min-height: 100px;
 			bottom: 65px;
 			border-radius: 8px;
 
 			background: rgba(163, 163, 163, 0.1);
 			backdrop-filter: blur(20px);
+			& > h2 {
+				margin-top: 10px;
+			}
 		`}
 		${({ variant }) =>
 		variant === 'blurContainerExplore' &&
