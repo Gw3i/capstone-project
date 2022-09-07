@@ -39,6 +39,15 @@ const StyledH1 = styled.h1`
 			line-height: 25px;
 			text-align: center;
 		`}
+	${({ decoration }) =>
+		decoration === 'borderBottomCreateAccount' &&
+		css`
+			border-bottom: 4px solid var(--accent-yellow);
+			line-height: 30px;
+			margin: 65px 0 40px;
+			width: 210px;
+			text-align: center;
+		`}
 	${({ position }) =>
 		position === 'relative' &&
 		css`
