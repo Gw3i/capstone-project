@@ -60,7 +60,6 @@ export default function LoginForm() {
 			<Vectors variant="bigPurpleLogin" />
 			<StyledContainer variant="exploreWrapper">
 				<StyledForm onSubmit={handleSubmit(onSubmit)}>
-					<EmojiIcons variant="highlight" />
 					<StyledLabel htmlFor="username">
 						Username
 						<StyledInput
@@ -122,7 +121,7 @@ export default function LoginForm() {
 				</StyledForm>
 				{loginInformationError && (
 					<StyledInputWarning role="alert">
-						Your login information is wrong. Please try again.
+						Wrong login information. Please try again.
 					</StyledInputWarning>
 				)}
 				<StyledContainer variant="column">

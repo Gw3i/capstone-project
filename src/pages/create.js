@@ -11,13 +11,13 @@ export default function Create() {
 	const loginSession = useStore(state => state.loginSession);
 	return (
 		<Layout>
-			<EmojiIcons variant="lightBulb" />
 			<Typography variant="h1" decoration="borderBottom" position="relative">
 				<EmojiIcons variant="ribbon" />
 				{loginSession ? 'Add' : 'Login'}
 			</Typography>
 			{loginSession ? (
 				<>
+					<EmojiIcons variant="lightBulb" />
 					<StyledContainer variant="logout">
 						<Logout />
 					</StyledContainer>
