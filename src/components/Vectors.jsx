@@ -103,6 +103,9 @@ const StyledVectorContainer = styled.div`
 			@media screen and (min-width: 1025px) {
 				display: none;
 			}
+			@media screen and (min-height: 700px) {
+				display: none;
+			}
 		`}
 	${({ variant }) =>
 		variant === 'bigPurpleLogin' &&
@@ -133,7 +136,13 @@ const StyledVectorContainer = styled.div`
 			}
 			@media screen and (min-width: 1025px) {
 				display: none;
+			}
+			@media screen and (min-height: 700px) {
+				display: none;
+			}
 		`}
+
+
 		${({ variant }) =>
 		variant === 'bigPurpleEdit' &&
 		css`
@@ -163,6 +172,10 @@ const StyledVectorContainer = styled.div`
 			}
 			@media screen and (min-width: 1025px) {
 				display: none;
+			}
+			@media screen and (min-height: 700px) {
+				display: none;
+			}
 		`}
 	${({ variant }) =>
 		variant === 'bigPurpleCreateAccount' &&
@@ -199,6 +212,9 @@ const StyledVectorContainer = styled.div`
 					right: 4%;
 					top: 17%;
 				}
+			}
+			@media screen and (min-height: 700px) {
+				display: none;
 			}
 		`}
 		${({ variant }) =>
