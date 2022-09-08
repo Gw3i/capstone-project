@@ -144,8 +144,8 @@ const StyledVectorContainer = styled.div`
 			right: 0px;
 			height: 150px;
 			& > svg {
-				right: -510px;
-				top: -120px;
+				top: -83%;
+				left: -4%;
 				transform: rotate(-10deg);
 			}
 		`}
