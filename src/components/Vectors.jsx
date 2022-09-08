@@ -89,7 +89,7 @@ const StyledVectorContainer = styled.div`
 		css`
 			height: 100%;
 			right: 0;
-			bottom: -60%;
+			bottom: -90%;
 			& > svg {
 				right: -70%;
 				transform: rotate(-3deg);
@@ -97,14 +97,22 @@ const StyledVectorContainer = styled.div`
 			@media screen and (min-width: 376px) {
 				height: 59%;
 				width: 100vw;
-				right: 0;
 				bottom: -72%;
 				& > svg {
 					right: 15%;
-					transform: rotate(-3deg);
-					width: 200%;
 				}
 			}
+			@media screen and (min-width: 769px) {
+				height: 59%;
+				width: 100vw;
+				bottom: -72%;
+				& > svg {
+					right: 35%;
+					bottom: -52%;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				display: none;
 		`}
 	${({ variant }) =>
 		variant === 'bigPurpleCreateAccount' &&
