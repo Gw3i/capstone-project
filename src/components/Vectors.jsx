@@ -83,6 +83,20 @@ const StyledVectorContainer = styled.div`
 			& > svg {
 				right: -240px;
 			}
+			@media screen and (min-width: 376px) {
+				& > svg {
+					right: 135px;
+					top: 130px;
+				}
+			}
+			@media screen and (min-width: 769px) {
+				& > svg {
+					right: 390px;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				display: none;
+			}
 		`}
 	${({ variant }) =>
 		variant === 'bigPurpleLogin' &&
