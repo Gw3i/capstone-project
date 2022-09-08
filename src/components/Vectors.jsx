@@ -15,6 +15,12 @@ export default function Vectors({ variant }) {
 				<Vector variant="bigPurple" size="777px" color="var(--accent-purple)" />
 			</StyledVectorContainer>
 		);
+	} else if (variant === 'bigPurpleEdit') {
+		return (
+			<StyledVectorContainer variant="bigPurpleEdit">
+				<Vector variant="bigPurple" size="777px" color="var(--accent-purple)" />
+			</StyledVectorContainer>
+		);
 	} else if (variant === 'bigPurpleCreateAccount') {
 		return (
 			<StyledVectorContainer variant="bigPurpleCreateAccount">
@@ -123,6 +129,36 @@ const StyledVectorContainer = styled.div`
 				& > svg {
 					right: 35%;
 					bottom: -52%;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				display: none;
+		`}
+		${({ variant }) =>
+		variant === 'bigPurpleEdit' &&
+		css`
+			height: 100%;
+			right: 0;
+			bottom: -90%;
+			& > svg {
+				right: -70%;
+				transform: rotate(-3deg);
+			}
+			@media screen and (min-width: 376px) {
+				height: 59%;
+				width: 100vw;
+				bottom: -94%;
+				& > svg {
+					right: 15%;
+				}
+			}
+			@media screen and (min-width: 769px) {
+				height: 68%;
+				width: 100vw;
+				bottom: -97%;
+				& > svg {
+					right: 37%;
+					bottom: -58%;
 				}
 			}
 			@media screen and (min-width: 1025px) {

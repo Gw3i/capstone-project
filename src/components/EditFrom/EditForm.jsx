@@ -43,9 +43,10 @@ export default function EditForm() {
 		<>
 			<Vectors variant="bigBlobExplore" />
 			<Vectors variant="smallBlob" />
-			<Vectors variant="bigPurpleLogin" />
-			<EmojiIcons variant="arrowEdit" />
+			<Vectors variant="bigPurpleEdit" />
+
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
+				<EmojiIcons variant="arrowEdit" />
 				<EmojiIcons variant="nice" />
 				<StyledLabel htmlFor="title">
 					Video title

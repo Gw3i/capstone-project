@@ -121,8 +121,8 @@ const StyledEmojiContainer = styled.div`
 		variant === 'arrowEdit' &&
 		css`
 			position: absolute;
-			bottom: -39%;
-			left: 20%;
+			top: 128%;
+			left: 5%;
 			transform: scaleY(1);
 			& > svg {
 				transform: rotate(95deg);
@@ -167,7 +167,7 @@ const StyledEmojiContainer = styled.div`
 		variant === 'nice' &&
 		css`
 			position: absolute;
-			top: -42%;
+			top: -24%;
 			right: -4%;
 		`}
 `;
