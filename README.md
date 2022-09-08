@@ -1,4 +1,4 @@
-# Kiddio - kids leaning app in video format
+# Kiddio
 
 ## An app for kids where they can watch videos added by their parents.
 
@@ -15,17 +15,17 @@ You as a parent can add YouTube videos and playlist what you want your child to 
 
 
 ## Tech Stack
-- React
-- Next.js
-- Testing Library
-- Jest
-- Styled-Components
-- Zustand
-- React Hook Form
-- Figma
-- Node.js
-- Vercel
-- Storybook
-- YouTube API
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Testing Library](https://testing-library.com/)
+- [Jest](https://jestjs.io/)
+- [Styled-Components](https://styled-components.com/)
+- [Zustand](https://zustand-demo.pmnd.rs/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Node.js](https://nodejs.org/en/)
+- [Vercel](https://vercel.com/)
+- [Storybook](https://storybook.js.org/)
+- [YouTube API](https://developers.google.com/youtube/v3)
+- [Figma](https://www.figma.com/)
 - Git Workflow
 - Agile Worklflow
