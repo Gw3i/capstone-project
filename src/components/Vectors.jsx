@@ -125,6 +125,31 @@ const StyledVectorContainer = styled.div`
 				right: -70%;
 				transform: rotate(-3deg);
 			}
+			@media screen and (min-width: 376px) {
+				height: 100%;
+				& > svg {
+					right: 15%;
+					bottom: -13%;
+				}
+			}
+			@media screen and (min-width: 769px) {
+				top: 100%;
+				right: -57%;
+				height: 60%;
+				& > svg {
+					right: 4%;
+					top: 17%;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				top: 100%;
+				right: -57%;
+				height: 50%;
+				& > svg {
+					right: 4%;
+					top: 17%;
+				}
+			}
 		`}
 		${({ variant }) =>
 		variant === 'bigPurpleExplore' &&
@@ -153,13 +178,24 @@ const StyledVectorContainer = styled.div`
 		variant === 'smallBlobCreateAccount' &&
 		css`
 			top: 0;
-			right: 0px;
+			right: 0;
 			height: 100px;
-			width: 400px;
 			& > svg {
-				right: -120px;
+				left: -105%;
 				top: 200px;
 				transform: rotate(65deg);
+			}
+			@media screen and (min-width: 376px) {
+			& > svg {
+				left: -75%;
+			}
+			@media screen and (min-width: 769px) {
+			& > svg {
+				left: -43%;
+			}
+			@media screen and (min-width: 1025px) {
+			& > svg {
+				left: -30%;
 			}
 		`}
 		${({ variant }) =>
