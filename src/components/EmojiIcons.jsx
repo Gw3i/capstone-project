@@ -42,6 +42,12 @@ export default function EmojiIcons({ variant }) {
 				<Arrow />
 			</StyledEmojiContainer>
 		);
+	} else if (variant === 'arrowEdit') {
+		return (
+			<StyledEmojiContainer variant="arrowEdit">
+				<Arrow />
+			</StyledEmojiContainer>
+		);
 	} else if (variant === 'smileySurprised') {
 		return (
 			<StyledEmojiContainer variant="smileySurprised">
@@ -112,6 +118,17 @@ const StyledEmojiContainer = styled.div`
 			transform: rotate(17deg);
 		`}
 		${({ variant }) =>
+		variant === 'arrowEdit' &&
+		css`
+			position: absolute;
+			bottom: -39%;
+			left: 20%;
+			transform: scaleY(1);
+			& > svg {
+				transform: rotate(95deg);
+			}
+		`}
+		${({ variant }) =>
 		variant === 'smileySurprised' &&
 		css`
 			position: absolute;
@@ -150,7 +167,7 @@ const StyledEmojiContainer = styled.div`
 		variant === 'nice' &&
 		css`
 			position: absolute;
-			top: 30%;
-			right: 10%;
+			top: -42%;
+			right: -4%;
 		`}
 `;

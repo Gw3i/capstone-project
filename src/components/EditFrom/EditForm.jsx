@@ -41,11 +41,12 @@ export default function EditForm() {
 
 	return (
 		<>
-			<EmojiIcons variant="nice" />
 			<Vectors variant="bigBlobExplore" />
 			<Vectors variant="smallBlob" />
 			<Vectors variant="bigPurpleLogin" />
+			<EmojiIcons variant="arrowEdit" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
+				<EmojiIcons variant="nice" />
 				<StyledLabel htmlFor="title">
 					Video title
 					<StyledInput
