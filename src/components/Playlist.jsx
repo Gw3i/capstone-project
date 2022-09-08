@@ -12,11 +12,10 @@ import Icon from './Icon';
 import StyledButton from './StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledGridContainer from './StyledGridContainer';
-import StyledH3 from './StyledH3';
 import StyledLink from './StyledLink';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
-import StyledText from './StyledText';
+import Typography from './Typography';
 
 export default function Playlist() {
 	const channels = useStore(state => state.channels);
@@ -58,12 +57,16 @@ export default function Playlist() {
 							variant="channelCardWrapperPlaylists"
 							key={channel.channelId}
 						>
-							<StyledText variant="minMargin">Channel</StyledText>
+							<Typography variant="p" margin="minMargin" size="medium">
+								Channel
+							</Typography>
 							<ChannelCard channelItem={channel} />
 						</StyledContainer>
 					);
 				})}
-			<StyledH3 variant="playlists">Playlists: {channelPlaylists.length}</StyledH3>
+			<Typography variant="h3" component="h2">
+				Playlists: {channelPlaylists.length}
+			</Typography>
 			<ConfirmationMessage />
 			<StyledContainer variant="scrollPlaylists">
 				{channelPlaylists
@@ -82,9 +85,14 @@ export default function Playlist() {
 										height={110}
 									/>
 									<StyledContainer variant="columnSpaceEvenly">
-										<StyledText variant="playlist">
+										<Typography
+											variant="p"
+											size="medium"
+											align="center"
+											bold="bold"
+										>
 											{channelPlaylist.snippet.title}
-										</StyledText>
+										</Typography>
 
 										<StyledButton
 											variant="standardFlexIcon"
@@ -179,31 +187,40 @@ export default function Playlist() {
 																width={190}
 																height={110}
 															/>
-															<StyledText variant="videoCard">
+															<Typography
+																variant="p"
+																padding="minSides"
+															>
 																{playlistVideo.snippet.title}
-															</StyledText>
-															{isShown && (
-																<StyledContainer
-																	variant="overlay"
-																	onClick={() => {
-																		setIsShown(!isShown);
-																	}}
-																/>
-															)}
+															</Typography>
 															{isShown &&
 																playlistVideo.id ===
 																	currentVideo.id && (
-																	<AddVideoModal
-																		onCancel={handleVisibility}
-																		videoTitle={
-																			playlistVideo.snippet
-																				.title
-																		}
-																		YouTubeLink={
-																			playlistVideo.snippet
-																				.resourceId.videoId
-																		}
-																	/>
+																	<>
+																		<AddVideoModal
+																			onCancel={
+																				handleVisibility
+																			}
+																			videoTitle={
+																				playlistVideo
+																					.snippet.title
+																			}
+																			YouTubeLink={
+																				playlistVideo
+																					.snippet
+																					.resourceId
+																					.videoId
+																			}
+																		/>
+																		<StyledContainer
+																			variant="overlay"
+																			onClick={() => {
+																				setIsShown(
+																					!isShown
+																				);
+																			}}
+																		/>
+																	</>
 																)}
 															<StyledButton
 																variant="add"

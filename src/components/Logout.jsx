@@ -2,23 +2,25 @@ import Link from 'next/link';
 
 import useStore from '../hooks/useStore';
 
-import ConfirmationMessage from './ConfirmationMessage';
+import StyledLink from './StyledLink';
+import Vectors from './Vectors';
 
 export default function Logout() {
 	const setLoginSession = useStore(state => state.setLoginSession);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	return (
 		<>
-			<ConfirmationMessage />
+			<Vectors variant="bigPurple" />
 			<Link href="/">
-				<a
+				<StyledLink
+					variant="buttonSmall"
 					onClick={() => {
 						setLoginSession(null);
 						setConfirmationMessage('You are logged out now');
 					}}
 				>
 					Logout
-				</a>
+				</StyledLink>
 			</Link>
 		</>
 	);

@@ -4,32 +4,136 @@ import create from 'zustand';
 const useStore = create(set => ({
 	videos: [
 		{
-			YouTubeLink: 'https://www.youtube.com/embed/WOkeB4ZTjFM',
-			videoTitle: 'Rick an Morty on Tour',
+			YouTubeLink: 'https://www.youtube.com/watch?v=6ddfTk3u75Y',
+			videoTitle: 'Warum vergeht Zeit?',
 			category: 'Science',
 			id: nanoid(),
 			isBookmarked: false,
 			timeStamp: '',
 		},
 		{
-			YouTubeLink: 'https://www.youtube.com/shorts/Wlj3S21cxRA',
-			videoTitle: 'Was wird das James Webb als nächstes finden?',
-			category: 'Science',
-			id: nanoid(),
-			isBookmarked: false,
-			timeStamp: '',
-		},
-		{
-			YouTubeLink: 'https://www.youtube.com/watch?v=M2PYkZ2Y_Ls',
-			videoTitle: 'Die Entstehung des Menschen',
+			YouTubeLink: 'https://www.youtube.com/embed/LqbIQ_17z2E',
+			videoTitle: 'Die Wahrheit über Bananen',
 			category: 'Biology',
 			id: nanoid(),
 			isBookmarked: false,
 			timeStamp: '',
 		},
 		{
-			YouTubeLink: 'https://www.youtube.com/watch?v=VcVsV9Yn4P4',
-			videoTitle: 'Was is Geoengineering?',
+			YouTubeLink: 'https://www.youtube.com/shorts/E43AOYdvJaM',
+			videoTitle: 'Dinkelkasten Brot Rezept am Ende des Videos 😍',
+			category: 'Cooking',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/watch?v=R2ZFgLROtTY',
+			videoTitle: 'Aktien einfach erklärt',
+			category: 'Finances',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/watch?v=HYuqC13LZ1Q',
+			videoTitle: 'Weshalb Freunde wichtig sind',
+			category: 'Biology',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/watch?v=m62QcCAkm88',
+			videoTitle: 'Leben & Größen',
+			category: 'Science',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://youtu.be/qqMZCtnEop8',
+			videoTitle: 'Die beste Zahl der Welt',
+			category: 'Math',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://youtu.be/QD_tYsiq8Uk',
+			videoTitle: 'What not to do in Britain',
+			category: 'English',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/shorts/OyeKMCAIhiE',
+			videoTitle: 'Cookies selber machen?',
+			category: 'Cooking',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://youtu.be/GDEP3fNegN4',
+			videoTitle: '12 Thins not to do in Britain',
+			category: 'English',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/shorts/ZGAZO8QzS4A',
+			videoTitle: 'Leben auf dem Mond vielleicht bald möglich',
+			category: 'Around the world',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/watch?v=eDbT0EcmPiY',
+			videoTitle: 'Die Entstehung von Pi',
+			category: 'Math',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/watch?v=Gv6eCPTXKZk',
+			videoTitle: 'Überleben in der Wüste',
+			category: 'Biology',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/shorts/cyi34kO1Kgo',
+			videoTitle: 'Weshalb man alles über Finanzen wissen sollte',
+			category: 'Finances',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/watch?v=M2PYkZ2Y_Ls',
+			videoTitle: 'Woher kommen wir?',
+			category: 'Around the world',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/shorts/djS_tclqgsE',
+			videoTitle: 'Woher kommen wir?',
+			category: 'Cooking',
+			id: nanoid(),
+			isBookmarked: false,
+			timeStamp: '',
+		},
+		{
+			YouTubeLink: 'https://www.youtube.com/watch?v=rN_w5Ojsobg',
+			videoTitle: 'Finderabdrücke',
 			category: 'Biology',
 			id: nanoid(),
 			isBookmarked: false,
@@ -39,7 +143,7 @@ const useStore = create(set => ({
 	setVideos: data => {
 		set(state => {
 			return {
-				videos: [...state.videos, { ...data, id: nanoid() }],
+				videos: [{ ...data, id: nanoid() }, ...state.videos],
 			};
 		});
 	},
@@ -80,9 +184,10 @@ const useStore = create(set => ({
 		{ id: nanoid(), name: 'Daily hacks' },
 		{ id: nanoid(), name: 'Biology' },
 		{ id: nanoid(), name: 'Chemistry' },
-		{ id: nanoid(), name: 'Uncategorized' },
+		{ id: nanoid(), name: 'Climate' },
 		{ id: nanoid(), name: 'History' },
 		{ id: nanoid(), name: 'Around the world' },
+		{ id: nanoid(), name: 'Uncategorized' },
 	],
 	confirmationMessage: null,
 	setConfirmationMessage: message => {
@@ -125,7 +230,6 @@ const useStore = create(set => ({
 		set(state => {
 			return {
 				videos: [
-					...state.videos,
 					...state.playlistVideos.map(playlistVideo => {
 						return {
 							YouTubeLink: `https://www.youtube.com/embed/${playlistVideo.snippet.resourceId.videoId}`,
@@ -136,6 +240,7 @@ const useStore = create(set => ({
 							timeStamp: '',
 						};
 					}),
+					...state.videos,
 				],
 			};
 		});

@@ -6,12 +6,12 @@ const StyledList = styled.ul`
 		css`
 			display: flex;
 			position: fixed;
-			z-index: 50;
+			z-index: 1000;
 			bottom: 0;
 			justify-content: space-evenly;
 			width: 100vw;
 			margin: 0;
-			padding: 5px 0;
+			padding: 10px 0;
 			border-top: 2px solid black;
 			background-color: white;
 		`}

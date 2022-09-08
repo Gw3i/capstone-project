@@ -1,17 +1,21 @@
 import { ErrorMessage } from '@hookform/error-message';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
+import ConfirmationMessage from '../ConfirmationMessage';
 import SearchForm from '../SearchForm.jsx';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
+import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
-import StyledSumbitText from '../StyledSubmitText';
+import StyledSelect from '../StyledSelect';
+import Typography from '../Typography';
+import Vectors from '../Vectors';
 
 export default function VideoForm() {
-	const [showText, setShowText] = useState(false);
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
+	const confirmationMessage = useStore(state => state.confirmationMessage);
 
 	const setVideos = useStore(state => state.setVideos);
 	const categories = useStore(state => state.categories);
@@ -26,21 +30,17 @@ export default function VideoForm() {
 	function onSubmit(data) {
 		setVideos(data);
 		reset();
-		setShowText(true);
-		const fadeMessage = setTimeout(() => {
-			setShowText(false);
-		}, 3000);
-		return () => {
-			clearTimeout(fadeMessage);
-		};
+		setConfirmationMessage('Greate! You are logged in now');
 	}
 
 	return (
 		<>
+			<Vectors variant="bigBlobAdd" />
+			<Vectors variant="smallBlobAdd" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
 				<StyledLabel htmlFor="link">
 					YouTube link
-					<input
+					<StyledInput
 						{...register('YouTubeLink', {
 							required: 'This field is required',
 							pattern: {
@@ -68,7 +68,7 @@ export default function VideoForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="title">
 					Video title
-					<input
+					<StyledInput
 						{...register('videoTitle', {
 							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
@@ -91,35 +91,38 @@ export default function VideoForm() {
 						}
 					/>
 				</StyledLabel>
-				<StyledLabel htmlFor="categories">Choose a category</StyledLabel>
-				<select
-					{...register('category', { required: 'This filed is required' })}
-					id="categories"
-				>
-					<option value="">-- Choose a category --</option>
-					{categories.map(category => (
-						<option key={category.id} value={category.name}>
-							{category.name}
-						</option>
-					))}
-				</select>
-				<ErrorMessage
-					errors={errors}
-					name="category"
-					render={({ messages }) =>
-						messages &&
-						Object.entries(messages).map(([type, message]) => (
-							<StyledInputWarning key={type} role="alert">
-								{message}
-							</StyledInputWarning>
-						))
-					}
-				/>
-
-				<StyledButton>Submit</StyledButton>
+				<StyledLabel htmlFor="categories">
+					Choose a category
+					<StyledSelect
+						{...register('category', { required: 'This filed is required' })}
+						id="categories"
+					>
+						<option value="">-- Choose a category --</option>
+						{categories.map(category => (
+							<option key={category.id} value={category.name}>
+								{category.name}
+							</option>
+						))}
+					</StyledSelect>
+					<ErrorMessage
+						errors={errors}
+						name="category"
+						render={({ messages }) =>
+							messages &&
+							Object.entries(messages).map(([type, message]) => (
+								<StyledInputWarning key={type} role="alert">
+									{message}
+								</StyledInputWarning>
+							))
+						}
+					/>
+				</StyledLabel>
+				<StyledButton variant="submit">Submit</StyledButton>
 			</StyledForm>
-			{showText && <StyledSumbitText>Great! Your video was added</StyledSumbitText>}
-			<h2>OR</h2>
+			{confirmationMessage && <ConfirmationMessage />}
+			<Typography variant="h2" decoration="borderBottom">
+				OR
+			</Typography>
 			<SearchForm />
 		</>
 	);

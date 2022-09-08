@@ -6,10 +6,13 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
 
+import EmojiIcons from './EmojiIcons';
 import StyledButton from './StyledButton';
 import StyledForm from './StyledForm';
+import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
+import Vectors from './Vectors';
 
 export default function CreateAccountForm() {
 	const router = useRouter();
@@ -62,10 +65,16 @@ export default function CreateAccountForm() {
 
 	return (
 		<>
+			<EmojiIcons variant="smileySurprised" />
+			<EmojiIcons variant="thunder" />
+			<Vectors variant="bigBlobCreateAccount" />
+			<Vectors variant="smallBlobCreateAccount" />
+			<Vectors variant="bigPurpleCreateAccount" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
+				<EmojiIcons variant="highlightLogin" />
 				<StyledLabel htmlFor="username">
 					Username
-					<input
+					<StyledInput
 						{...register('username', {
 							required: 'This field is required',
 							pattern: {
@@ -97,7 +106,7 @@ export default function CreateAccountForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="password">
 					Password
-					<input
+					<StyledInput
 						{...register('password', {
 							required: 'This field is required',
 							minLength: { value: 10, message: 'The min. length is 10 characters' },
@@ -127,7 +136,7 @@ export default function CreateAccountForm() {
 				</StyledLabel>
 				<StyledLabel htmlFor="age">
 					Age
-					<input
+					<StyledInput
 						{...register('age')}
 						name="age"
 						type="date"
@@ -151,7 +160,7 @@ export default function CreateAccountForm() {
 					<StyledInputWarning role="alert">{loginAgeError}</StyledInputWarning>
 				</StyledLabel>
 
-				<StyledButton>Create new account</StyledButton>
+				<StyledButton variant="submit">Create new account</StyledButton>
 			</StyledForm>
 		</>
 	);

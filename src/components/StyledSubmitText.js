@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const move = keyframes`
 0% {
@@ -17,20 +17,14 @@ const move = keyframes`
 `;
 
 const StyledSumbitText = styled.p`
+	position: fixed;
+	z-index: 50;
+	top: -10vh;
 	padding: 10px;
-	border: 2px solid lightgreen;
-	border-radius: 5px;
-	color: lightgreen;
-	${({ variant }) =>
-		variant === 'editConfirm' &&
-		css`
-			position: fixed;
-			top: -10vh;
-			z-index: 50;
-			background-color: lightgreen;
-			color: white;
-			animation: ${move} 1.5s ease-in;
-			animation-fill-mode: forwards;
-		`}
+	animation: ${move} 1.5s ease-in;
+	border-radius: 6px;
+	background-color: var(--accent-purple);
+	color: var(--dark);
+	animation-fill-mode: forwards;
 `;
 export default StyledSumbitText;

@@ -52,7 +52,17 @@ const StyledContainer = styled.div`
 			display: block;
 			margin-bottom: 20px;
 		`}
-
+		${({ variant }) =>
+		variant === 'snapScroll' &&
+		css`
+			flex-direction: column;
+			max-height: calc(100vh - 70px);
+			overflow-y: scroll;
+			scroll-snap-type: y mandatory;
+			& > section {
+				scroll-snap-align: center;
+			}
+		`}
 	${({ variant }) =>
 		variant === 'scrollVideos' &&
 		css`
@@ -61,13 +71,14 @@ const StyledContainer = styled.div`
 			max-height: 500px;
 			overflow-x: auto;
 			gap: 10px;
-			> * {
+			padding: 0 20px;
+			& > * {
 				min-width: 250px;
-				height: 200px;
+				height: 250px;
 				overflow: hidden;
 				background-color: lightgray;
-				border: 1px solid grey;
-				border-radius: 20px;
+				border: 1px solid transparent;
+				border-radius: 8px;
 			}
 		`}
 		${({ variant }) =>
@@ -98,8 +109,8 @@ const StyledContainer = styled.div`
 		css`
 			position: relative;
 			display: block;
-			width: 200px;
-			height: 200px;
+			width: 225px;
+			height: 225px;
 			overflow: hidden;
 		`}
 		${({ variant }) =>
@@ -160,7 +171,7 @@ const StyledContainer = styled.div`
 			left: 0;
 			right: 0;
 			background-color: rgba(0, 0, 0, 0.3);
-			z-index: 90;
+			z-index: 100;
 			width: 110%;
 		`}
 		${({ variant }) =>
@@ -168,11 +179,83 @@ const StyledContainer = styled.div`
 		css`
 			flex-direction: column;
 			justify-content: space-evenly;
+			align-items: center;
 		`}
 		${({ variant }) =>
 		variant === 'margin10TopBottom' &&
 		css`
 			margin: 10px 0;
+		`}
+		${({ variant }) =>
+		variant === 'blurContainer' &&
+		css`
+			display: flex;
+			flex-direction: column;
+			padding: 10px;
+			position: absolute;
+			left: 10px;
+			right: 10px;
+			min-height: 100px;
+			bottom: 65px;
+			border-radius: 8px;
+
+			background: rgba(163, 163, 163, 0.1);
+			backdrop-filter: blur(20px);
+			& > h2 {
+				margin-top: 10px;
+			}
+		`}
+		${({ variant }) =>
+		variant === 'blurContainerExplore' &&
+		css`
+			display: flex;
+			flex-direction: column;
+			padding: 10px;
+			position: absolute;
+			width: 100%;
+			height: 80px;
+			left: 0px;
+			bottom: 0;
+			z-index: 100;
+			background: rgba(163, 163, 163, 0.1);
+			backdrop-filter: blur(20px);
+			&:only-child {
+				z-index: 150;
+			}
+		`}
+		${({ variant }) =>
+		variant === 'logout' &&
+		css`
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		`}
+		${({ variant }) =>
+		variant === 'newAccountLink' &&
+		css`
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		`}
+		${({ variant }) =>
+		variant === 'blurContainerHeadline' &&
+		css`
+			padding: 10px;
+			position: absolute;
+			height: 50px;
+			top: 7%;
+			z-index: 100;
+			left: 15%;
+			right: 15%;
+			border-radius: 8px;
+			justify-content: center;
+			align-items: center;
+			background: rgba(163, 163, 163, 0.1);
+			backdrop-filter: blur(20px);
+			& > h1 {
+				margin: 0;
+				color: var(--white);
+			}
 		`}
 `;
 

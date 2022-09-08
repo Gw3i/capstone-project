@@ -8,12 +8,20 @@ export const GlobalStyle = createGlobalStyle`
 	}
 
 	html {
+		font-family: 'Inter', sans-serif;
 		font-size: 16px;
+
 	}
 
 	body {
 		margin: 0;
 		font-size: 1rem;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+		& ::-webkit-scrollbar {
+  			display: none;
+		}
+
 	}
 	h2, h3 {
 		margin: 5px 0;
@@ -21,7 +29,60 @@ export const GlobalStyle = createGlobalStyle`
 
 	:root {
 		--border-accent: 2px solid #D2B6FF;
+		--border-yellow: 4px solid #FFF800;
 		--dark: #09070B;
 		--white: #FCFDFF;
+		--accent-purple: #D2B6FF;
+		--accent-yellow: #FFF800;
+		--contrast-purple: #B082FB;
+		--h1: 36px;
+		--h2: 32px;
+		--h3: 24px;
+		--h4: 20px;
+		--text-m: 16px;
+		--text-s: 14px;
+		--text-xs: 12px;
 	}
+
+	/* inter-regular - latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/inter-v12-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/fonts/inter-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/inter-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/inter-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/inter-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/inter-v12-latin-regular.svg#Inter') format('svg'); /* Legacy iOS */
+}
+
+/* inter-700 - latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/inter-v12-latin-700.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/fonts/inter-v12-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/inter-v12-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/inter-v12-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/inter-v12-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/inter-v12-latin-700.svg#Inter') format('svg'); /* Legacy iOS */
+}
+
+/* inter-900 - latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/fonts/inter-v12-latin-900.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/fonts/inter-v12-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/inter-v12-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/inter-v12-latin-900.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/inter-v12-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/inter-v12-latin-900.svg#Inter') format('svg'); /* Legacy iOS */
+}
 `;

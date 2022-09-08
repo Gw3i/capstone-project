@@ -6,11 +6,16 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../hooks/useStore';
 
-import ConfirmationMessage from './ConfirmationMessage';
+import EmojiIcons from './EmojiIcons';
 import StyledButton from './StyledButton';
+import StyledContainer from './StyledContainer';
 import StyledForm from './StyledForm';
+import StyledInput from './StyledInput';
 import StyledInputWarning from './StyledInputWarning';
 import StyledLabel from './StyledLabel';
+import StyledLink from './StyledLink';
+import Typography from './Typography';
+import Vectors from './Vectors';
 
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
@@ -40,7 +45,7 @@ export default function LoginForm() {
 
 		if (validateUser.length === 1) {
 			setLoginSession(loggedInUser);
-			setConfirmationMessage('Great! You are logged in');
+			setConfirmationMessage('Great! You are logged in now');
 			router.push('/create');
 		} else {
 			setfalseloginInformationError(true);
@@ -49,73 +54,86 @@ export default function LoginForm() {
 
 	return (
 		<>
-			<ConfirmationMessage />
-			<StyledForm onSubmit={handleSubmit(onSubmit)}>
-				<StyledLabel htmlFor="username">
-					Username
-					<input
-						{...register('username', {
-							required: 'This field is required',
-							pattern: {
-								value: 3,
-								message: 'The min. length is 3 characters',
-							},
-						})}
-						placeholder="parent123"
-						name="username"
-						type="text"
-						id="username"
-					/>
-					<ErrorMessage
-						errors={errors}
-						name="username"
-						render={({ messages }) =>
-							messages &&
-							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type} role="alert">
-									{message}
-								</StyledInputWarning>
-							))
-						}
-					/>
-				</StyledLabel>
-				<StyledLabel htmlFor="password">
-					Password
-					<input
-						{...register('password', {
-							required: 'This field is required',
-							minLength: { value: 10, message: 'The min. length is 10 characters' },
-						})}
-						placeholder="*************"
-						name="password"
-						type="password"
-						id="password"
-					/>
-					<ErrorMessage
-						errors={errors}
-						name="password"
-						render={({ messages }) =>
-							messages &&
-							Object.entries(messages).map(([type, message]) => (
-								<StyledInputWarning key={type} role="alert">
-									{message}
-								</StyledInputWarning>
-							))
-						}
-					/>
-				</StyledLabel>
+			<EmojiIcons variant="smileyHappy" />
+			<Vectors variant="bigBlobExplore" />
+			<Vectors variant="smallBlob" />
+			<Vectors variant="bigPurpleLogin" />
+			<StyledContainer variant="exploreWrapper">
+				<StyledForm onSubmit={handleSubmit(onSubmit)}>
+					<StyledLabel htmlFor="username">
+						Username
+						<StyledInput
+							{...register('username', {
+								required: 'This field is required',
+								pattern: {
+									value: 3,
+									message: 'The min. length is 3 characters',
+								},
+							})}
+							placeholder="parent123"
+							name="username"
+							type="text"
+							id="username"
+						/>
+						<ErrorMessage
+							errors={errors}
+							name="username"
+							render={({ messages }) =>
+								messages &&
+								Object.entries(messages).map(([type, message]) => (
+									<StyledInputWarning key={type} role="alert">
+										{message}
+									</StyledInputWarning>
+								))
+							}
+						/>
+					</StyledLabel>
+					<StyledLabel htmlFor="password">
+						Password
+						<StyledInput
+							{...register('password', {
+								required: 'This field is required',
+								minLength: {
+									value: 10,
+									message: 'The min. length is 10 characters',
+								},
+							})}
+							placeholder="*************"
+							name="password"
+							type="password"
+							id="password"
+						/>
+						<ErrorMessage
+							errors={errors}
+							name="password"
+							render={({ messages }) =>
+								messages &&
+								Object.entries(messages).map(([type, message]) => (
+									<StyledInputWarning key={type} role="alert">
+										{message}
+									</StyledInputWarning>
+								))
+							}
+						/>
+					</StyledLabel>
 
-				<StyledButton>Login</StyledButton>
-			</StyledForm>
-			{loginInformationError && (
-				<StyledInputWarning role="alert">
-					Your login information is wrong. Please try again.
-				</StyledInputWarning>
-			)}
-			<p>No account yet?</p>
-			<Link href="/create-account">
-				<a>Create new account</a>
-			</Link>
+					<StyledButton variant="submit">Login</StyledButton>
+				</StyledForm>
+				{loginInformationError && (
+					<StyledInputWarning role="alert">
+						Wrong login information. <br />
+						Please try again.
+					</StyledInputWarning>
+				)}
+				<StyledContainer variant="column">
+					<Typography variant="p" margin="minMargin" size="medium">
+						No account yet?
+					</Typography>
+					<Link href="/create-account">
+						<StyledLink variant="link">Create new account</StyledLink>
+					</Link>
+				</StyledContainer>
+			</StyledContainer>
 		</>
 	);
 }

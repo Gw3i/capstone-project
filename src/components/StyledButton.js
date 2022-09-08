@@ -2,13 +2,36 @@ import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
 	padding: 3px 12px;
+	font-size: var(--text-s);
 	cursor: pointer;
 	${({ variant }) =>
 		variant === 'standard' &&
 		css`
-			background-color: transparent;
-			border: 1px solid var(--dark);
+			background-color: var(--white);
+			border: 1.5px solid var(--dark);
 			border-radius: 6px;
+			font-weight: bold;
+		`}
+	${({ variant }) =>
+		variant === 'highlight' &&
+		css`
+			background-color: var(--accent-purple);
+			border: 2px solid var(--dark);
+			border-radius: 6px;
+			font-weight: bold;
+			color: var(--dark);
+			font-weight: bold;
+		`}
+	${({ variant }) =>
+		variant === 'submit' &&
+		css`
+			padding: 4px 20px;
+			max-width: fit-content;
+			background-color: var(--dark);
+			border: 2px solid var(--dark);
+			border-radius: 6px;
+			color: var(--white);
+			font-weight: bold;
 		`}
 	${({ variant }) =>
 		variant === 'filled' &&
@@ -21,6 +44,7 @@ const StyledButton = styled.button`
 		${({ variant }) =>
 		variant === 'standardFlexIcon' &&
 		css`
+			max-width: max-content;
 			background-color: transparent;
 			border: 1px solid var(--dark);
 			border-radius: 6px;
@@ -48,13 +72,6 @@ const StyledButton = styled.button`
 			display: flex;
 			padding: 0;
 			margin: 0;
-		`}
-	${({ variant }) =>
-		variant === 'delete' &&
-		css`
-			background-color: lightsalmon;
-			border: 2px solid salmon;
-			border-radius: 2px;
 		`}
 	${({ variant }) =>
 		variant === 'playlist' &&

@@ -18,11 +18,12 @@ const StyledLink = styled.a`
 		css`
 			max-width: none;
 			flex-direction: row;
-			padding: 4px 10px;
-			border: 2px solid black;
+			padding: 3px 12px;
+			background-color: var(--white);
+			border: 1.5px solid var(--dark);
 			border-radius: 6px;
-			font-size: 1rem;
-			font-weight: bold;
+			font-size: var(--text-s);
+			font-weight: 700;
 			white-space: nowrap;
 		`}
 		${({ variant }) =>
@@ -32,6 +33,22 @@ const StyledLink = styled.a`
 			top: 2%;
 			left: 5%;
 			font-weight: bold;
+		`}
+		${({ variant }) =>
+		variant === 'buttonSmall' &&
+		css`
+			padding: 3px 12px;
+			background-color: transparent;
+			border: 2px solid var(--dark);
+			border-radius: 6px;
+			font-size: var(--text-s);
+			font-weight: bold;
+		`}
+		${({ variant }) =>
+		variant === 'link' &&
+		css`
+			color: var(--accent-purple);
+			text-decoration: underline;
 		`}
 `;
 
