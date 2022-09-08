@@ -211,6 +211,9 @@ const StyledVectorContainer = styled.div`
 				right: -70%;
 				transform: rotate(0deg);
 			}
+			@media screen and (min-width: 376px) {
+				display: none;
+			}
 		`}
 		${({ variant }) =>
 		variant === 'smallBlob' &&
