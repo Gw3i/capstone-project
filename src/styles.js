@@ -42,11 +42,6 @@ export const GlobalStyle = createGlobalStyle`
 		--text-m: 16px;
 		--text-s: 14px;
 		--text-xs: 12px;
-		--device-size-xs: 375px;
-		--device-size-s: 576px;
-		--device-size-m: 768px;
-		--device-size-l: 992px;
-		--device-size-xl: 1200px;
 	}
 
 	/* inter-regular - latin */

@@ -69,49 +69,63 @@ export default function Vectors({ variant }) {
 const StyledVectorContainer = styled.div`
 	position: absolute;
 	z-index: -1000;
-	top: 480px;
-	right: -20px;
 	width: 100vw;
-	height: 400px;
 	overflow: hidden;
-	& > svg {
-		right: -240px;
-	}
-
+	${({ variant }) =>
+		variant === 'bigPurple' &&
+		css`
+			z-index: -1000;
+			top: 480px;
+			right: -20px;
+			width: 100vw;
+			height: 400px;
+			overflow: hidden;
+			& > svg {
+				right: -240px;
+			}
+		`}
 	${({ variant }) =>
 		variant === 'bigPurpleLogin' &&
 		css`
-			top: 389px;
-			right: 0px;
-			height: 250px;
-			width: 100vw;
-			height: 300px;
+			height: 100%;
+			right: 0;
+			bottom: -60%;
 			& > svg {
-				right: -260px;
+				right: -70%;
 				transform: rotate(-3deg);
+			}
+			@media screen and (min-width: 376px) {
+				height: 59%;
 				width: 100vw;
+				right: 0;
+				bottom: -72%;
+				& > svg {
+					right: 15%;
+					transform: rotate(-3deg);
+					width: 200%;
+				}
 			}
 		`}
 	${({ variant }) =>
 		variant === 'bigPurpleCreateAccount' &&
 		css`
-			top: 389px;
-			right: 0px;
-			height: 250px;
+			top: 94%;
+			right: 0;
+			height: 60%;
 			transform: scaleX(-1);
 			& > svg {
-				right: -260px;
+				right: -70%;
 				transform: rotate(-3deg);
 			}
 		`}
 		${({ variant }) =>
 		variant === 'bigPurpleExplore' &&
 		css`
-			top: 420px;
-			right: 0px;
-			height: 500px;
+			top: 18%;
+			right: 0;
+			height: 100%;
 			& > svg {
-				right: -260px;
+				right: -70%;
 				transform: rotate(0deg);
 			}
 		`}
