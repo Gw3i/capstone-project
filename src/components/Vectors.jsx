@@ -216,13 +216,22 @@ const StyledVectorContainer = styled.div`
 		variant === 'smallBlobAdd' &&
 		css`
 			top: 0;
-			right: 0px;
+			right: 1%;
 			height: 100px;
-			width: 400px;
+			width: 100vw;
 			& > svg {
 				right: 100px;
 				top: 130px;
 				transform: rotate(100deg);
+			}
+			@media screen and (min-width: 376px) {
+				right: 49%;
+			}
+			@media screen and (min-width: 769px) {
+				right: 60%;
+			}
+			@media screen and (min-width: 1025px) {
+				right: 70%;
 			}
 		`}
 		${({ variant }) =>
