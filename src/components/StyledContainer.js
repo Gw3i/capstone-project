@@ -241,13 +241,11 @@ const StyledContainer = styled.div`
 		${({ variant }) =>
 		variant === 'blurContainerHeadline' &&
 		css`
-			padding: 10px;
+			padding: 10px 30px;
 			position: absolute;
 			height: 50px;
-			top: 7%;
+			top: 40px;
 			z-index: 100;
-			left: 15%;
-			right: 15%;
 			border-radius: 8px;
 			justify-content: center;
 			align-items: center;
