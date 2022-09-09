@@ -15,6 +15,12 @@ export default function Vectors({ variant }) {
 				<Vector variant="bigPurple" size="777px" color="var(--accent-purple)" />
 			</StyledVectorContainer>
 		);
+	} else if (variant === 'bigPurpleEdit') {
+		return (
+			<StyledVectorContainer variant="bigPurpleEdit">
+				<Vector variant="bigPurple" size="777px" color="var(--accent-purple)" />
+			</StyledVectorContainer>
+		);
 	} else if (variant === 'bigPurpleCreateAccount') {
 		return (
 			<StyledVectorContainer variant="bigPurpleCreateAccount">
@@ -69,50 +75,160 @@ export default function Vectors({ variant }) {
 const StyledVectorContainer = styled.div`
 	position: absolute;
 	z-index: -1000;
-	top: 480px;
-	right: -20px;
 	width: 100vw;
-	height: 400px;
 	overflow: hidden;
-	& > svg {
-		right: -240px;
-	}
-
+	${({ variant }) =>
+		variant === 'bigPurple' &&
+		css`
+			z-index: -1000;
+			top: 480px;
+			right: -20px;
+			width: 100vw;
+			height: 400px;
+			overflow: hidden;
+			& > svg {
+				right: -240px;
+			}
+			@media screen and (min-width: 376px) {
+				& > svg {
+					right: 135px;
+					top: 130px;
+				}
+			}
+			@media screen and (min-width: 769px) {
+				& > svg {
+					right: 390px;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				display: none;
+			}
+			@media screen and (min-height: 700px) {
+				display: none;
+			}
+		`}
 	${({ variant }) =>
 		variant === 'bigPurpleLogin' &&
 		css`
-			top: 389px;
-			right: 0px;
-			height: 250px;
-			width: 100vw;
-			height: 300px;
+			height: 100%;
+			right: 0;
+			bottom: -90%;
 			& > svg {
-				right: -260px;
+				right: -70%;
 				transform: rotate(-3deg);
+			}
+			@media screen and (min-width: 376px) {
+				height: 59%;
 				width: 100vw;
+				bottom: -72%;
+				& > svg {
+					right: 15%;
+				}
+			}
+			@media screen and (min-width: 769px) {
+				height: 59%;
+				width: 100vw;
+				bottom: -72%;
+				& > svg {
+					right: 35%;
+					bottom: -52%;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				display: none;
+			}
+			@media screen and (min-height: 700px) {
+				display: none;
+			}
+		`}
+
+
+		${({ variant }) =>
+		variant === 'bigPurpleEdit' &&
+		css`
+			height: 100%;
+			right: 0;
+			bottom: -90%;
+			& > svg {
+				right: -70%;
+				transform: rotate(-3deg);
+			}
+			@media screen and (min-width: 376px) {
+				height: 59%;
+				width: 100vw;
+				bottom: -94%;
+				& > svg {
+					right: 15%;
+				}
+			}
+			@media screen and (min-width: 769px) {
+				height: 68%;
+				width: 100vw;
+				bottom: -97%;
+				& > svg {
+					right: 37%;
+					bottom: -58%;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				display: none;
+			}
+			@media screen and (min-height: 700px) {
+				display: none;
 			}
 		`}
 	${({ variant }) =>
 		variant === 'bigPurpleCreateAccount' &&
 		css`
-			top: 389px;
-			right: 0px;
-			height: 250px;
+			top: 94%;
+			right: 0;
+			height: 60%;
 			transform: scaleX(-1);
 			& > svg {
-				right: -260px;
+				right: -70%;
 				transform: rotate(-3deg);
+			}
+			@media screen and (min-width: 376px) {
+				height: 100%;
+				& > svg {
+					right: 15%;
+					bottom: -13%;
+				}
+			}
+			@media screen and (min-width: 769px) {
+				top: 100%;
+				right: -57%;
+				height: 60%;
+				& > svg {
+					right: 4%;
+					top: 17%;
+				}
+			}
+			@media screen and (min-width: 1025px) {
+				top: 100%;
+				right: -57%;
+				height: 50%;
+				& > svg {
+					right: 4%;
+					top: 17%;
+				}
+			}
+			@media screen and (min-height: 700px) {
+				display: none;
 			}
 		`}
 		${({ variant }) =>
 		variant === 'bigPurpleExplore' &&
 		css`
-			top: 420px;
-			right: 0px;
-			height: 500px;
+			top: 18%;
+			right: 0;
+			height: 100%;
 			& > svg {
-				right: -260px;
+				right: -70%;
 				transform: rotate(0deg);
+			}
+			@media screen and (min-width: 376px) {
+				display: none;
 			}
 		`}
 		${({ variant }) =>
@@ -122,8 +238,8 @@ const StyledVectorContainer = styled.div`
 			right: 0px;
 			height: 150px;
 			& > svg {
-				right: -510px;
-				top: -120px;
+				top: -83%;
+				left: -4%;
 				transform: rotate(-10deg);
 			}
 		`}
@@ -131,26 +247,46 @@ const StyledVectorContainer = styled.div`
 		variant === 'smallBlobCreateAccount' &&
 		css`
 			top: 0;
-			right: 0px;
+			right: 0;
 			height: 100px;
-			width: 400px;
 			& > svg {
-				right: -120px;
+				left: -105%;
 				top: 200px;
 				transform: rotate(65deg);
+			}
+			@media screen and (min-width: 376px) {
+			& > svg {
+				left: -75%;
+			}
+			@media screen and (min-width: 769px) {
+			& > svg {
+				left: -43%;
+			}
+			@media screen and (min-width: 1025px) {
+			& > svg {
+				left: -30%;
 			}
 		`}
 		${({ variant }) =>
 		variant === 'smallBlobAdd' &&
 		css`
 			top: 0;
-			right: 0px;
+			right: 1%;
 			height: 100px;
-			width: 400px;
+			width: 100vw;
 			& > svg {
 				right: 100px;
 				top: 130px;
 				transform: rotate(100deg);
+			}
+			@media screen and (min-width: 376px) {
+				right: 49%;
+			}
+			@media screen and (min-width: 769px) {
+				right: 60%;
+			}
+			@media screen and (min-width: 1025px) {
+				right: 70%;
 			}
 		`}
 		${({ variant }) =>

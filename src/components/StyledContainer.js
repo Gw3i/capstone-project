@@ -39,11 +39,12 @@ const StyledContainer = styled.div`
 			padding: 0 10px;
 			gap: 10px;
 			margin-bottom: 5px;
-			display: grid;
-			grid-auto-flow: column;
 			overflow-x: scroll;
 			> a {
 				width: auto;
+			}
+			@media screen and (min-width: 376px) {
+				justify-content: center;
 			}
 		`}
         ${({ variant }) =>
@@ -240,13 +241,11 @@ const StyledContainer = styled.div`
 		${({ variant }) =>
 		variant === 'blurContainerHeadline' &&
 		css`
-			padding: 10px;
+			padding: 10px 30px;
 			position: absolute;
 			height: 50px;
-			top: 7%;
+			top: 40px;
 			z-index: 100;
-			left: 15%;
-			right: 15%;
 			border-radius: 8px;
 			justify-content: center;
 			align-items: center;

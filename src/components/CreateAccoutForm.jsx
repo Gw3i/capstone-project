@@ -65,12 +65,12 @@ export default function CreateAccountForm() {
 
 	return (
 		<>
-			<EmojiIcons variant="smileySurprised" />
 			<EmojiIcons variant="thunder" />
 			<Vectors variant="bigBlobCreateAccount" />
 			<Vectors variant="smallBlobCreateAccount" />
 			<Vectors variant="bigPurpleCreateAccount" />
 			<StyledForm onSubmit={handleSubmit(onSubmit)}>
+				<EmojiIcons variant="smileySurprised" />
 				<EmojiIcons variant="highlightLogin" />
 				<StyledLabel htmlFor="username">
 					Username

@@ -54,12 +54,12 @@ export default function LoginForm() {
 
 	return (
 		<>
-			<EmojiIcons variant="smileyHappy" />
 			<Vectors variant="bigBlobExplore" />
 			<Vectors variant="smallBlob" />
 			<Vectors variant="bigPurpleLogin" />
 			<StyledContainer variant="exploreWrapper">
 				<StyledForm onSubmit={handleSubmit(onSubmit)}>
+					<EmojiIcons variant="smileyHappy" />
 					<StyledLabel htmlFor="username">
 						Username
 						<StyledInput
