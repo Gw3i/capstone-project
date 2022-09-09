@@ -1,16 +1,15 @@
 import { ErrorMessage } from '@hookform/error-message';
 import { useForm } from 'react-hook-form';
 
-import useStore from '../hooks/useStore';
-
-import ConfirmationMessage from './ConfirmationMessage';
-import StyledButton from './StyledButton';
-import StyledContainer from './StyledContainer';
-import StyledForm from './StyledForm';
-import StyledInputWarning from './StyledInputWarning';
-import StyledLabel from './StyledLabel';
-import StyledModalSection from './StyledModalSection';
-import Typography from './Typography';
+import useStore from '../../hooks/useStore';
+import ConfirmationMessage from '../ConfirmationMessage';
+import StyledButton from '../StyledButton';
+import StyledContainer from '../StyledContainer';
+import StyledForm from '../StyledForm';
+import StyledInputWarning from '../StyledInputWarning';
+import StyledLabel from '../StyledLabel';
+import StyledModalSection from '../StyledModalSection';
+import Typography from '../Typography';
 
 export default function AddVideoModal({ onCancel, videoTitle, YouTubeLink }) {
 	const categories = useStore(state => state.categories);

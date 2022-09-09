@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import useStore from '../hooks/useStore';
 
-import AddVideoModal from './AddVideoModal';
+import AddVideoModal from './AddVideoModal/AddVideoModal';
 import ChannelCard from './ChannelCard';
 import ConfirmationMessage from './ConfirmationMessage';
 import Icon from './Icon';
