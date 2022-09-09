@@ -1,9 +1,10 @@
-import useStore from '../hooks/useStore';
+import { Fragment } from 'react';
 
-import StyledContainer from './StyledContainer';
-import Typography from './Typography';
-import Vectors from './Vectors';
-import VideoThumbnail from './VideoThumbnail';
+import useStore from '../../hooks/useStore';
+import StyledContainer from '../StyledContainer';
+import Typography from '../Typography';
+import Vectors from '../Vectors';
+import VideoThumbnail from '../VideoThumbnail';
 
 export default function Category() {
 	const videos = useStore(state => state.videos);
@@ -16,11 +17,11 @@ export default function Category() {
 
 	return uniqueCategories.map(category => {
 		return (
-			<>
+			<Fragment key={category.id}>
 				<Vectors variant="bigBlobExplore" />
 				<Vectors variant="bigPurpleExplore" />
-				<StyledContainer key={category.id} variant="exploreWrapper">
-					<Typography variant="h3" component="h2" position="explore" key={category}>
+				<StyledContainer variant="exploreWrapper">
+					<Typography variant="h3" component="h2" position="explore">
 						{category}
 					</Typography>
 					<StyledContainer variant="scrollVideos">
@@ -41,7 +42,7 @@ export default function Category() {
 							})}
 					</StyledContainer>
 				</StyledContainer>
-			</>
+			</Fragment>
 		);
 	});
 }

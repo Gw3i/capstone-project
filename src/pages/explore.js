@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import Category from '../components/Category';
+import Category from '../components/Category/Category';
 import CategoryTags from '../components/CategoryTags';
 import EmojiIcons from '../components/EmojiIcons';
 import Layout from '../components/Layout';
