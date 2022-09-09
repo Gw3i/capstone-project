@@ -4,18 +4,17 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import useStore from '../hooks/useStore';
-
-import EmojiIcons from './EmojiIcons';
-import StyledButton from './StyledButton';
-import StyledContainer from './StyledContainer';
-import StyledForm from './StyledForm';
-import StyledInput from './StyledInput';
-import StyledInputWarning from './StyledInputWarning';
-import StyledLabel from './StyledLabel';
-import StyledLink from './StyledLink';
-import Typography from './Typography';
-import Vectors from './Vectors';
+import useStore from '../../hooks/useStore';
+import EmojiIcons from '../EmojiIcons';
+import StyledButton from '../StyledButton';
+import StyledContainer from '../StyledContainer';
+import StyledForm from '../StyledForm';
+import StyledInput from '../StyledInput';
+import StyledInputWarning from '../StyledInputWarning';
+import StyledLabel from '../StyledLabel';
+import StyledLink from '../StyledLink';
+import Typography from '../Typography';
+import Vectors from '../Vectors';
 
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);

@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import EmojiIcons from '../components/EmojiIcons';
 import Layout from '../components/Layout';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '../components/LoginForm/LoginForm';
 import Logout from '../components/Logout';
 import StyledContainer from '../components/StyledContainer';
 import Typography from '../components/Typography';
