@@ -33,6 +33,22 @@ const StyledList = styled.ul`
 			border-radius: 5px;
 			border: var(--border-accent);
 		`}
+		${({ variant }) =>
+		variant === 'tags' &&
+		css`
+			display: flex;
+			max-width: 100vw;
+			padding: 0 10px;
+			gap: 10px;
+			margin: 0 0 2px 0;
+			overflow-x: scroll;
+			> a {
+				width: auto;
+			}
+			@media screen and (min-width: 376px) {
+				justify-content: center;
+			}
+		`}
 `;
 
 export default StyledList;
