@@ -8,16 +8,6 @@ import userEvent from '@testing-library/user-event';
 
 import LoginForm from './LoginForm';
 
-jest.mock('users', () => ({
-	__esModule: true,
-
-	default: {
-		get: () => ({
-			user: { id: 1, username: 'parent123' },
-		}),
-	},
-}));
-
 describe('Login Form', () => {
 	const user = userEvent.setup();
 
@@ -46,7 +36,7 @@ describe('Login Form', () => {
 		expect(userInput.value).toBe('');
 	});
 
-	it('username input should be empty', () => {
+	it('password input should be empty', () => {
 		render(<LoginForm />);
 		const userInput = screen.getByPlaceholderText(/\*\*\*\*\*\*\*\*\*\*\*\*\*/i);
 		expect(userInput.value).toBe('');
