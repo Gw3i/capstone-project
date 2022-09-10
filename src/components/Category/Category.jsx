@@ -15,34 +15,38 @@ export default function Category() {
 
 	const uniqueCategories = [...new Set(allCategories)];
 
-	return uniqueCategories.map(category => {
-		return (
-			<Fragment key={category.id}>
-				<Vectors variant="bigBlobExplore" />
-				<Vectors variant="bigPurpleExplore" />
-				<StyledContainer variant="exploreWrapper">
-					<Typography variant="h3" component="h2" position="explore">
-						{category}
-					</Typography>
-					<StyledContainer variant="scrollVideos">
-						{videos
-							.filter(video => {
-								return video.category === category;
-							})
-							.map(video => {
-								return (
-									<VideoThumbnail
-										key={video.id}
-										YouTubeLink={video.YouTubeLink}
-										videoTitle={video.videoTitle}
-										category={video.category}
-										id={video.id}
-									/>
-								);
-							})}
-					</StyledContainer>
-				</StyledContainer>
-			</Fragment>
-		);
-	});
+	return (
+		<>
+			<Vectors variant="bigBlobExplore" />
+			<Vectors variant="bigPurpleExplore" />
+			{uniqueCategories.map(category => {
+				return (
+					<Fragment key={category.id}>
+						<StyledContainer variant="exploreWrapper">
+							<Typography variant="h3" component="h2" position="explore">
+								{category}
+							</Typography>
+							<StyledContainer variant="scrollVideos">
+								{videos
+									.filter(video => {
+										return video.category === category;
+									})
+									.map(video => {
+										return (
+											<VideoThumbnail
+												key={video.id}
+												YouTubeLink={video.YouTubeLink}
+												videoTitle={video.videoTitle}
+												category={video.category}
+												id={video.id}
+											/>
+										);
+									})}
+							</StyledContainer>
+						</StyledContainer>
+					</Fragment>
+				);
+			})}
+		</>
+	);
 }
