@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import CreateAccountForm from '../components/CreateAccoutForm';
+import CreateAccountForm from '../components/CreateAccountForm/CreateAccoutForm';
 import Layout from '../components/Layout';
 import Typography from '../components/Typography';
 
