@@ -14,6 +14,10 @@ You as a parent can add YouTube videos and playlist what you want your child to 
 ![Kiddio_Presentation_Design](https://user-images.githubusercontent.com/101993818/189039492-281cf363-9a18-4797-9450-2f39a4570de2.png)
 
 
+https://user-images.githubusercontent.com/101993818/189590428-02c0e674-5a74-4b51-b38a-b91aa78f7006.mov
+
+
+
 ## Tech Stack
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
