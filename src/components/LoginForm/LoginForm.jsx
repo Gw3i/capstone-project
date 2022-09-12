@@ -13,7 +13,7 @@ import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
 import StyledLink from '../StyledLink';
-import Typography from '../Typography';
+import StyledTypography from '../StyledTypography';
 import Vectors from '../Vectors';
 
 export default function LoginForm() {
@@ -125,9 +125,9 @@ export default function LoginForm() {
 					</StyledInputWarning>
 				)}
 				<StyledContainer variant="column">
-					<Typography variant="p" margin="minMargin" size="medium">
+					<StyledTypography variant="p" margin="minMargin" size="medium">
 						No account yet?
-					</Typography>
+					</StyledTypography>
 					<Link href="/create-account">
 						<StyledLink variant="link">Create new account</StyledLink>
 					</Link>

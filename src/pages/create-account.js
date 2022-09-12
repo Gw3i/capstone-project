@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import CreateAccountForm from '../components/CreateAccountForm/CreateAccoutForm';
 import Layout from '../components/Layout';
-import Typography from '../components/Typography';
+import StyledTypography from '../components/StyledTypography';
 
 export default function Login() {
 	return (
@@ -16,9 +16,9 @@ export default function Login() {
 				/>
 			</Head>
 			<Layout>
-				<Typography variant="h1" decoration="borderBottomCreateAccount">
+				<StyledTypography variant="h1" decoration="borderBottomCreateAccount">
 					Create new account
-				</Typography>
+				</StyledTypography>
 				<CreateAccountForm />
 			</Layout>
 		</>

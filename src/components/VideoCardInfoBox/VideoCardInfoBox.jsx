@@ -8,8 +8,8 @@ import StyledButton from '../StyledButton';
 import StyledCategoryTag from '../StyledCategoryTag';
 import StyledContainer from '../StyledContainer';
 import StyledLink from '../StyledLink';
+import StyledTypography from '../StyledTypography';
 import StyledVideoButtonContainer from '../StyledVideoButtonContainer';
-import Typography from '../Typography';
 
 export default function VideoCardInfoBox({ videoId, category, bookmark, videoTitle, routerId }) {
 	const loginSession = useStore(state => state.loginSession);
@@ -67,9 +67,9 @@ export default function VideoCardInfoBox({ videoId, category, bookmark, videoTit
 						<StyledCategoryTag>{category}</StyledCategoryTag>
 					</Link>
 				)}
-				<Typography variant="h2" color="white" size="medium">
+				<StyledTypography variant="h2" color="white" size="medium">
 					{videoTitle}
-				</Typography>
+				</StyledTypography>
 			</StyledContainer>
 			{isShown && (
 				<>

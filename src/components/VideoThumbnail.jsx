@@ -5,7 +5,7 @@ import useStore from '../hooks/useStore';
 import useYouTubeId from '../hooks/useYouTubeId';
 
 import StyledContainer from './StyledContainer';
-import Typography from './Typography';
+import StyledTypography from './StyledTypography';
 
 export default function VideoThumbnail({ YouTubeLink, videoTitle, category, id }) {
 	const videoID = useYouTubeId(YouTubeLink);
@@ -20,9 +20,9 @@ export default function VideoThumbnail({ YouTubeLink, videoTitle, category, id }
 					}}
 				>
 					<StyledContainer variant="blurContainerExplore">
-						<Typography variant="h2" color="white" size="medium">
+						<StyledTypography variant="h2" color="white" size="medium">
 							{videoTitle}
-						</Typography>
+						</StyledTypography>
 					</StyledContainer>
 
 					<Image

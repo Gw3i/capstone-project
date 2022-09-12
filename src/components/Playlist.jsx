@@ -15,7 +15,7 @@ import StyledGridContainer from './StyledGridContainer';
 import StyledLink from './StyledLink';
 import StyledList from './StyledList';
 import StyledListItem from './StyledListItem';
-import Typography from './Typography';
+import StyledTypography from './StyledTypography';
 
 export default function Playlist() {
 	const channels = useStore(state => state.channels);
@@ -57,16 +57,16 @@ export default function Playlist() {
 							variant="channelCardWrapperPlaylists"
 							key={channel.channelId}
 						>
-							<Typography variant="p" margin="minMargin" size="medium">
+							<StyledTypography variant="p" margin="minMargin" size="medium">
 								Channel
-							</Typography>
+							</StyledTypography>
 							<ChannelCard channelItem={channel} />
 						</StyledContainer>
 					);
 				})}
-			<Typography variant="h3" component="h2">
+			<StyledTypography variant="h3" component="h2">
 				Playlists: {channelPlaylists.length}
-			</Typography>
+			</StyledTypography>
 			<ConfirmationMessage />
 			<StyledContainer variant="scrollPlaylists">
 				{channelPlaylists
@@ -85,14 +85,14 @@ export default function Playlist() {
 										height={110}
 									/>
 									<StyledContainer variant="columnSpaceEvenly">
-										<Typography
+										<StyledTypography
 											variant="p"
 											size="medium"
 											align="center"
 											bold="bold"
 										>
 											{channelPlaylist.snippet.title}
-										</Typography>
+										</StyledTypography>
 
 										<StyledButton
 											variant="standardFlexIcon"
@@ -187,12 +187,12 @@ export default function Playlist() {
 																width={190}
 																height={110}
 															/>
-															<Typography
+															<StyledTypography
 																variant="p"
 																padding="minSides"
 															>
 																{playlistVideo.snippet.title}
-															</Typography>
+															</StyledTypography>
 															{isShown &&
 																playlistVideo.id ===
 																	currentVideo.id && (

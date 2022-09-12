@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export default function Typography({ children, variant, component, ...rest }) {
+export default function StyledTypography({ children, variant, component, ...rest }) {
 	if (variant === 'h1') {
 		return (
 			<StyledH1 as={component} {...rest}>

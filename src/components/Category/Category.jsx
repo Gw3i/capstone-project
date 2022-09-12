@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 import useStore from '../../hooks/useStore';
 import StyledContainer from '../StyledContainer';
-import Typography from '../Typography';
+import StyledTypography from '../StyledTypography';
 import Vectors from '../Vectors';
 import VideoThumbnail from '../VideoThumbnail';
 
@@ -21,11 +21,11 @@ export default function Category() {
 			<Vectors variant="bigPurpleExplore" />
 			{uniqueCategories.map(category => {
 				return (
-					<Fragment key={category.id}>
+					<Fragment key={category}>
 						<StyledContainer variant="exploreWrapper">
-							<Typography variant="h3" component="h2" position="explore">
+							<StyledTypography variant="h3" component="h2" position="explore">
 								{category}
-							</Typography>
+							</StyledTypography>
 							<StyledContainer variant="scrollVideos">
 								{videos
 									.filter(video => {
