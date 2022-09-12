@@ -1,7 +1,7 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 import EmojiIcons from '../components/EmojiIcons';
-import Layout from '../components/Layout';
 import LoginForm from '../components/LoginForm/LoginForm';
 import Logout from '../components/Logout';
 import StyledContainer from '../components/StyledContainer';
@@ -11,6 +11,10 @@ import useStore from '../hooks/useStore';
 
 export default function Create() {
 	const loginSession = useStore(state => state.loginSession);
+
+	const DynamicLayout = dynamic(() => import('../components/Layout'), {
+		ssr: false,
+	});
 	return (
 		<>
 			<Head>
@@ -21,7 +25,7 @@ export default function Create() {
 					content="Kiddio - the kids leaning app"
 				/>
 			</Head>
-			<Layout>
+			<DynamicLayout>
 				<StyledTypography variant="h1" decoration="borderBottom" position="relative">
 					<EmojiIcons variant="ribbon" />
 					{loginSession ? 'Add' : 'Login'}
@@ -44,7 +48,7 @@ export default function Create() {
 						<EmojiIcons variant="arrow" />
 					</>
 				)}
-			</Layout>
+			</DynamicLayout>
 		</>
 	);
 }

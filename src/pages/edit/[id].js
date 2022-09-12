@@ -1,10 +1,14 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 import EditForm from '../../components/EditFrom/EditForm';
-import Layout from '../../components/Layout';
 import StyledTypography from '../../components/StyledTypography';
 
 export default function Edit() {
+	const DynamicLayout = dynamic(() => import('../../components/Layout'), {
+		ssr: false,
+	});
+
 	return (
 		<>
 			<Head>
@@ -15,12 +19,12 @@ export default function Edit() {
 					content="Kiddio - the kids leaning app"
 				/>
 			</Head>
-			<Layout>
+			<DynamicLayout>
 				<StyledTypography variant="h1" decoration="borderBottomCreateAccount">
 					Create new account
 				</StyledTypography>
 				<EditForm />
-			</Layout>
+			</DynamicLayout>
 		</>
 	);
 }

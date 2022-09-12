@@ -1,9 +1,12 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-import Layout from '../../components/Layout';
 import Playlist from '../../components/Playlist';
 
 export default function Playlists() {
+	const DynamicLayout = dynamic(() => import('../../components/Layout'), {
+		ssr: false,
+	});
 	return (
 		<>
 			<Head>
@@ -14,9 +17,9 @@ export default function Playlists() {
 					content="Kiddio - the kids leaning app"
 				/>
 			</Head>
-			<Layout>
+			<DynamicLayout>
 				<Playlist />
-			</Layout>
+			</DynamicLayout>
 		</>
 	);
 }

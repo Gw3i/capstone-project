@@ -1,6 +1,6 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-import Layout from '../components/Layout';
 import StyledContainer from '../components/StyledContainer';
 import StyledTypography from '../components/StyledTypography';
 import VideoCards from '../components/VideoCards/VideoCards';
@@ -8,6 +8,10 @@ import useStore from '../hooks/useStore';
 
 export default function Bookmarks() {
 	const videos = useStore(state => state.videos);
+
+	const DynamicLayout = dynamic(() => import('../components/Layout'), {
+		ssr: false,
+	});
 
 	return (
 		<>
@@ -19,7 +23,7 @@ export default function Bookmarks() {
 					content="Kiddio - the kids leaning app"
 				/>
 			</Head>
-			<Layout>
+			<DynamicLayout>
 				<StyledContainer variant="blurContainerHeadline">
 					<StyledTypography variant="h1" decoration="borderBottom">
 						Bookmarks
@@ -43,7 +47,7 @@ export default function Bookmarks() {
 							);
 						})}
 				</StyledContainer>
-			</Layout>
+			</DynamicLayout>
 		</>
 	);
 }

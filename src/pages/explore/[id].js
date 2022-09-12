@@ -1,7 +1,7 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import Layout from '../../components/Layout';
 import StyledContainer from '../../components/StyledContainer';
 import StyledTypography from '../../components/StyledTypography';
 import VideoCard from '../../components/VideoCards/VideoCards';
@@ -20,6 +20,10 @@ export default function ExploreCategory() {
 		(a, b) => Number(b.timeStamp) - Number(a.timeStamp)
 	);
 
+	const DynamicLayout = dynamic(() => import('../../components/Layout'), {
+		ssr: false,
+	});
+
 	return (
 		<>
 			<Head>
@@ -30,7 +34,7 @@ export default function ExploreCategory() {
 					content="Kiddio - the kids leaning app"
 				/>
 			</Head>
-			<Layout>
+			<DynamicLayout>
 				<StyledContainer variant="blurContainerHeadline">
 					<StyledTypography variant="h1" decoration="borderBottom">
 						{ref.id}
@@ -50,7 +54,7 @@ export default function ExploreCategory() {
 						);
 					})}
 				</StyledContainer>
-			</Layout>
+			</DynamicLayout>
 		</>
 	);
 }
