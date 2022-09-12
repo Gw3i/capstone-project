@@ -18,11 +18,11 @@ import Vectors from '../Vectors';
 
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
+	const users = useStore(state => state.users);
+
 	const router = useRouter();
 	const [loginInformationError, setfalseloginInformationError] = useState(false);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
-
-	const users = useStore(state => state.users);
 
 	const {
 		register,

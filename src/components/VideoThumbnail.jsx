@@ -11,6 +11,7 @@ export default function VideoThumbnail({ YouTubeLink, videoTitle, category, id }
 	const videoID = useYouTubeId(YouTubeLink);
 
 	const setTimeStamp = useStore(state => state.setTimeStamp);
+
 	return (
 		<StyledContainer variant="exploreImg">
 			<Link href={`/explore/${category}`}>

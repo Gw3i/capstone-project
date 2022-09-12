@@ -16,7 +16,6 @@ import Vectors from '../Vectors';
 export default function VideoForm() {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	const confirmationMessage = useStore(state => state.confirmationMessage);
-
 	const setVideos = useStore(state => state.setVideos);
 	const categories = useStore(state => state.categories);
 

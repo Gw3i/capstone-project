@@ -33,6 +33,7 @@ export default function Playlist() {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const [isShown, setIsShown] = useState(false);
+
 	const router = useRouter();
 
 	function handleVisibility() {
