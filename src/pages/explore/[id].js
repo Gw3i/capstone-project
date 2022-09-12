@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import Layout from '../../components/Layout';
 import StyledContainer from '../../components/StyledContainer';
-import Typography from '../../components/Typography';
+import StyledTypography from '../../components/StyledTypography';
 import VideoCard from '../../components/VideoCards/VideoCards';
 import useStore from '../../hooks/useStore';
 
@@ -32,9 +32,9 @@ export default function ExploreCategory() {
 			</Head>
 			<Layout>
 				<StyledContainer variant="blurContainerHeadline">
-					<Typography variant="h1" decoration="borderBottom">
+					<StyledTypography variant="h1" decoration="borderBottom">
 						{ref.id}
-					</Typography>
+					</StyledTypography>
 				</StyledContainer>
 				<StyledContainer variant="snapScroll">
 					{sortedCategoryVideos.map(video => {

@@ -27,6 +27,11 @@ const StyledListItem = styled.li`
 				border-radius: 3px 3px 0 0;
 			}
 		`}
+		${({ variant }) =>
+		variant === 'marginTopBottom5' &&
+		css`
+			margin: 5px 0;
+		`}
 `;
 
 export default StyledListItem;

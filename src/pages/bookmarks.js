@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import Layout from '../components/Layout';
 import StyledContainer from '../components/StyledContainer';
-import Typography from '../components/Typography';
+import StyledTypography from '../components/StyledTypography';
 import VideoCards from '../components/VideoCards/VideoCards';
 import useStore from '../hooks/useStore';
 
@@ -21,9 +21,9 @@ export default function Bookmarks() {
 			</Head>
 			<Layout>
 				<StyledContainer variant="blurContainerHeadline">
-					<Typography variant="h1" decoration="borderBottom">
+					<StyledTypography variant="h1" decoration="borderBottom">
 						Bookmarks
-					</Typography>
+					</StyledTypography>
 				</StyledContainer>
 				<StyledContainer variant="snapScroll">
 					{videos

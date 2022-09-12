@@ -8,6 +8,7 @@ import Vectors from './Vectors';
 export default function Logout() {
 	const setLoginSession = useStore(state => state.setLoginSession);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
+
 	return (
 		<>
 			<Vectors variant="bigPurple" />

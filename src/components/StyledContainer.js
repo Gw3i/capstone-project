@@ -32,21 +32,6 @@ const StyledContainer = styled.div`
 			text-align: left;
 		`}
 
-		${({ variant }) =>
-		variant === 'tags' &&
-		css`
-			max-width: 100vw;
-			padding: 0 10px;
-			gap: 10px;
-			margin-bottom: 5px;
-			overflow-x: scroll;
-			> a {
-				width: auto;
-			}
-			@media screen and (min-width: 376px) {
-				justify-content: center;
-			}
-		`}
         ${({ variant }) =>
 		variant === 'tagsWrapper' &&
 		css`

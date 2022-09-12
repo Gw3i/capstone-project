@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components';
 
-import Arrow from '../../public/EmojiIcons/Arrow.js';
-import Crown from '../../public/EmojiIcons/Crown.js';
-import Highlight from '../../public/EmojiIcons/Highlight.js';
-import Lens from '../../public/EmojiIcons/Lens.js';
-import LightBulb from '../../public/EmojiIcons/LightBulb.js';
-import Nice from '../../public/EmojiIcons/Nice.js';
-import Ribbon from '../../public/EmojiIcons/Ribbon';
-import SmileyHappy from '../../public/EmojiIcons/SmileyHappy.js';
-import SmileySurprised from '../../public/EmojiIcons/SmileySurprised.js';
-import Thunder from '../../public/EmojiIcons/Thunder.js';
+import Arrow from './EmojiIcons/Arrow.js';
+import Crown from './EmojiIcons/Crown.js';
+import Highlight from './EmojiIcons/Highlight.js';
+import Lens from './EmojiIcons/Lens.js';
+import LightBulb from './EmojiIcons/LightBulb.js';
+import Nice from './EmojiIcons/Nice.js';
+import Ribbon from './EmojiIcons/Ribbon';
+import SmileyHappy from './EmojiIcons/SmileyHappy.js';
+import SmileySurprised from './EmojiIcons/SmileySurprised.js';
+import Thunder from './EmojiIcons/Thunder.js';
 
 export default function EmojiIcons({ variant }) {
 	if (variant === 'smileyHappy') {

@@ -3,20 +3,19 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
 import ConfirmationMessage from '../ConfirmationMessage';
-import SearchForm from '../SearchForm.jsx';
+import SearchForm from '../SearchForm/SearchForm';
 import StyledButton from '../StyledButton';
 import StyledForm from '../StyledForm';
 import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
 import StyledLabel from '../StyledLabel';
 import StyledSelect from '../StyledSelect';
-import Typography from '../Typography';
+import StyledTypography from '../StyledTypography';
 import Vectors from '../Vectors';
 
 export default function VideoForm() {
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	const confirmationMessage = useStore(state => state.confirmationMessage);
-
 	const setVideos = useStore(state => state.setVideos);
 	const categories = useStore(state => state.categories);
 
@@ -30,7 +29,7 @@ export default function VideoForm() {
 	function onSubmit(data) {
 		setVideos(data);
 		reset();
-		setConfirmationMessage('Greate! You are logged in now');
+		setConfirmationMessage('Great! You are logged in now');
 	}
 
 	return (
@@ -120,9 +119,9 @@ export default function VideoForm() {
 				<StyledButton variant="submit">Submit</StyledButton>
 			</StyledForm>
 			{confirmationMessage && <ConfirmationMessage />}
-			<Typography variant="h2" decoration="borderBottom">
+			<StyledTypography variant="h2" decoration="borderBottom">
 				OR
-			</Typography>
+			</StyledTypography>
 			<SearchForm />
 		</>
 	);

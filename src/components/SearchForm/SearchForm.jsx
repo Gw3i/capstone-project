@@ -2,14 +2,13 @@ import { ErrorMessage } from '@hookform/error-message';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import useStore from '../hooks/useStore';
-
-import ChannelPlaylist from './ChannelPlaylist';
-import StyledButton from './StyledButton';
-import StyledForm from './StyledForm';
-import StyledInput from './StyledInput';
-import StyledInputWarning from './StyledInputWarning';
-import StyledLabel from './StyledLabel';
+import useStore from '../../hooks/useStore';
+import ChannelPlaylist from '../ChannelPlaylist';
+import StyledButton from '../StyledButton';
+import StyledForm from '../StyledForm';
+import StyledInput from '../StyledInput';
+import StyledInputWarning from '../StyledInputWarning';
+import StyledLabel from '../StyledLabel';
 
 export default function SearchForm() {
 	const setCurrentItem = useStore(state => state.setCurrentItem);

@@ -14,12 +14,12 @@ import StyledSelect from '../StyledSelect';
 import Vectors from '../Vectors';
 
 export default function EditForm() {
+	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
+	const categories = useStore(state => state.categories);
+
 	const router = useRouter();
 	const videos = useStore(state => state.videos);
 	const ref = router.query;
-
-	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
-	const categories = useStore(state => state.categories);
 
 	const videoQueryId = videos.filter(video => {
 		return ref.id === video.id;

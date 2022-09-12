@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
-import Category from '../components/Category';
-import CategoryTags from '../components/CategoryTags';
+import Category from '../components/Category/Category';
+import CategoryTags from '../components/CategoryTags/CategoryTags';
 import EmojiIcons from '../components/EmojiIcons';
 import Layout from '../components/Layout';
-import Typography from '../components/Typography';
+import StyledTypography from '../components/StyledTypography';
 
 export default function Explore() {
 	return (
@@ -18,10 +18,10 @@ export default function Explore() {
 				/>
 			</Head>
 			<Layout>
-				<Typography variant="h1" decoration="borderBottom" position="relative">
+				<StyledTypography variant="h1" decoration="borderBottom" position="relative">
 					<EmojiIcons variant="lens" />
 					Explore
-				</Typography>
+				</StyledTypography>
 				<CategoryTags />
 				<Category />
 			</Layout>

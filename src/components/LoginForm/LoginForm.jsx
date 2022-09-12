@@ -4,26 +4,25 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import useStore from '../hooks/useStore';
-
-import EmojiIcons from './EmojiIcons';
-import StyledButton from './StyledButton';
-import StyledContainer from './StyledContainer';
-import StyledForm from './StyledForm';
-import StyledInput from './StyledInput';
-import StyledInputWarning from './StyledInputWarning';
-import StyledLabel from './StyledLabel';
-import StyledLink from './StyledLink';
-import Typography from './Typography';
-import Vectors from './Vectors';
+import useStore from '../../hooks/useStore';
+import EmojiIcons from '../EmojiIcons';
+import StyledButton from '../StyledButton';
+import StyledContainer from '../StyledContainer';
+import StyledForm from '../StyledForm';
+import StyledInput from '../StyledInput';
+import StyledInputWarning from '../StyledInputWarning';
+import StyledLabel from '../StyledLabel';
+import StyledLink from '../StyledLink';
+import StyledTypography from '../StyledTypography';
+import Vectors from '../Vectors';
 
 export default function LoginForm() {
 	const setLoginSession = useStore(state => state.setLoginSession);
+	const users = useStore(state => state.users);
+
 	const router = useRouter();
 	const [loginInformationError, setfalseloginInformationError] = useState(false);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
-
-	const users = useStore(state => state.users);
 
 	const {
 		register,
@@ -54,12 +53,12 @@ export default function LoginForm() {
 
 	return (
 		<>
+			<EmojiIcons variant="smileyHappy" />
 			<Vectors variant="bigBlobExplore" />
 			<Vectors variant="smallBlob" />
 			<Vectors variant="bigPurpleLogin" />
 			<StyledContainer variant="exploreWrapper">
 				<StyledForm onSubmit={handleSubmit(onSubmit)}>
-					<EmojiIcons variant="smileyHappy" />
 					<StyledLabel htmlFor="username">
 						Username
 						<StyledInput
@@ -126,9 +125,9 @@ export default function LoginForm() {
 					</StyledInputWarning>
 				)}
 				<StyledContainer variant="column">
-					<Typography variant="p" margin="minMargin" size="medium">
+					<StyledTypography variant="p" margin="minMargin" size="medium">
 						No account yet?
-					</Typography>
+					</StyledTypography>
 					<Link href="/create-account">
 						<StyledLink variant="link">Create new account</StyledLink>
 					</Link>

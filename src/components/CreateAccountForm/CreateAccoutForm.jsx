@@ -4,15 +4,14 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import useStore from '../hooks/useStore';
-
-import EmojiIcons from './EmojiIcons';
-import StyledButton from './StyledButton';
-import StyledForm from './StyledForm';
-import StyledInput from './StyledInput';
-import StyledInputWarning from './StyledInputWarning';
-import StyledLabel from './StyledLabel';
-import Vectors from './Vectors';
+import useStore from '../../hooks/useStore';
+import EmojiIcons from '../EmojiIcons';
+import StyledButton from '../StyledButton';
+import StyledForm from '../StyledForm';
+import StyledInput from '../StyledInput';
+import StyledInputWarning from '../StyledInputWarning';
+import StyledLabel from '../StyledLabel';
+import Vectors from '../Vectors';
 
 export default function CreateAccountForm() {
 	const router = useRouter();
@@ -137,7 +136,9 @@ export default function CreateAccountForm() {
 				<StyledLabel htmlFor="age">
 					Age
 					<StyledInput
-						{...register('age')}
+						{...register('age', {
+							required: 'This field is required',
+						})}
 						name="age"
 						type="date"
 						id="age"
