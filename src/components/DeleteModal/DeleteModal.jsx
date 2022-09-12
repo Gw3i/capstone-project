@@ -1,5 +1,5 @@
 import useStore from '../../hooks/useStore';
-import StyledButton from '../StyledButton';
+import StyledButton from '../StyledBotton/StyledButton';
 import StyledContainer from '../StyledContainer';
 import StyledModalSection from '../StyledModalSection';
 import StyledTypography from '../StyledTypography';
