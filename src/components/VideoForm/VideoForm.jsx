@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import useStore from '../../hooks/useStore';
 import ConfirmationMessage from '../ConfirmationMessage';
 import SearchForm from '../SearchForm/SearchForm';
-import StyledButton from '../StyledButton';
+import StyledButton from '../StyledBotton/StyledButton';
 import StyledForm from '../StyledForm';
 import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';

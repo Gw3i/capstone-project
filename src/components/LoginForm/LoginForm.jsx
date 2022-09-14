@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
 import EmojiIcons from '../EmojiIcons';
-import StyledButton from '../StyledButton';
+import StyledButton from '../StyledBotton/StyledButton';
 import StyledContainer from '../StyledContainer';
 import StyledForm from '../StyledForm';
 import StyledInput from '../StyledInput';
@@ -21,7 +21,7 @@ export default function LoginForm() {
 	const users = useStore(state => state.users);
 
 	const router = useRouter();
-	const [loginInformationError, setfalseloginInformationError] = useState(false);
+	const [loginInformationError, setLoginInformationError] = useState(false);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 
 	const {
@@ -47,7 +47,7 @@ export default function LoginForm() {
 			setConfirmationMessage('Great! You are logged in now');
 			router.push('/create');
 		} else {
-			setfalseloginInformationError(true);
+			setLoginInformationError(true);
 		}
 	}
 

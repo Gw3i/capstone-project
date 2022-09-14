@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
 import ConfirmationMessage from '../ConfirmationMessage';
-import StyledButton from '../StyledButton';
+import StyledButton from '../StyledBotton/StyledButton';
 import StyledContainer from '../StyledContainer';
 import StyledForm from '../StyledForm';
 import StyledInputWarning from '../StyledInputWarning';

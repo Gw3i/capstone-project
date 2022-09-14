@@ -4,7 +4,7 @@ import { useState } from 'react';
 import useStore from '../../hooks/useStore';
 import DeleteModal from '../DeleteModal/DeleteModal';
 import Icon from '../Icon';
-import StyledButton from '../StyledButton';
+import StyledButton from '../StyledBotton/StyledButton';
 import StyledCategoryTag from '../StyledCategoryTag';
 import StyledContainer from '../StyledContainer';
 import StyledLink from '../StyledLink';

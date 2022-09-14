@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 
 import useStore from '../../hooks/useStore';
 import EmojiIcons from '../EmojiIcons';
-import StyledButton from '../StyledButton';
+import StyledButton from '../StyledBotton/StyledButton';
 import StyledForm from '../StyledForm';
 import StyledInput from '../StyledInput';
 import StyledInputWarning from '../StyledInputWarning';
@@ -18,7 +18,7 @@ export default function CreateAccountForm() {
 	const registerUser = useStore(state => state.registerUser);
 	const setConfirmationMessage = useStore(state => state.setConfirmationMessage);
 	const users = useStore(state => state.users);
-	const [loginInformationError, setfalseloginInformationError] = useState(false);
+	const [loginInformationError, setLoginInformationError] = useState(false);
 	const [loginAgeError, setLoginAgeError] = useState(false);
 
 	const {
@@ -56,7 +56,7 @@ export default function CreateAccountForm() {
 		} else {
 			age < 18
 				? setLoginAgeError('You are too young!')
-				: setfalseloginInformationError(
+				: setLoginInformationError(
 						'This username is already taken. Please choose another one'
 				  );
 		}
@@ -86,7 +86,7 @@ export default function CreateAccountForm() {
 						type="text"
 						id="username"
 						onChange={() => {
-							setfalseloginInformationError(false);
+							setLoginInformationError(false);
 						}}
 					/>
 					<ErrorMessage

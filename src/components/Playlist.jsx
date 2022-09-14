@@ -9,7 +9,7 @@ import AddVideoModal from './AddVideoModal/AddVideoModal';
 import ChannelCard from './ChannelCard';
 import ConfirmationMessage from './ConfirmationMessage';
 import Icon from './Icon';
-import StyledButton from './StyledButton';
+import StyledButton from './StyledBotton/StyledButton';
 import StyledContainer from './StyledContainer';
 import StyledGridContainer from './StyledGridContainer';
 import StyledLink from './StyledLink';

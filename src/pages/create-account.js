@@ -1,10 +1,13 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 import CreateAccountForm from '../components/CreateAccountForm/CreateAccoutForm';
-import Layout from '../components/Layout';
 import StyledTypography from '../components/StyledTypography';
 
 export default function Login() {
+	const DynamicLayout = dynamic(() => import('../components/Layout'), {
+		ssr: false,
+	});
 	return (
 		<>
 			<Head>
@@ -15,12 +18,12 @@ export default function Login() {
 					content="Kiddio - the kids leaning app"
 				/>
 			</Head>
-			<Layout>
+			<DynamicLayout>
 				<StyledTypography variant="h1" decoration="borderBottomCreateAccount">
 					Create new account
 				</StyledTypography>
 				<CreateAccountForm />
-			</Layout>
+			</DynamicLayout>
 		</>
 	);
 }
