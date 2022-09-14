@@ -93,7 +93,7 @@ export default function VideoForm() {
 				<StyledLabel htmlFor="categories">
 					Choose a category
 					<StyledSelect
-						{...register('category', { required: 'This filed is required' })}
+						{...register('category', { required: 'This field is required' })}
 						id="categories"
 					>
 						<option value="">-- Choose a category --</option>
